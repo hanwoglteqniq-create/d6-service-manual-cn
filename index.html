@@ -11,25 +11,21 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>D6装订器维修手册</title>
-<!-- PWA 框架样式 -->
 <link rel="stylesheet" href="manual/mobile.css">
-<!-- 手册原始样式 -->
 <link rel="stylesheet" href="manual/common_e2/css/manual.css">
 </head>
 <body>
 
-<!-- 顶部导航栏 -->
 <div id="app-header">
     <div class="menu-btn" onclick="toggleSidebar()">
         <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
     </div>
     <h1 id="header-title">D6装订器维修手册</h1>
-    <div class="menu-btn" onclick="toggleInstallUI()" title="安装到主屏幕">
+    <div class="menu-btn" onclick="installApp()" title="安装到主屏幕">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
     </div>
 </div>
 
-<!-- 安装提示 -->
 <div id="install-banner" style="display:none;">
     <div class="install-content">
         <p>将手册添加到主屏幕，可离线使用</p>
@@ -38,10 +34,8 @@
     </div>
 </div>
 
-<!-- 侧边栏遮罩 -->
 <div id="sidebar-overlay" onclick="closeSidebar()"></div>
 
-<!-- 侧边栏 -->
 <div id="sidebar">
     <div class="sidebar-header">D6装订器维修手册</div>
     <div id="search-bar">
@@ -50,18 +44,15 @@
     <div class="menu-tree" id="menu-tree"></div>
 </div>
 
-<!-- 主内容区域（使用 iframe 确保手册样式完全隔离） -->
 <div id="app-content">
     <iframe id="content-frame" frameborder="0" style="width:100%;border:none;min-height:calc(100vh - 56px);"></iframe>
 </div>
 
-<!-- 上/下页导航 -->
 <div id="page-nav-bar" style="display:none;">
     <button id="nav-prev" onclick="goPrev()">&#8592; 上一页</button>
     <button id="nav-next" onclick="goNext()">下一页 &#8594;</button>
 </div>
 
-<!-- 返回顶部 -->
 <div id="back-to-top" onclick="document.getElementById('content-frame').contentWindow.scrollTo({top:0,behavior:'smooth'})">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
 </div>
@@ -73,7 +64,7 @@ var prevUrl = '';
 var nextUrl = '';
 var deferredPrompt = null;
 
-// ========== PWA 安装逻辑 ==========
+// ========== PWA 安装 ==========
 window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferredPrompt = e;
@@ -99,7 +90,6 @@ function installApp() {
         document.getElementById('install-btn').style.display = 'none';
     }
 }
-function toggleInstallUI() { installApp(); }
 
 // ========== Service Worker ==========
 if ('serviceWorker' in navigator) {
@@ -131,63 +121,74 @@ function renderMenu(items, container, level) {
     level = level || 0;
     container = container || document.getElementById('menu-tree');
     var ul = document.createElement('ul');
-    if (level > 0) ul.className = 'sub-menu';
+    ul.className = 'menu-level-' + level;
+
     items.forEach(function(item) {
         var li = document.createElement('li');
-        if (item.type === 'folder' && item.children && item.children.length > 0) {
-            var link = document.createElement('a');
-            link.className = level === 0 ? 'chap-link' : '';
+        var hasChildren = item.children && item.children.length > 0;
+        var isFolder = item.type === 'folder';
+
+        if (hasChildren) {
+            // 文件夹：显示展开箭头 + 标题 + 子菜单
+            li.className = 'folder-item';
+
+            var link = document.createElement('div');
+            link.className = 'folder-header level-' + level;
             link.setAttribute('data-search', ((item.title || '') + ' ' + (item.title_en || '')).toLowerCase());
-            var toggle = document.createElement('span');
-            toggle.className = 'folder-toggle';
-            toggle.innerHTML = '&#9654;';
-            toggle.onclick = function(e) {
-                e.stopPropagation();
-                this.classList.toggle('open');
-                var sub = this.parentNode.querySelector('.sub-menu');
-                if (sub) sub.classList.toggle('open');
-            };
-            link.appendChild(toggle);
-            link.appendChild(document.createTextNode(item.title || ''));
-            if (item.href) {
-                link.onclick = function(e) {
-                    if (e.target.classList.contains('folder-toggle')) return;
+
+            // 展开箭头
+            var arrow = document.createElement('span');
+            arrow.className = 'folder-arrow';
+            arrow.innerHTML = '&#9654;';
+            link.appendChild(arrow);
+
+            // 标题文字
+            var text = document.createElement('span');
+            text.className = 'folder-title';
+            text.textContent = item.title || '';
+            link.appendChild(text);
+
+            // 点击行为：展开/折叠子菜单，如果有 href 同时加载内容
+            link.addEventListener('click', function(e) {
+                // 切换展开状态
+                arrow.classList.toggle('open');
+                var subUl = li.querySelector(':scope > ul');
+                if (subUl) subUl.classList.toggle('open');
+                // 如果有链接，加载内容
+                if (item.href) {
                     loadContent('manual/' + item.href);
                     closeSidebar();
-                };
-            } else {
-                link.onclick = function(e) {
-                    if (e.target.classList.contains('folder-toggle')) return;
-                    var sub = li.querySelector('.sub-menu');
-                    var tog = li.querySelector('.folder-toggle');
-                    if (sub) sub.classList.toggle('open');
-                    if (tog) tog.classList.toggle('open');
-                };
-            }
+                }
+            });
+
             li.appendChild(link);
-            if (item.children) renderMenu(item.children, li, level + 1);
+
+            // 递归渲染子菜单
+            renderMenu(item.children, li, level + 1);
+
         } else if (item.href) {
-            var link = document.createElement('a');
-            link.className = level === 1 ? 'sub-link' : level > 1 ? 'sub-sub-link' : '';
+            // 叶子文档项
+            li.className = 'doc-item level-' + level;
+
+            var link = document.createElement('div');
+            link.className = 'doc-link';
             link.setAttribute('data-search', ((item.title || '') + ' ' + (item.title_en || '')).toLowerCase());
-            var icon = document.createElement('span');
-            icon.className = 'doc-icon';
-            icon.innerHTML = '&#9679;';
-            link.appendChild(icon);
-            link.appendChild(document.createTextNode(item.title || ''));
-            link.onclick = function() {
+            link.textContent = item.title || '';
+
+            link.addEventListener('click', function() {
                 loadContent('manual/' + item.href);
                 closeSidebar();
-            };
+            });
             li.appendChild(link);
+
         } else if (item.title) {
-            var link = document.createElement('a');
-            link.style.color = '#999';
-            link.style.fontStyle = 'italic';
-            link.setAttribute('data-search', (item.title || '').toLowerCase());
-            link.appendChild(document.createTextNode(item.title));
+            // 无链接的标题项
+            var link = document.createElement('div');
+            link.className = 'doc-item plain level-' + level;
+            link.textContent = item.title;
             li.appendChild(link);
         }
+
         ul.appendChild(li);
     });
     container.appendChild(ul);
@@ -196,23 +197,33 @@ function renderMenu(items, container, level) {
 function filterMenu(query) {
     var q = query.toLowerCase().trim();
     var tree = document.getElementById('menu-tree');
-    var allLinks = tree.querySelectorAll('a[data-search]');
+    var allItems = tree.querySelectorAll('[data-search]');
     if (!q) {
-        allLinks.forEach(function(a) { a.parentNode.style.display = ''; });
-        tree.querySelectorAll('.sub-menu').forEach(function(ul) { ul.classList.remove('open'); });
+        // 清空搜索：恢复原始折叠状态
+        allItems.forEach(function(el) { el.closest('li').style.display = ''; });
+        tree.querySelectorAll('ul').forEach(function(ul) {
+            if (ul.id !== 'menu-tree') ul.classList.remove('open');
+        });
+        tree.querySelectorAll('.folder-arrow').forEach(function(a) { a.classList.remove('open'); });
         return;
     }
-    allLinks.forEach(function(a) {
-        var text = a.getAttribute('data-search') || '';
+    allItems.forEach(function(el) {
+        var text = el.getAttribute('data-search') || '';
         if (text.indexOf(q) >= 0) {
-            a.parentNode.style.display = '';
-            var parent = a.parentNode.parentNode;
-            while (parent) {
-                if (parent.classList && parent.classList.contains('sub-menu')) parent.classList.add('open');
-                parent = parent.parentNode;
+            el.closest('li').style.display = '';
+            // 展开所有祖先 ul
+            var parent = el.closest('li').parentElement;
+            while (parent && parent.id !== 'menu-tree') {
+                if (parent.tagName === 'UL') parent.classList.add('open');
+                var arrow = parent.previousElementSibling;
+                if (arrow) {
+                    var a = arrow.querySelector('.folder-arrow');
+                    if (a) a.classList.add('open');
+                }
+                parent = parent.parentElement;
             }
         } else {
-            a.parentNode.style.display = 'none';
+            el.closest('li').style.display = 'none';
         }
     });
 }
@@ -224,7 +235,6 @@ function loadContent(url) {
     var navBar = document.getElementById('page-nav-bar');
     navBar.style.display = 'none';
 
-    // 读取HTML，注入导航脚本后写入iframe
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function() {
@@ -244,29 +254,22 @@ function injectAndRender(html, url) {
     var iframe = document.getElementById('content-frame');
     var doc = new DOMParser().parseFromString(html, 'text/html');
 
-    // 提取标题
     var title = doc.querySelector('title');
     if (title) document.getElementById('header-title').textContent = title.textContent;
 
-    // 提取上/下页
     var prevInput = doc.querySelector('input[name="prev_html"]');
     var nextInput = doc.querySelector('input[name="next_html"]');
     prevUrl = prevInput ? prevInput.value : '';
     nextUrl = nextInput ? nextInput.value : '';
 
-    // 修复 CSS 路径
+    // 注入 <base> 标签
     var base = url.substring(0, url.lastIndexOf('/') + 1);
-    var links = doc.querySelectorAll('link[href]');
-    links.forEach(function(link) {
-        var href = link.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('data:')) {
-            link.setAttribute('href', resolveUrl(base, href));
-        }
-    });
+    var baseTag = document.createElement('base');
+    baseTag.href = base;
+    doc.head.insertBefore(baseTag, doc.head.firstChild);
 
-    // 修复图片路径
-    var imgs = doc.querySelectorAll('img[src]');
-    imgs.forEach(function(img) {
+    // 修复图片
+    doc.querySelectorAll('img[src]').forEach(function(img) {
         var src = img.getAttribute('src');
         if (src && !src.startsWith('http') && !src.startsWith('data:')) {
             img.setAttribute('src', resolveUrl(base, src));
@@ -274,31 +277,27 @@ function injectAndRender(html, url) {
     });
 
     // 修复 area 链接
-    var areas = doc.querySelectorAll('area[href]');
-    areas.forEach(function(area) {
+    doc.querySelectorAll('area[href]').forEach(function(area) {
         var href = area.getAttribute('href');
         if (href && !href.startsWith('http') && !href.startsWith('javascript')) {
-            area.setAttribute('href', 'javascript:void(0)');
             area.setAttribute('data-target', resolveUrl(base, href));
         }
     });
 
-    // 修复内部链接 — 使用 postMessage 通知父页面
-    var allLinks = doc.querySelectorAll('a[href]');
-    allLinks.forEach(function(a) {
+    // 修复内部链接
+    doc.querySelectorAll('a[href]').forEach(function(a) {
         var href = a.getAttribute('href');
         if (href && !href.startsWith('http') && !href.startsWith('javascript') && !href.startsWith('#')) {
             var resolved = resolveUrl(base, href);
-            a.setAttribute('href', 'javascript:void(0)');
             a.setAttribute('data-target', resolved);
             a.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.parent.postMessage({type: 'navigate', url: this.getAttribute('data-target')}, '*');
+                window.parent.postMessage({type:'navigate', url: resolved}, '*');
             });
         }
     });
 
-    // 移除 form/data 隐藏字段
+    // 移除 form
     var form = doc.querySelector('form[name="data"]');
     if (form) form.remove();
 
@@ -320,49 +319,35 @@ function injectAndRender(html, url) {
     ].join('\n');
     doc.head.appendChild(style);
 
-    // 注入导航脚本（用于 area 点击）
+    // 注入导航脚本
     var script = doc.createElement('script');
     script.textContent = [
         'document.querySelectorAll("area[data-target]").forEach(function(area){',
         '  area.addEventListener("click", function(){',
-        '    var url = this.getAttribute("data-target");',
-        '    window.parent.postMessage({type:"navigate", url:url}, "*");',
+        '    window.parent.postMessage({type:"navigate", url:this.getAttribute("data-target")}, "*");',
         '  });',
         '});',
-        // 通知父页面加载完成和iframe高度
         'window.addEventListener("load", function(){',
         '  var h = document.documentElement.scrollHeight;',
         '  window.parent.postMessage({type:"resize", height: h}, "*");',
         '});',
-        'var observer = new MutationObserver(function(){',
-        '  var h = document.documentElement.scrollHeight;',
-        '  window.parent.postMessage({type:"resize", height: h}, "*");',
+        'var obs = new MutationObserver(function(){',
+        '  window.parent.postMessage({type:"resize", height: document.documentElement.scrollHeight}, "*");',
         '});',
-        'observer.observe(document.body, {childList:true, subtree:true});'
+        'obs.observe(document.body, {childList:true, subtree:true});'
     ].join('\n');
     doc.head.appendChild(script);
 
-    // 注入 <base> 标签让 iframe 中的相对路径正确解析
-    var baseTag = document.createElement('base');
-    baseTag.href = base;
-    doc.head.insertBefore(baseTag, doc.head.firstChild);
-    
-    // 写入iframe
-    var contentHTML = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
-    iframe.srcdoc = contentHTML;
-
-    // 更新导航栏
+    iframe.srcdoc = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
     updateNavBar();
 }
 
 function updateNavBar() {
     var navBar = document.getElementById('page-nav-bar');
-    var prevBtn = document.getElementById('nav-prev');
-    var nextBtn = document.getElementById('nav-next');
     if (prevUrl || nextUrl) {
         navBar.style.display = 'flex';
-        prevBtn.style.visibility = prevUrl ? 'visible' : 'hidden';
-        nextBtn.style.visibility = nextUrl ? 'visible' : 'hidden';
+        document.getElementById('nav-prev').style.visibility = prevUrl ? 'visible' : 'hidden';
+        document.getElementById('nav-next').style.visibility = nextUrl ? 'visible' : 'hidden';
     } else {
         navBar.style.display = 'none';
     }
@@ -371,16 +356,10 @@ function updateNavBar() {
 function goPrev() { if (prevUrl) loadContent(resolveUrl(currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1), prevUrl)); }
 function goNext() { if (nextUrl) loadContent(resolveUrl(currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1), nextUrl)); }
 
-// 监听 iframe 消息
 window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'navigate') {
-        loadContent(e.data.url);
-        closeSidebar();
-    }
+    if (e.data && e.data.type === 'navigate') { loadContent(e.data.url); closeSidebar(); }
     if (e.data && e.data.type === 'resize') {
-        var iframe = document.getElementById('content-frame');
-        var h = Math.max(e.data.height, 400);
-        iframe.style.height = h + 'px';
+        document.getElementById('content-frame').style.height = Math.max(e.data.height, 400) + 'px';
     }
 });
 
@@ -395,7 +374,7 @@ function resolveUrl(base, relative) {
     return parts.join('/');
 }
 
-// ========== UI 控制 ==========
+// ========== UI ==========
 function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
     document.getElementById('sidebar-overlay').classList.toggle('show');
