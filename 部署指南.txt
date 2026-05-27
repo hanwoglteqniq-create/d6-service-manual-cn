@@ -1,0 +1,56 @@
+# D6维修手册 - 网页部署指南
+
+## 方案一：局域网使用（最简单，无需注册）
+
+直接在命令行运行：
+```
+cd [部署目录]
+python -m http.server 8080
+```
+然后在手机和电脑浏览器打开: http://电脑IP:8080
+
+---
+
+## 方案二：GitHub Pages（免费，全球访问）
+
+### 步骤1: 创建 GitHub 账号
+如已有账号跳过，访问 https://github.com/signup 注册
+
+### 步骤2: 创建 Personal Access Token
+1. 打开 https://github.com/settings/tokens/new
+2. Note: `D6 Manual Deploy`
+3. Expiration: `90 days`（或更长）
+4. Scopes: 勾选 `repo` (完整仓库权限)
+5. 点击 `Generate token`
+6. 复制生成的 token（以 ghp_ 开头）
+
+### 步骤3: 运行部署脚本
+1. 双击 `一键部署到GitHub.bat`
+2. 粘贴上一步获取的 token
+3. 等待部署完成
+
+### 步骤4: 访问
+部署完成后访问: https://[你的用户名].github.io/d6-service-manual-cn/
+
+---
+
+## 方案三：Netlify / Vercel（免费，拖拽部署）
+
+### Netlify Drop:
+1. 打开 https://app.netlify.com/drop
+2. 将本目录拖拽到网页中
+3. 等待上传完成即可获得访问链接
+
+### Vercel:
+1. 安装: `npm i -g vercel`
+2. 运行: `vercel`（在部署目录中）
+3. 按提示操作即可
+
+---
+
+## 手机使用方法
+无论使用哪种方案部署，在手机浏览器打开网址后：
+- **iOS**: Safari → 底部分享按钮 → "添加到主屏幕"
+- **Android**: Chrome → 右上角菜单 → "添加到主屏幕" / "安装应用"
+
+添加后图标会出现在桌面，打开后全屏显示，体验接近原生APP。
