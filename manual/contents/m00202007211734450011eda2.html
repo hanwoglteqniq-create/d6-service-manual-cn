@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>013-225 Trimmer Roll Unit Home传感器故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="013-225 Trimmer Roll Unit Home传感器故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m00202007211734450011ecf7.html">
+<input type="hidden" name="next_html" value="../contents/m00202007211740460011f0d9.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>013-225 裁切器 辊 单元 原位传感器 On 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m002020082711493400105e54.html">CH37.16</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<ul><li><p>裁切器 辊 单元 原位传感器 未开启 在...后的规定时间内 the 操作 具有 started.</p></li>
+<li><p>裁切器 辊 单元 原位传感器 未开启 在...之后 裁切器 辊 单元 移动 电机 已有 stopped 在...之后 传感器 ON.</p><p></p></li>
+</ul>
+</div>
+<h3>步骤</h3>
+<p>关闭 机器. 打开 裁切器 顶部 右侧 盖板 和 拆卸后盖板.</p><p>输入 the Diag 模式, 输入 DC330 [014-078] (排出) 和 DC330 [014-079] (RVS) 和 转动 them ON alternately.</p><div class="decl">可以 you hear 裁切器 辊 单元 移动 电机 操作 sound?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 the 裁切器电路板 J8505 和 裁切器 辊 电机 P8655 用于 打开 电路, 短路 电路, 和 接触不良.</p><p>如果未发现问题，按顺序更换以下零件: 但是, 每个 时间 零件 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>裁切器 辊 单元 移动 电机 (<a href="../contents/m0020200907180757001542fb.html">PL 45.32</a>)</p></li>
+<li><p>裁切器电路板 (<a href="../contents/m002020090718075800154d1d.html">PL 45.35</a>)</p></li>
+</ul>
+</div></div>
+<div id="fip.00001"><p>按停止键.</p><p>检查 输出 (UI 显示) of 裁切器 辊 单元 原位传感器 (DC330 [012-269]) 当...时 裁切器 辊 单元 is moved 到 远 右侧 or 远 左侧.</p><ul><li><p>输出 (显示) of 传感器 当...时 裁切器 辊 单元 is moved 到 rightmost 侧面: 低</p></li>
+<li><p>输出 (显示) of 传感器 当...时 裁切器 辊 单元 is moved 到 leftmost 侧面: 高</p></li>
+</ul>
+<div class="decl">是 the 显示 as described 以上?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00003')" href="#fip.00003">是</a>&nbsp;  <a id="fip.00004no" CLASS="yn-no" href="javascript:yesClicked('fip.00004')">编号</a></p><div class="no-branch-line"><div id="fip.00004" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 the 裁切器电路板 J8503 和 裁切器 辊 单元 原位传感器 J8664 用于 打开 电路, 短路 电路, 和 接触不良.</p><p>如果未发现问题，按顺序更换以下零件: 但是, 每个 时间 零件 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>裁切器 辊 单元 原位传感器 (<a href="../contents/m0020200907180757001542fb.html">PL 45.32</a>)</p></li>
+<li><p>裁切器电路板 (<a href="../contents/m002020090718075800154d1d.html">PL 45.35</a>)</p></li>
+</ul>
+</div></div>
+<div id="fip.00003"><p>按停止键.</p><p>检查以下项目：</p><ul><li><p>检查传动齿轮的磨损和损坏.</p></li>
+<li><p>The 传动皮带 用于 张力不当, 磨损, 老化, 和 损坏.</p></li>
+</ul>
+<p></p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

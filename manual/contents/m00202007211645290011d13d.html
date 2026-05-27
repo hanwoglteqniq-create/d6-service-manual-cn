@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>012-254 Envelope 折页器 Tray 断裂</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="012-254 Envelope 折页器 Tray 断裂">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m00202007101314530011f6a2.html">
+<input type="hidden" name="next_html" value="../contents/m00202007101354180011d74e.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>012-254 信封 折叠器 纸盘 断裂的&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m0020200827114941001061fa.html">CH38.2</a>, <a href="../contents/m0020200827114940001061b6.html">CH38.1</a>, <a href="../contents/m00202008271149420010630a.html">CH38.10</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>两个 or 任一 of 折叠器 信封 纸盘 开关 和 折叠器 信封 纸盘 +24V Detect 不 关闭 在...后的规定时间内 信封 纸盘 锁定 电磁阀 On (纸盘 释放).</p></div>
+<h3>步骤</h3>
+<p>打开 the 后面 盖板 和 测量 电压 之间 折叠器 PWB J8101-2 (+) 和 GND (-).</p><div class="decl">Is the 电压 +24 VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><div class="decl">Is the 电压 之间 折叠器 PWB J8101-1 (+) 和 the GND (-) +24VDC? </div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00003')" href="#fip.00003">是</a>&nbsp;  <a id="fip.00004no" CLASS="yn-no" href="javascript:yesClicked('fip.00004')">编号</a></p><div class="no-branch-line"><div id="fip.00004" CLASS="no-branch"><p>请参阅 BSD <a href="../contents/m0020200827114940001061b6.html">CH38.1</a>, 检查 Intlk_+24VDC line till 折叠器 PWB J8209B 销-1.</p></div></div>
+<div id="fip.00003"><p>检查 信封 纸盘 互锁 开关 (DC330 [013-156]) 用于 操作 故障. (<a href="../contents/m0020200907180816001605a2.html">PL 50.7</a>)</p><p>If 编号 问题 发现, 更换 折叠器 PWB. (<a href="../contents/m00202009071808150015fb41.html">PL 50.4</a>)</p></div></div></div>
+<div id="fip.00001"><p>输入 the Diag 模式 和 输入 DC330 [013-039] (信封 纸盘 锁定 电磁阀) 和 转动 开启.</p><div class="decl">已 纸盘 pulled 出?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00005')" href="#fip.00005">是</a>&nbsp;  <a id="fip.00006no" CLASS="yn-no" href="javascript:yesClicked('fip.00006')">编号</a></p><div class="no-branch-line"><div id="fip.00006" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 折叠器 PWB J8110 和 the 信封 纸盘 锁定 电磁阀 J8816 用于 打开 电路, 短路 电路, 和 接触不良.</p><p>如果未发现问题，按顺序更换以下零件: 但是, 每个 时间 零件 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>信封 纸盘 锁定 电磁阀 (<a href="../contents/m002020090718081800161eae.html">PL 50.16</a>)</p></li>
+<li><p>折叠器 PWB (<a href="../contents/m00202009071808150015fb41.html">PL 50.4</a>)</p></li>
+</ul>
+</div></div>
+<div id="fip.00005"><p>如果 问题 persists, 更换 折叠器 PWB. (<a href="../contents/m00202009071808150015fb41.html">PL 50.4</a>)</p><p></p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

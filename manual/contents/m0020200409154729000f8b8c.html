@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>6.2.2.9 IP 支持纸张尺寸</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="6 通用信息">
+<input type="hidden" name="t2" value="6.2 规格">
+<input type="hidden" name="t3" value="6.2.2.9 IP 支持纸张尺寸">
+<input type="hidden" name="chap" value="chap6">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m0020200409154729000f8b6c.html">
+<input type="hidden" name="next_html" value="../contents/m0020200409154729000f8da3.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>6.2.2.9 IP Supported 纸张 Sizes&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<p>请参阅 the IP 章节 in [<a href="../contents/m0020200413092728000f9fa1.html">6.2.7.11</a> 装订器 D6 Supported 纸张 Sizes] 详见 on IP supported 纸张 sizes.</p><h3>[Alter 选择 用于 IP 纸张尺寸 检测]</h3><p>The supported 纸张 sizes 的 IP 自动 尺寸 检测 是 8.5x11 LEF, A4 LEF, B4 SEF, 11x17 SEF, 16K SEF, 8K SEF, 和 UK-Quatro SEF.</p><p>To detect proximal 纸张 sizes, 执行 Alter 选择 in NVM. The supported sizes 用于 Alter 选择 是 如下:</p><ul><li><p>ALT1: Alter 选择 用于 B5 和 Executive SEF. (IP 纸张 检测 选择-1: NVM 763-766)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: B5 SEF] or [2: Executive SEF] in the NVM.</p><p></p></li>
+<li><p>ALT2: Alter 选择 用于 A4 SEF, Spanish SEF, 8.5x11 SEF, 8.5x13 SEF, 和 8.5 x 14 SEF. (IP 纸张 检测 选择-2: NVM 763-767)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: A4 SEF], [2: 8.46x12.4 SEF], [3: 8.5x11 SEF], [4: 8.5x13 SEF], or [5: 8.5x14 SEF] in the NVM.</p><p></p></li>
+<li><p>ALT3: Alter 选择 用于 B5 LEF 和 8x10 LEF. (IP 纸张 检测 选择-3: NVM 763-768)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: B5 LEF] or [2: 8x10 LEF] in the NVM.</p><p></p></li>
+<li><p>ALT4: Alter 选择 用于 Executive LEF, 16K (FBTW) LEF, 和 16K (FBCN/FBHK) LEF. (IP 纸张 检测 选择-4: NVM 763-769)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: Executive LEF] or [2: 16K LEF] in the NVM.</p><p></p></li>
+<li><p>ALT5: Alter 选择 用于 A3 SEF 和 12x18 SEF. (IP 纸张 检测 选择-5: NVM 763-770)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: A3 SEF] or [2: 12x18 SEF] in the NVM.</p><p></p></li>
+<li><p>ALT6: Alter 选择 用于 SRA3 (12.6: SRA3) SEF 和 12.6x19.2 SEF. (IP 纸张 检测 选择-6: NVM 763-771)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: SRA3 SEF] or [2: 12.6x19.2 SEF] in the NVM.</p><p></p></li>
+<li><p>ALT7: Alter 选择 用于 13x18 SEF 和 13x19 SEF. (IP 纸张 检测 选择-7: NVM 763-772)</p><p>虽然 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] is 设置 by 默认, CE 可以 make Alter 选择 用于 [1: 13x18 SEF] or [2: 13x19 SEF] in the NVM.</p></li>
+</ul>
+<h3>[自动 Alter 设置 by 纸张尺寸 分组]</h3><p>当...时 the ALT 设置 设置为 [0: Follow the 纸张尺寸 分组 (始终 follow the KO 设置)] 和 a 纸张尺寸 分组 is 已选择 by the KO 设置 (Key Operator 设置), the 纸张尺寸 is 已选择 automatically 如...所示 下表. 也, the 默认值 (设置 at shipment) is determined 取决于 the territory 信息, 如...所示 下表.</p><div align="center" class="table-scrolling-div"><table>
+<caption>自动 Alter 设置 by 纸张尺寸 分组</caption>
+<tr><th onFocus="trHighright();" id="m0020200409154729000f8c68" colspan="2"><p>KO 设置 (纸张尺寸 分组)</p></th><th onFocus="trHighright();" id="m0020200409154729000f8c77" rowspan="2"><p>0 : FB</p><p></p></th><th onFocus="trHighright();" id="m0020200409154729000f8c7e" rowspan="2"><p>1 : FBAP</p><p></p></th><th onFocus="trHighright();" id="m0020211130170007000f83a6" rowspan="2"><p>WW (2 : MN, 3 : EU, 4 : SA)</p><p></p></th></tr>
+<tr><th onFocus="trHighright();" id="m0020200409154729000f8c89" colspan="2"><p>Country 代码 用于 8K 和 16K</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8ca5"><p>ALT1</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cac"><p>Alter 选择 用于 B5 和 Executive SEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cb3"><p>B5S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cba"><p>B5S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cc1"><p>Exective S/B5S</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8cc9"><p>ALT2</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cd0"><p>Alter 选择 用于 A4 SEF, Spanish SEF, 8.5x11 SEF, 8.5x13 SEF, 和 8.5 x 14 SEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cd7"><p>A4S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cde"><p>A4S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8ce5"><p>8.5 x 14S/A4S</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8ced"><p>ALT3</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cf4"><p>Alter 选择 用于 B5 LEF 和 8x10 LEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8cfb"><p>B5L</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d02"><p>B5L</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d09"><p>8 x 10L/B5L</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8d11"><p>ALT4</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d18"><p>Alter 选择 用于 Executive LEF, 16K (FBTW) LEF, 和 16K (FBCN/FBHK) LEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d1f"><p>Exective L</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d26"><p>16K (FBTW) L</p><p>(FBCN/FBHK)L</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d2d"><p>Exective L</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8d35"><p>ALT5</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d3c"><p>Alter 选择 用于 A3 SEF 和 12x18 SEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d43"><p>A3S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d4a"><p>A3S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d51"><p>12 x 18S/A3S</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8d59"><p>ALT6</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d60"><p>Alter 选择 用于 SRA3 (12.6: SRA3) SEF 和 12.6x19.2 SEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d67"><p>SRA3</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d6e"><p>SRA3</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d75"><p>SRA3</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409154729000f8d7d"><p>ALT7</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d84"><p>Alter 选择 用于 13x18 SEF 和 13x19 SEF</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d8b"><p>13 x 18S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d92"><p>13 x 18S</p></td><td onFocus="trHighright();" id="m0020200409154729000f8d99"><p>13 x 18S</p></td></tr>
+</table></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

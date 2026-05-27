@@ -1,0 +1,74 @@
+﻿<html lang="zh-CN" xml:lang="zh-CN">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<head>
+<title>全屏模式</title>
+
+<!--script language="Javascript" src="../../common_e2/script/script.js"></script-->
+<script language="Javascript" src="../../common_e2/script/keyscript.js"></script>
+<script language="Javascript" src="../../common_e2/script/cookie.js"></script>
+<script language="Javascript">
+<!--
+var strHtmlFile;
+
+function selHandler() {
+	var URL = document.site.qacc.options[document.site.qacc.selectedIndex].value;
+	parent.window.main.location.href = URL;
+}
+
+
+
+function goTopic() {
+
+	var strTopic = document.hea.gotopic.options[document.hea.gotopic.selectedIndex].value;
+
+	if (strTopic != "") {
+		strHtmlFile = strTopic;
+		top.main.location.href = strTopic;
+	}
+}
+
+// メインのURLを監視し、cookieに保存する
+function writeMainUrl() {
+	writeCookie("URL", top.main.location.href, 1);
+}
+
+
+function chkUrl() {
+	timerID3 = window.setInterval('writeMainUrl()', 100);
+
+}
+
+function readUrl() {
+	var url = readCookie("URL");
+	if (url != "") {
+		if (top.main != undefined) {
+			top.main.location.href = readCookie("URL");
+		}
+	}
+}
+
+	window.onload = function() {
+		readUrl();
+	}
+//-->
+</script>
+</head>
+<body>
+<form name="hea">
+<table width=100% style="position: absolute; top: 5; left: 10" cellpadding=0 cellspacing=0 border=0>
+<tbody>
+<tr><td width=100 align="right">
+<select name="gotopic" onclick=goTopic() onKeyPress="keyPressTopic();" tabindex=-1>
+<OPTION value="./chap0.html">0 简介<OPTION value="./chap1.html">1 维修服务流程<OPTION value="./chap2.html">2 故障排除<OPTION value="./chap3.html">3 图像质量故障排除<OPTION value="./chap4.html">4 拆卸/组装与调整<OPTION value="./chap5.html">5 零件清单<OPTION value="./chap6.html">6 概述<OPTION value="./chap7.html">7 接线数据<OPTION value="./chap8.html">8 附件<OPTION value="./chap9.html">9 安装<OPTION value="./chap10.html">10 其他章节</SELECT></td>
+<td width=100%><textarea name="t1" cols=55 rows=1 readonly tabindex=-1></textarea></td>
+<td width=30><a href="javascript:history.back();"><img border=0 src="../../common_e2/images/back_circle.gif"></a></td>
+<td width=30><a onClick="goTopic();" title="章节" tabindex=-1 onMouseOver="javascript:style.cursor='hand';"><img name="topic" src="../../common_e2/images/topic.gif" border="0"></a></td>
+<td width=30><a onClick="goToPrevious()" title="上一页" tabindex=-1 onMouseOver="javascript:style.cursor='hand';"><img name="previous" src="../../common_e2/images/previous_off.gif" border="0"></a></td>
+<td width=30><a onClick="goToNext()" title="下一页" tabindex=-1 onMouseOver="javascript:style.cursor='hand';"><img name="next" src="../../common_e2/images/next_off.gif" border=0></a></td>
+<td width=30><a onMouseOver="javascript:style.cursor='hand';" onClick="javascript:top.window.close();" title="关闭" tabindex=-1><img src="../../common_e2/images/close.gif" border=0></a></td></tr>
+</tbody></table>
+</form>
+</body>
+</html>

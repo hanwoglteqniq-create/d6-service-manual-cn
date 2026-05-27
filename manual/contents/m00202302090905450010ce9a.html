@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>9.1.14.2 安装 Inspection PC</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="9 安装/拆卸">
+<input type="hidden" name="t2" value="9.1 安装">
+<input type="hidden" name="t3" value="9.1.14.2 安装 Inspection PC">
+<input type="hidden" name="chap" value="chap9">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002023020907361500109f3d.html">
+<input type="hidden" name="next_html" value="../contents/m00202303081715300010869e.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>9.1.14.2 ...的安装 检查 PC&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>产品代码</h3><ul><li><p>检查 PC: ED201519 (FB), ED201518 (FBAP)</p><ul><li><p>PC 主机</p></li>
+<li><p>Keyboard</p></li>
+<li><p>Mouse</p></li>
+<li><p>电源 电缆 (FB 仅)</p></li>
+<li><p>Cat7 网络 电缆 x 10m (用于 10G 之间 检查 PC 和 ILS)</p></li>
+<li><p>Cat5e 网络 电缆 x 10m (用于 1G 之间 检查 PC 和 打印服务器) </p></li>
+</ul>
+</li>
+<li><p>Smart 打印 Inspector : ED201416 (FB), ED201417 (FBAP)</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>License 必须 registered 在...上 打印服务器 侧面.</p></div>
+</li>
+</ul>
+<h3>初始 措施</h3><p>Assumed 系统 配置</p><div id="imgArea" class="imageArea" align="center">
+<img src="../figures/ism910023_en.jpg"/>
+<map name="ism910023_en">
+</map><p align="center">(图 1) ism910023</p></div>
+<ul><li><p>检查 设置/results 可以 checked 从 the PrintStation menu 在...上 打印服务器.</p><p>但是, 此 功能 不是 可用的 用于 PrintStation 用于 Web 和 Client Driver.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>The 打印服务器 必须 the one 和/与 以下 产品代码.</p><ul><li><p>FB : ND200154</p></li>
+<li><p>FBAP : TD200315</p></li>
+</ul>
+</div>
+</li>
+<li><p>The 连接 模块 SFP+ 在...上 ILS 侧面 必须 the one provided by the customer.</p><ul><li><p>Manufacturer: 10Gtek, 型号: ASF-10G-T</p></li>
+<li><p>Manufacturer: FiberJP, 型号: SFP-10GLR31-10</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>If SFP+ 不是 provided, 系统 操作 无法 be checked, 虽然 it 可以 configured up 到 检查 PC.</p></div>
+</li>
+</ul>
+<h3>安装步骤</h3><ol><li><p>Net 连接配置</p><p>连接 到 2nd port 在...上 打印服务器 侧面 和 设置 [192.168.11.100] in the Windows OS 设置 (默认 is DHCP).</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>编号 网络 配置 is ...所需的 the 检查 PC (pre-installed).</p></div>
+<p>图示 of 连接配置 和 pre-installed IP 地址</p><div id="imgArea" class="imageArea" align="center">
+<img src="../figures/ism910024_en.jpg"/>
+<map name="ism910024_en">
+</map><p align="center">(图 2) ism910024</p></div>
+</li>
+<li><p>显示 monitor 连接</p><p>连接 显示 电缆 到 On-电路板 DP Port. 代替 the expansion card,</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>请勿 use the port 的 expansion card.</p></div>
+<p>the 显示 monitor 应 switched 使用 one used by the 打印服务器.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>安装时, access 从 the 打印服务器 通过 Remote Desktop (192.168.11.1), 编号 need 用于 a monitor, keyboard, or mouse.</p><p>In addition, 当...时 connecting, use the keyboard 和 mouse bundled 和/与 系统.</p></div>
+</li>
+<li><p>连接 每个 网络 电缆 to a port 在...上 检查 PC, 打印服务器, 和 ILS.</p><ul><li><p>检查 PC-打印服务器: Cat5e 网络 电缆 </p></li>
+<li><p>检查 PC-ILS : Cat7 网络 电缆</p><p>(Jumbo packet (9014 字节) is 设置 by 默认 in the 网络 driver 设置)</p></li>
+</ul>
+<div id="imgArea" class="imageArea" align="center">
+<img src="../figures/ism910025_en.jpg"/>
+<map name="ism910025_en">
+</map><p align="center">(图 3) ism910025</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>As a rule, change the IP 地址 的 2nd port 在...上 打印服务器 侧面 到 192.168.11.100 fixed IP, 但是 如果 subnet overlaps 使用 user net 环境, change it 到 appropriate subnet.</p><p>In 此 case, change the subnet to 192.168.11.1 在...上 检查 PC 侧面 in the OS 设置.</p><p>也, change the [Destination 的 检查 系统] 到 相同 地址 in the 打印服务器 系统 设置.</p></div>
+</li>
+<li><p>打开 the 检查 PC.</p></li>
+<li><p>日志 on as an I-Server user (默认 PW: Server-999).</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>编号 需要 activate the OS 自...以来 it is shipped 使用 OS 已经 activated.</p></div>
+</li>
+<li><p>基于 the user's judgment, 连接 和 涂抹/施加 the USB 外部 media 该 contains the OS security patch recommended separately by FB.</p><p>The 确认 的 FB-recommended OS security patch is the 相同 用于 the 打印服务器 操作.</p></li>
+<li><p>If necessary, change 系统 locale/language using the language 设置 change 工具, 和 然后 reboot. (FBAP 仅)</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>The factory 默认 language is Singapore (English)</p></div>
+</li>
+<li><p>Follow the SW 安装步骤 in the 打印服务器 维修 手册 to 更新 to a 版本 of V3.4.1 or later 该 is compatible 使用 检查 设备.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>V3.4.1 or later versions 的 打印服务器 和/与 以下 product codes 也 exist, 但是 they 请勿 support 检查 devices.</p><ul><li><p>FB : ND200148</p></li>
+<li><p>FBAP : TD200292</p></li>
+</ul>
+</div>
+</li>
+<li><p>安装 检查 设备 SW 选件 到 打印服务器 按照 the SW 选件 安装步骤 in the 打印服务器 维修 手册.</p></li>
+<li><p>检查 INSYS-SW 版本 和 更新 if necessary.</p><ol><li><p>当...时 the 检查 PC is started 和 the 检查 SW (INSYS) 维修 is activated, it 将 连接 到 打印服务器. Use Microsoft 边缘 在...上 检查 PC 侧面 和 输入 http://192.168.11.100 to 连接 remotely 到 打印服务器.</p></li>
+<li><p>Run [Show_版本_info.bat] 在...下 D:\opt\INSYS\utility\CETool\工具 in PowerShell 和 确认 the build 日期 的 打印服务器-SW 和 the INSYS-SW 是 the 相同 or one day apart.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>如果 IP 地址 的 2nd port 的 打印服务器 已 changed 从 the 默认, 连接 到 changed IP 地址.</p></div>
+</li>
+<li><p>如果 打印服务器-SW build 日期 和 INSYS-SW build 日期 是 two days or 更多 apart, 和 输入 http://192.168.11.100/download in Microsoft 边缘 在...上 检查 PC 侧面 to 连接 到 打印服务器 (PSforWeb).</p></li>
+<li><p>Download SmartPrintInspector.zip 到 检查 PC 侧面 by clicking on Smart 打印 Inspector in the download menu.</p></li>
+<li><p>Unzip the downloaded zip 文件 和 run SmartPrintInspector.msi to 安装 更新.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>Files 无法 be shared.</p></div>
+</li>
+</ol>
+</li>
+</ol>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

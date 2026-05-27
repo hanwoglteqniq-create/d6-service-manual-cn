@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ADJ 47.3.7 折痕（通用）位置调整 (DC128)</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<!--[if IE]><script type="text/javascript" src="../../../common_e2/script/excanvas.js"></script><![endif]-->
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+
+//		searchMenuId = window.setInterval('searchMenu();', 500);
+//		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		rep_resize();
+	}
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="4 拆解/组装与调整">
+<input type="hidden" name="t2" value="4.3 调整">
+<input type="hidden" name="t3" value="ADJ 47.3.7 折痕（通用）位置调整 (DC128)">
+<input type="hidden" name="chap" value="chap4">
+<input type="hidden" name="doc_type" value="REP">
+<input type="hidden" name="prev_html" value="../contents/m0020200825165339000f994d.html">
+<input type="hidden" name="next_html" value="../contents/m0020200825165400000fa172.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+<div id="rep">
+
+<h2>ADJ 47.3.7 折痕 (Common) 位置 调整 (DC128)&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>目的</h3>
+<ul><li><p>调整 折痕 (Common) 位置 to 指定值.</p></li>
+<li><p>执行 此 调整 当...时 不对齐 increases as the 号码 of 折痕 becomes 更多 由于 故障 这样的 as 送纸 delays.</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>此 调整 不是 used normally. Use 仅 as instructed.</p></div>
+<h3>[检查]</h3><ol><li><p>输出 折叠 位置 printout or 调整 printout by 以下步骤:</p><p>[Revoria 按下 E1136G, ApeosPro C810G, Apeos C8180G, Apeos 7580G, Revoria 按下 EC1100, Revoria 按下 SC180G]</p><p>输入 Diag 模式, 选择 [维护 / Diagnostics] -&gt; [调整 / 其他] -&gt; [装订器 - 折叠 位置 调整] -&gt; [折叠 位置 Printout], change to 以下 values 和/与 [确认 设置] 和 按下 [启动].</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165353000f9e9f"><p>设置项目</p></th><th onFocus="trHighright();" id="m0020200825165353000f9ea6"><p>设置值</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165353000f9eae"><p>折叠 功能</p></td><td onFocus="trHighright();" id="m0020200825165354000f9eb5"><p>折痕 - 5-折叠 Custom</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9ebd"><p>纸盘</p></td><td onFocus="trHighright();" id="m0020200825165354000f9ec4"><p>选择 纸张 纸盘</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9ecc"><p>1 面/2 面</p></td><td onFocus="trHighright();" id="m0020200825165354000f9ed3"><p>1 面</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9edb"><p>装订 移位</p></td><td onFocus="trHighright();" id="m0020200825165354000f9ee2"><p>无</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9eea"><p>Face Up/下</p></td><td onFocus="trHighright();" id="m0020200825165354000f9ef1"><p>Face Up</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9ef9"><p>号码 纸张的</p></td><td onFocus="trHighright();" id="m0020200825165354000f9f00"><p>1</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165354000f9f08"><p>Copies</p></td><td onFocus="trHighright();" id="m0020200825165355000f9f0f"><p>1</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165355000f9f17"><p>Image</p></td><td onFocus="trHighright();" id="m0020200825165355000f9f1e"><p>Grid (调整 折叠 位置)</p></td></tr>
+</table></div>
+<p>[Revoria 按下 PC1120]</p><p>输入 the PC Diag screen, go 到 [子-系统 检查] screen, 和 选择 [DC128]. -&gt; 从 the [折叠 功能] pull-下 menu, 选择 [折痕 调整], configure the 打印 设置 如下, 和 选择 [启动].</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165355000f9f39"><p>打印 设置 项目</p></th><th onFocus="trHighright();" id="m0020200825165355000f9f40"><p>设置值</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165355000f9f48"><p>折痕 调整</p></td><td onFocus="trHighright();" id="m0020200825165355000f9f4f"><p>5-折叠 Custom</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165355000f9f57"><p>纸盘</p></td><td onFocus="trHighright();" id="m0020200825165355000f9f5e"><p>选择 纸张 纸盘</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165355000f9f66"><p>1 面/2 面</p></td><td onFocus="trHighright();" id="m0020200825165355000f9f6d"><p>1 面</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165356000f9f75"><p>装订针</p></td><td onFocus="trHighright();" id="m0020200825165356000f9f7c"><p>无</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165356000f9f84"><p>Face Up/下</p></td><td onFocus="trHighright();" id="m0020200825165356000f9f8b"><p>Face Up</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165356000f9f93"><p>号码 纸张的</p></td><td onFocus="trHighright();" id="m0020200825165356000f9f9a"><p>1</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165356000f9fa2"><p>Copies</p></td><td onFocus="trHighright();" id="m0020200825165356000f9fa9"><p>1</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165356000f9fb1"><p>Image</p></td><td onFocus="trHighright();" id="m0020200825165356000f9fb8"><p>Grid (调整 折叠 位置)</p></td></tr>
+</table></div>
+</li>
+<li><p>检查 折痕 位置 on 纸张 printed 出. (图 1)</p><div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/tc447505.jpg"/>
+<map name="1">
+</map><p align="center">(图 1) tc447505</p></div>
+<div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165357000f9ff0" rowspan="2"><p>项目</p><p></p></th><th onFocus="trHighright();" id="m0020200825165357000f9ff7"><p>标称 值 (mm)</p></th></tr>
+<tr><th onFocus="trHighright();" id="m0020200825165357000fa002"><p>折痕 - Common</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165357000fa00a"><p>B1</p></td><td onFocus="trHighright();" id="m0020200825165357000fa011"><p><a href="../contents/m0020200901163446000f8262.html#LinkSetterTool.eps.20091714062518700167">P2</a> x 1/6</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165357000fa019"><p>B2</p></td><td onFocus="trHighright();" id="m0020200825165357000fa020"><p><a href="../contents/m0020200901163446000f8262.html#LinkSetterTool.eps.20091714062518700167">P2</a> x 2/6</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165357000fa028"><p>B3</p></td><td onFocus="trHighright();" id="m0020200825165357000fa02f"><p><a href="../contents/m0020200901163446000f8262.html#LinkSetterTool.eps.20091714062518700167">P2</a> x 3/6</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165357000fa037"><p>B4</p></td><td onFocus="trHighright();" id="m0020200825165358000fa03e"><p><a href="../contents/m0020200901163446000f8262.html#LinkSetterTool.eps.20091714062518700167">P2</a> x 4/6</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165358000fa046"><p>B5</p></td><td onFocus="trHighright();" id="m0020200825165358000fa04d"><p><a href="../contents/m0020200901163446000f8262.html#LinkSetterTool.eps.20091714062518700167">P2</a> x 5/6</p></td></tr>
+</table></div>
+<p>Accuracy of 折痕 位置 in respect of 标称 值</p><ul><li><p>1 折痕 (折痕 of 92 mm或 更多 从 the 引线/导向 边缘 of 纸张): +/-1.0 mm</p></li>
+<li><p>1 折痕 (折痕 最大到 92 mm 从 the 引线/导向 边缘 of 纸张): +/-1.5 mm</p></li>
+<li><p>2 折痕 or 更多: +/-1.5 mm</p></li>
+</ul>
+</li>
+</ol>
+<h3>调整</h3>
+<p>调整 by 以下步骤.</p><p>[ApeosPro C810G, Apeos C8180G, Apeos 7580G, Revoria 按下 EC1100, Revoria 按下 SC180G]</p><ol><li><p>输入 Diag 模式, 和 选择 items to be adjusted 从 以下 在...上 下一个 screen by selecting [Maintenance/Diagnostics] -&gt; [Adjustment/其他] -&gt; [装订器 - 折叠 位置 调整] -&gt; [折痕 - Common], 和 按下 [Change 设置].</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165358000fa0a1"><p>折痕 - Common</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165359000fa0a9"><p>折痕 位置 调整 (所有)</p></td></tr>
+</table></div>
+</li>
+<li><p>Change the 值 和/与 参考 to 图 1, 和 按下 [Save].</p><p>Increasing the 数据 移动到 the [+] 侧面 当...时 decreasing it 移动到 the [-] 侧面.</p><p>NVM 1 计数 = 移动 by 0.01% 用于 B1 to B5.</p></li>
+<li><p>返回 检查 1, 检查 折痕 和/与 [折叠 位置 Printout], 和 调整 it 直到 指定值 is obtained.</p></li>
+</ol>
+<p>[Revoria 按下 PC1120]</p><ol><li><p>输入 the PC Diag screen, go 到 [子-系统 检查] screen, 和 选择 [DC128]. -&gt; 从 the [折叠 功能] pull-下 menu, 选择 [折痕 调整]. -&gt; 选择 [值 在...之前 调整] 以下 items.</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165359000fa0e8"><p>折痕 调整 - 5-折叠 Custom</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165359000fa0f0"><p>折痕 位置 调整 (所有)</p></td></tr>
+</table></div>
+</li>
+<li><p>请参阅 图 1 和 use the [+] 和 [-] buttons to change the 值*, configure the 打印 设置 as in 检查 1, 和 选择 [启动].</p><p>Increasing the 数据 移动到 the [+] 侧面 当...时 decreasing it 移动到 the [-] 侧面.</p><p>NVM 1 计数 = 移动 by 0.1 mm.</p><p>*: 此 可以 也 be 已完成 by 双面/双-clicking to 选择 值 和 然后 changing it by Keypad 入口.</p></li>
+<li><p>当...时 the 调整 printout is 输出, use it to 检查 折痕 再次 和 调整 直到 指定值 is achieved.</p></li>
+<li><p>在...之后 completing the 调整, 选择 [设置] to 更新 the NVM值 的 主机.</p></li>
+</ol>
+<p></p><p>[Revoria 按下 E1136G]</p><ol><li><p>输入 Diag 模式, 和 选择 items to be adjusted 从 以下 在...上 下一个 screen by selecting [Maintenance/Diagnostics] -&gt; [Adjustment/其他] -&gt; [装订器 - 折叠 位置 调整] -&gt; [折痕 - Common], 和 按下 [Change 设置].</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165400000fa142"><p>折痕 - Common</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165400000fa14a"><p>折痕 位置 调整 (所有)</p></td></tr>
+</table></div>
+</li>
+<li><p>Change the 值 和/与 参考 to 图 1, 和 按下 [Save].</p><p>Increasing the 数据 移动到 the [+] 侧面 当...时 decreasing it 移动到 the [-] 侧面.</p><p>NVM 1 计数 = 移动 by 0.01% 用于 B1 to B5.</p></li>
+<li><p>返回 检查 1, 检查 折痕 和/与 [折叠 位置 Printout], 和 调整 it 直到 指定值 is obtained.</p></li>
+</ol>
+
+
+</div>
+</div>
+<!-- / #main -->
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ADJ 47.14.1 TCBM CIS Black Paper Handling Light Intensity 调整 (Crease/双面修边器 D2 Only)</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<!--[if IE]><script type="text/javascript" src="../../../common_e2/script/excanvas.js"></script><![endif]-->
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+
+//		searchMenuId = window.setInterval('searchMenu();', 500);
+//		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		rep_resize();
+	}
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="4 拆解/组装与调整">
+<input type="hidden" name="t2" value="4.3 调整">
+<input type="hidden" name="t3" value="ADJ 47.14.1 TCBM CIS Black Paper Handling Light Intensity 调整 (Crease/双面修边器 D2 Only)">
+<input type="hidden" name="chap" value="chap4">
+<input type="hidden" name="doc_type" value="REP">
+<input type="hidden" name="prev_html" value="../contents/m0020200825165400000fa172.html">
+<input type="hidden" name="next_html" value="../contents/m0020200825165403000fa3b3.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+<div id="rep">
+
+<h2>ADJ 47.14.1 TCBM CIS Black 纸张 Handling 灯/光线 Intensity 调整 (折痕/Two-面 裁切器 D2 仅)&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>目的</h3>
+<p>执行 此 调整 在...之后 the replacement/substitution 的 CIS 组件 (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>) or the CIS LED 支架 组件 (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>).</p><h3>调整</h3>
+<ol><li><p>清洁 reading 表面 of CIS 组件 (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>) 和 the movable 滑槽 opposite it. (Wipe 和/与 dry cloth)</p></li>
+<li><p>关闭 the 前面 门.</p></li>
+<li><p>Change DC131 [506-498] to '1' (执行 灯/光线 Intensity 调整). (默认值: 0)</p></li>
+<li><p>出纸 从 DC131 和 get the TCBM to 执行 initialization 操作.</p></li>
+<li><p>检查 值 of DC131 [506-499]. (默认值 : 0) 参考 : It is 1 用于 factory 默认, 和 0 用于 spare parts PWB.</p><ol><li><p>如果 值 of DC131 [506-499] is '1', the 调整 is complete (NVM 506-498 automatically 返回 to '0')</p></li>
+<li><p>什么 to do if 此 不是 '1'</p><ul><li><p>0: 已完成 和/与 错误 (不 adjusted) -&gt; 检查以下项目 和 执行 步骤 2 onwards.</p><ul><li><p>检查 是否 前面 门 is 打开.</p></li>
+<li><p>检查 是否 connectors of TCBM主电路板 (<a href="../contents/m00202009071808040015865f.html">PL 47.3</a>) 和 TCBM驱动电路板 (<a href="../contents/m00202009071808040015865f.html">PL 47.3</a>) 是 断开的.</p></li>
+</ul>
+</li>
+<li><p>1: 已完成 successfully</p></li>
+<li><p>2: 已完成 和/与 错误 (dirt present) -&gt; 检查以下项目 和 执行 步骤 2 onwards.</p><ul><li><p>清洁 reading 表面 of CIS 组件 (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>) 和 the movable 滑槽 opposite it.</p></li>
+<li><p>检查 是否 connectors of LED (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>) 和 CIS (<a href="../contents/m00202009071808070015a6cc.html">PL 47.14</a>) 是 断开的.</p></li>
+</ul>
+</li>
+<li><p>3: 已完成 和/与 错误 (hardware malfunction) -&gt; 检查以下项目 和 执行 步骤 2 onwards.</p><ul><li><p>检查 是否 connectors 的 parts 从 the 边缘 传感器板 (<a href="../contents/m00202009071808090015c1de.html">PL 47.22</a>) 到 TCBM主电路板 (<a href="../contents/m00202009071808040015865f.html">PL 47.3</a>) 是 断开的.</p></li>
+<li><p>更换 边缘 传感器板 (<a href="../contents/m00202009071808090015c1de.html">PL 47.22</a>).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div style="clear:both;"></div>
+</li>
+</ol>
+
+
+</div>
+</div>
+<!-- / #main -->
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>6.1.3.3 模拟监控 (SEM) (DC140)</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="6 通用信息">
+<input type="hidden" name="t2" value="6.1 服务数据">
+<input type="hidden" name="t3" value="6.1.3.3 模拟监控 (SEM) (DC140)">
+<input type="hidden" name="chap" value="chap6">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m0020200417084841000f66f7.html">
+<input type="hidden" name="next_html" value="../contents/ID7E41A135117058.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>6.1.3.3 Analog Monitor (SEM) (DC140)&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<div align="center" class="table-scrolling-div"><table>
+<caption>Analog Monitor (SEM) (DC140)</caption>
+<tr><th onFocus="trHighright();" id="m0020230301154138000f737f"><p>链条连接</p></th><th onFocus="trHighright();" id="m0020230301154138000f7386"><p>组件 名称</p></th><th onFocus="trHighright();" id="m0020230301154138000f738d"><p>说明</p></th><th onFocus="trHighright();" id="m0020230301154138000f7394"><p>IN</p></th><th onFocus="trHighright();" id="m0020230301154138000f739b"><p>出</p></th><th onFocus="trHighright();" id="m0020230301154138000f73a2"><p>时间 出</p></th><th onFocus="trHighright();" id="m0020230301154138000f73a9"><p>Simultaneous 输出 禁止 Items</p></th><th onFocus="trHighright();" id="m0020230301154138000f73b0"><p>范围 (最小 值)</p></th><th onFocus="trHighright();" id="m0020230301154138000f73b7"><p>范围 (最大 值)</p></th><th onFocus="trHighright();" id="m0020230301154138000f73be"><p>CE Corrective 措施</p></th><th onFocus="trHighright();" id="m0020230301154138000f73c5"><p>模块 名称</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020230301154138000f73cd"><p>038-280</p></td><td onFocus="trHighright();" id="m0020230301154138000f73d4"><p>SEM HVPS DC Vout monitor</p></td><td onFocus="trHighright();" id="m0020230301154138000f73db"><p>The HVPR12_FVO_MON 值 在...上 HVPS 侧面 已显示 当...时 the defined 电流 is energized.</p><p>&lt;输出 步骤&gt;</p><ol><li><p>电源-ON_HVPR12_0 = ON, 电源-ON_HVPR12_1 = ON</p></li>
+<li><p>等待 100ms</p></li>
+<li><p>模式 设置 HVPR12_F_模式_I_SEL 设置</p></li>
+<li><p>等待 100ms</p></li>
+<li><p>PWM 信号 HVPR12_F_PWM = ON</p><p>(PWM 值 at 此 时间 uses dial or 设置 NVM.)</p></li>
+<li><p>Monitors 5 points at 100ms intervals 和 输出 the 平均值 值</p></li>
+<li><p>PWM 信号 HVPR12_F_PWM = 关闭/脱离</p></li>
+<li><p>等待 100ms</p></li>
+<li><p>模式 设置 HVPR12_F_模式_I_SEL 设置</p></li>
+<li><p>等待 100ms</p></li>
+<li><p>电源-ON_HVPR12_0 = 关闭/脱离, 电源-ON_HVPR12_1 = 关闭/脱离</p></li>
+</ol>
+</td><td onFocus="trHighright();" id="m0020230301154138000f73e2"><p>O</p></td><td onFocus="trHighright();" id="m0020230301154138000f73e9"><p>-</p></td><td onFocus="trHighright();" id="m0020230301154138000f73f0"><p>-</p></td><td onFocus="trHighright();" id="m0020230301154138000f73f7"><p>-</p></td><td onFocus="trHighright();" id="m0020230301154138000f73fe"><p>0</p></td><td onFocus="trHighright();" id="m0020230301154138000f7405"><p>1000</p></td><td onFocus="trHighright();" id="m0020230301154138000f740c"><p>-</p></td><td onFocus="trHighright();" id="m0020230301154138000f7413"><p>SEM</p></td></tr>
+</table></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

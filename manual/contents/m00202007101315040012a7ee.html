@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>2.2.3.3 开关 (Normal/Open) Failure FIP</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="2.2.3.3 开关 (Normal/Open) Failure FIP">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m00202007101315040012a737.html">
+<input type="hidden" name="next_html" value="../contents/m00202007101315040012a8a0.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>2.2.3.3 开关 (正常/打开) 故障 FIP&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>步骤</h3>
+<div id="imgArea" class="imageArea" align="center">
+<img src="../figures/2003_en.jpg"/>
+<map name="2003_en">
+</map><p align="center">(图 1) 2003</p></div>
+<div class="decl">输入 DC330 [XXX-XXX]. 转动 开启. Is [低] 已显示?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><p>Is the 电压 之间 the 开关 销-2 (+) 和 the GND (-)</p><div class="decl">Is the 电压 +5 VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00003')" href="#fip.00003">是</a>&nbsp;  <a id="fip.00004no" CLASS="yn-no" href="javascript:yesClicked('fip.00004')">编号</a></p><div class="no-branch-line"><div id="fip.00004" CLASS="no-branch"><p>检查 连接 之间 the 开关 销-2 和 the PWB 销-3 用于 打开 电路 和 接触不良.</p><p>If 编号 问题 发现, 更换 PWB.</p></div></div>
+<div id="fip.00003"><p>Is the 电压 之间 the 开关 销-1 (+) 和 the GND (-)</p><div class="decl">Is the 电压 +5 VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00005')" href="#fip.00005">是</a>&nbsp;  <a id="fip.00006no" CLASS="yn-no" href="javascript:yesClicked('fip.00006')">编号</a></p><div class="no-branch-line"><div id="fip.00006" CLASS="no-branch"><p>更换 开关.</p></div></div>
+<div id="fip.00005"><p>检查 连接 之间 the 开关 销-1 和 the PWB 销-4 用于 打开 电路 和 接触不良.</p><p>If 编号 问题 发现, 更换 PWB.</p></div></div></div>
+<div id="fip.00001"><div class="decl">转动 关闭. Is [高] 已显示?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00007')" href="#fip.00007">是</a>&nbsp;  <a id="fip.00008no" CLASS="yn-no" href="javascript:yesClicked('fip.00008')">编号</a></p><div class="no-branch-line"><div id="fip.00008" CLASS="no-branch"><div class="decl">断开 开关 连接器. Is [高] 已显示?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00009')" href="#fip.00009">是</a>&nbsp;  <a id="fip.00010no" CLASS="yn-no" href="javascript:yesClicked('fip.00010')">编号</a></p><div class="no-branch-line"><div id="fip.00010" CLASS="no-branch"><p>检查 连接 之间 the 开关 销-2 和 the PWB 销-3 用于 a 短路 电路.</p><p>If 编号 问题 发现, 更换 PWB.</p></div></div>
+<div id="fip.00009"><p>更换 开关.</p></div></div></div>
+<div id="fip.00007"><p>检查 ...的安装 the 开关.</p><p>If 编号 问题 发现, 更换 开关.</p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

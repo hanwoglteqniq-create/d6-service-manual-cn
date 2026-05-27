@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ADJ 76.3.2 Rewriting NVM Value When Replacing 2ND Lamp组件</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<!--[if IE]><script type="text/javascript" src="../../../common_e2/script/excanvas.js"></script><![endif]-->
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+
+//		searchMenuId = window.setInterval('searchMenu();', 500);
+//		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		rep_resize();
+	}
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="4 拆解/组装与调整">
+<input type="hidden" name="t2" value="4.3 调整">
+<input type="hidden" name="t3" value="ADJ 76.3.2 Rewriting NVM Value When Replacing 2ND Lamp组件">
+<input type="hidden" name="chap" value="chap4">
+<input type="hidden" name="doc_type" value="REP">
+<input type="hidden" name="prev_html" value="../contents/m0020221108093446000f708a000f757f.html">
+<input type="hidden" name="next_html" value="../contents/m0020221109103200000f72fa.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+<div id="rep">
+
+<h2>ADJ 76.3.2 Rewriting NVM值 更换时 2ND 灯 组件&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>目的</h3>
+<p>更换时 the 2ND 灯 组件, rewrite the NVM值.</p><h3>步骤</h3>
+<ol><li><p>检查 LED 颜色 Rank 值 已指示 在...上 LED PWB 的 2ND 灯 组件 to be installed.</p><div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/ism476502.jpg"/>
+<map name="1">
+</map><p align="center">(图 1) ism476502</p></div>
+</li>
+<li><p>输入 DC131 NVM 读/写 和 rewrite the 值 of NVM [580-002] 到 值 listed in 下表 按照 the LED 颜色 Rank 值 已指示 在...上 LED PWB.</p><div align="center" class="table-scrolling-div"><table>
+<caption>NVM 设置 Values</caption>
+<tr><th onFocus="trHighright();" id="m0020221109095121000f6fcb"><p>NVM值</p></th><th onFocus="trHighright();" id="m0020221109095121000f6fd2"><p>LED 颜色 Rank 值</p></th><th onFocus="trHighright();" id="m0020221109095121000f6fd9"><p>NVM值</p></th><th onFocus="trHighright();" id="m0020221109095121000f6fe0"><p>LED 颜色 Rank 值</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f6fe8"><p>000</p></td><td onFocus="trHighright();" id="m0020221109095121000f6fef"><p>(不适用)</p></td><td onFocus="trHighright();" id="m0020221109095121000f6ff6"><p>010</p></td><td onFocus="trHighright();" id="m0020221109095121000f6ffd"><p>(不适用)</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f7005"><p>001</p></td><td onFocus="trHighright();" id="m0020221109095121000f700c"><p>J1D/J11D</p></td><td onFocus="trHighright();" id="m0020221109095121000f7013"><p>011</p></td><td onFocus="trHighright();" id="m0020221109095121000f701a"><p>K1D/K11D</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f7022"><p>002</p></td><td onFocus="trHighright();" id="m0020221109095121000f7029"><p>J1E/J11E</p></td><td onFocus="trHighright();" id="m0020221109095121000f7030"><p>012</p></td><td onFocus="trHighright();" id="m0020221109095121000f7037"><p>K1E/K11E</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f703f"><p>003</p></td><td onFocus="trHighright();" id="m0020221109095121000f7046"><p>J1F/J11F</p></td><td onFocus="trHighright();" id="m0020221109095121000f704d"><p>013</p></td><td onFocus="trHighright();" id="m0020221109095121000f7054"><p>K1F/K11F</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f705c"><p>004</p></td><td onFocus="trHighright();" id="m0020221109095121000f7063"><p>J1G/J11G</p></td><td onFocus="trHighright();" id="m0020221109095121000f706a"><p>014</p></td><td onFocus="trHighright();" id="m0020221109095121000f7071"><p>K1G/K11G</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f7079"><p>005</p></td><td onFocus="trHighright();" id="m0020221109095121000f7080"><p>J1H/J11H</p></td><td onFocus="trHighright();" id="m0020221109095121000f7087"><p>015</p></td><td onFocus="trHighright();" id="m0020221109095121000f708e"><p>K1H/K11H</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f7096"><p>006</p></td><td onFocus="trHighright();" id="m0020221109095121000f709d"><p>J1J (不 已选择)</p></td><td onFocus="trHighright();" id="m0020221109095121000f70a4"><p>016</p></td><td onFocus="trHighright();" id="m0020221109095121000f70ab"><p>K1J (不 已选择)</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f70b3"><p>007</p></td><td onFocus="trHighright();" id="m0020221109095121000f70ba"><p>J1K/J11K</p></td><td onFocus="trHighright();" id="m0020221109095121000f70c1"><p>017</p></td><td onFocus="trHighright();" id="m0020221109095121000f70c8"><p>K1K/K11K</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f70d0"><p>008</p></td><td onFocus="trHighright();" id="m0020221109095121000f70d7"><p>J1L (不 已选择)</p></td><td onFocus="trHighright();" id="m0020221109095121000f70de"><p>018</p></td><td onFocus="trHighright();" id="m0020221109095121000f70e5"><p>K1L (不 已选择)</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020221109095121000f70ed"><p>009</p></td><td onFocus="trHighright();" id="m0020221109095121000f70f4"><p>J1M/J11M</p></td><td onFocus="trHighright();" id="m0020221109095121000f70fb"><p>019</p></td><td onFocus="trHighright();" id="m0020221109095121000f7102"><p>K1M/K11M</p></td></tr>
+</table></div>
+<p>In the 示例 in 图 1, the LED 颜色 Rank 值 is [K11H], so the 值 of NVM is rewritten to [015].</p></li>
+<li><p>关闭再打开电源.</p></li>
+</ol>
+
+
+</div>
+</div>
+<!-- / #main -->
+
+</body>
+</html>
+
+
+
+

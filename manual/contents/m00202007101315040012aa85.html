@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>2.2.3.8 夹紧/释放电磁阀未通电故障信息面板</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="2.2.3.8 夹紧/释放电磁阀未通电故障信息面板">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m00202007101315040012aa34.html">
+<input type="hidden" name="next_html" value="">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>2.2.3.8 NIP/释放 电磁阀 不 Energized 故障 FIP&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>步骤</h3>
+<div id="imgArea" class="imageArea" align="center">
+<img src="../figures/2017.jpg"/>
+<map name="2017">
+</map><p align="center">(图 1) 2017</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在执行...之前 此 FIP, 确保 那里 is 编号 (机械) 操作 故障 使用 电磁阀.</p></div>
+<p></p><div class="decl">Is +24VDC measured 之间 the NIP/释放 电磁阀 销-1 (+) 和 the GND (-)?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><div class="decl">Is +24VDC measured 之间 the PWB 销-5 (+) 和 the GND (-)?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00003')" href="#fip.00003">是</a>&nbsp;  <a id="fip.00004no" CLASS="yn-no" href="javascript:yesClicked('fip.00004')">编号</a></p><div class="no-branch-line"><div id="fip.00004" CLASS="no-branch"><p>检查 +24VDC 输入 的 PWB. If 编号 问题 发现, 更换 PWB.</p></div></div>
+<div id="fip.00003"><p>检查 连接 之间 the PWB 销-5 和 the NIP/释放 电磁阀 销-1 用于 打开 电路 和 接触不良.</p></div></div></div>
+<div id="fip.00001"><p>Use 以下 FIP 当...时 那里 is a 问题 使用 NIP.</p><p>输入 DC330 [XXX-XXX] 和 转动 SOL NIP ON.</p><div class="decl">Is +24VDC measured 之间 the PWB 销-4 (+) 和 the GND (-)?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00005')" href="#fip.00005">是</a>&nbsp;  <a id="fip.00006no" CLASS="yn-no" href="javascript:yesClicked('fip.00006')">编号</a></p><div class="no-branch-line"><div id="fip.00006" CLASS="no-branch"><p>输入 DC330 [XXX-XXX] 和 转动 SOL NIP ON.</p><div class="decl">Is +24VDC measured 之间 the NIP/释放 电磁阀 销-3 (+) 和 the GND (-)?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00007')" href="#fip.00007">是</a>&nbsp;  <a id="fip.00008no" CLASS="yn-no" href="javascript:yesClicked('fip.00008')">编号</a></p><div class="no-branch-line"><div id="fip.00008" CLASS="no-branch"><p>更换 NIP/释放 电磁阀.</p></div></div>
+<div id="fip.00007"><p>检查 连接 之间 the PWB 销-4 和 the NIP/释放 电磁阀 销-3 用于 打开 电路 和 接触不良.</p></div></div></div>
+<div id="fip.00005"><p>Use 以下 FIP 当...时 那里 is a 问题 使用 释放.</p><p>输入 DC330 [XXX-XXX] 和 转动 SOL 释放 ON.</p><div class="decl">Is the 电压 之间 the PWB 销-6 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00009')" href="#fip.00009">是</a>&nbsp;  <a id="fip.00010no" CLASS="yn-no" href="javascript:yesClicked('fip.00010')">编号</a></p><div class="no-branch-line"><div id="fip.00010" CLASS="no-branch"><div class="decl">输入 DC330 [XXX-XXX] 和 转动 SOL 释放 ON. Is the 电压 之间 the NIP/释放 电磁阀 销-2 (+) 和 the GND (-) +24VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00011')" href="#fip.00011">是</a>&nbsp;  <a id="fip.00012no" CLASS="yn-no" href="javascript:yesClicked('fip.00012')">编号</a></p><div class="no-branch-line"><div id="fip.00012" CLASS="no-branch"><p>更换 NIP/释放 电磁阀.</p></div></div>
+<div id="fip.00011"><p>检查 连接 之间 the PWB 销-6 和 the NIP/释放 电磁阀 销-2 用于 打开 电路 和 接触不良.</p></div></div></div>
+<div id="fip.00009"><p>更换 PWB.</p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

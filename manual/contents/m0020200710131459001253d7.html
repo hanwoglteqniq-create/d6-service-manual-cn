@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>024-977 Stapler Feed Ready 故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="024-977 Stapler Feed Ready 故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002020071013145900125391.html">
+<input type="hidden" name="next_html" value="../contents/m0020200710131459001254cf.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>024-977 Stapler 送纸 Ready 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m002020082711490000104b7e.html">CH17.35</a>, <a href="../contents/m002020082711490200104c8e.html">CH17.43</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>装订针 Ready 传感器 已关闭 当...时 装订针 操作 启动. </p></div>
+<h3>初始 措施</h3><ul><li><p>检查是否 出-of-spec 纸张 is used.</p></li>
+<li><p>检查是否 装订针 已 properly installed.</p><p></p></li>
+</ul>
+<h3>步骤</h3>
+<p>输入 the Diag 模式 和 执行 以下:</p><ol><li><p>输入 装订针 Ready 传感器 (DC330 [012-219]) 和 转动 开启.</p></li>
+<li><p>输入 排出 卡箍 电机 (DC330 [012-034]) 和 转动 开启 to 放下 排出 卡箍.</p></li>
+<li><p>Alternately 打开 装订针 电机 (DC330 [012-076/077] (关闭/Reverse).</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>此 诊断 模式 of 装订针 电机 将不会 操作 unless the 排出 安全注意事项 开关 is closed.</p></div>
+</li>
+</ol>
+<div class="decl">执行 输出 显示 of 传感器 开关?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 装订器 D6主电路板 J8077, J8053 和 装订针 Head J8960, J8919 用于 打开 电路, 短路 电路, 和 接触不良.</p><p>如果未发现问题，按顺序更换以下零件: 但是, 每个 时间 零件 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>装订针 Head (<a href="../contents/m002020090718070900132dc0.html">PL 27.6</a>)</p></li>
+<li><p>装订器 D6主电路板 (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p></li>
+</ul>
+</div></div>
+<div id="fip.00001"><p>更换 装订器 D6主电路板. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p><p></p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

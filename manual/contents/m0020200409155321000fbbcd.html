@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>6.2.5.13 TCBM/TBM Trim 功能</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="6 通用信息">
+<input type="hidden" name="t2" value="6.2 规格">
+<input type="hidden" name="t3" value="6.2.5.13 TCBM/TBM Trim 功能">
+<input type="hidden" name="chap" value="chap6">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m0020200409155321000fb3f3.html">
+<input type="hidden" name="next_html" value="../contents/m0020200409155321000fbd5c.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>6.2.5.13 TCBM/TBM 裁切 特性&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<p>此 特性 裁切 the 顶部 和 底部 of fed 纸张.</p><ol><li><p>执行 裁切</p><p>当...时 a finished 尺寸 is entered, 此 特性 calculates a cut 数量 so 该 it 将 the 相同 距离 从 两个 the 顶部 和 底部 的 原始 尺寸 在...之前 vertical 裁切. 但是, 每个 的 顶部 和 底部 cut amounts 必须 在...之内 6 to 25 mm, 和 the finished 尺寸 必须 182 mm或 longer.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>If IOT gives an instruction to 裁切 外部 的 possible 裁切 范围, a 卡纸 可以 develop at the TCBM 入口.</p></div>
+<div id="imgArea" class="imageArea" align="center">
+<img src="../figures/tc624004_en.jpg"/>
+<map name="tc624004_en">
+</map><p align="center">(图 1) tc624004</p></div>
+</li>
+<li><p>调整 裁切位置</p><p>当...时 a cut 位置 从顶部 侧面 is entered, the 裁切位置 可以 adjusted 没有 changing the finished 尺寸. 但是, the 值 必须 在...之内 +/-2 mm 从 the 值 用于 中央 split, the cut 数量 在...之后 the 调整 无法 exceed the 范围 之间 6 和 25 mm. A user 可以 执行 歪斜 调整 (loop 数量 调整) 取决于 the 纸张类型. 调整 by using the TCBM Regi 辊 应 已执行 by CE (the 调整 is possible by using the tab, 虽然 a driver 需要). </p></li>
+<li><p>Accuracy of 裁切</p><p>The accuracy at 后面 cutting 位置 is 最大到 +/-1 mm of 目标的 dimensions at 纸张 引线/导向 边缘, the finished 尺寸 必须 将 在...之内 +/-0.5 mm, the cut 歪斜 is 1.5 mm或 better 对 纸张 长度, 和 the cut 歪斜 is 1.5 mm或 better 对 纸张 长度.</p><div id="imgArea" class="imageArea" align="center">
+<img src="../figures/tc624005_en.jpg"/>
+<map name="tc624005_en">
+</map><p align="center">(图 2) tc624005</p></div>
+</li>
+<li><p>Productivity 在...期间 裁切</p><p>The 列表 显示 the performance ...所需的 裁切 和 the 实际 performance is determined by the features being combined.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>Productivity refers 到 productivity 当...时 IOT 送纸 纸张 at the pitch notified by the TCBM, 和 当...时 the 相同 设置 号码 is continuously used.</p></div>
+<div align="center" class="table-scrolling-div"><table>
+<caption>Productivity 在...期间 裁切 (纸张/Minute)</caption>
+<tr><th onFocus="trHighright();" id="m0020200409155321000fbc7d" rowspan="2"><p>尺寸/Orientation</p></th><th onFocus="trHighright();" id="m0020200409155321000fbc84" rowspan="2"><p>Dimension FS/SS</p></th><th onFocus="trHighright();" id="m0020200409155321000fbc8b" colspan="2"><p>Feeding 速度: 1000 mm/s</p></th></tr>
+<tr><th onFocus="trHighright();" id="m0020200409155321000fbc9c"><p>小册子 输出</p></th><th onFocus="trHighright();" id="m0020200409155321000fbca3"><p>顶部 纸盘 输出</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbcab"><p>A4L</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcb2"><p>297.0x210.0</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcb9"><p>-</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcc0"><p>106</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbcc8"><p>8.5 X 11 L (Letter)</p></td><td onFocus="trHighright();" id="m0020200409155321000fbccf"><p>279.4x215.9</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcd6"><p>-</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcdd"><p>104</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbce5"><p>8.5 X 11 S (Letter)</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcec"><p>215.9x279.4</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcf3"><p>94</p></td><td onFocus="trHighright();" id="m0020200409155321000fbcfa"><p>94</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbd02"><p>A4 S</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd09"><p>210.0x297.0</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd10"><p>91</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd17"><p>91</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbd1f"><p>A3 S</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd26"><p>297.0x420.0</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd2d"><p>68</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd34"><p>68</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200409155321000fbd3c"><p>11 X 17 S (Ledger)</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd43"><p>279.4x431.8</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd4a"><p>67</p></td><td onFocus="trHighright();" id="m0020200409155321000fbd51"><p>67</p></td></tr>
+</table></div>
+</li>
+</ol>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

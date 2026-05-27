@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ADJ 46.12.1 中继器 Paper Width 调整/Read 模拟 Value</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<!--[if IE]><script type="text/javascript" src="../../../common_e2/script/excanvas.js"></script><![endif]-->
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+
+//		searchMenuId = window.setInterval('searchMenu();', 500);
+//		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		rep_resize();
+	}
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="4 拆解/组装与调整">
+<input type="hidden" name="t2" value="4.3 调整">
+<input type="hidden" name="t3" value="ADJ 46.12.1 中继器 Paper Width 调整/Read 模拟 Value">
+<input type="hidden" name="chap" value="chap4">
+<input type="hidden" name="doc_type" value="REP">
+<input type="hidden" name="prev_html" value="../contents/m0020200825164037000f7773.html">
+<input type="hidden" name="next_html" value="../contents/m0020200825165209000f75b9.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+<div id="rep">
+
+<h2>ADJ 46.12.1 Interposer 纸张 宽度 Adjustment/读取 Analog 值&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>目的</h3>
+<p>此 调整 已 已执行 at shipment, 但是 the 调整 应 已执行 再次 安装时 另一个 Interposer, 这样的 as 在...期间 Interposer replacement/substitution, or 当...时 the CDM 主电路板 已更换, or 当...时 装订器 D6主电路板 已更换.</p><p>The analog 调整 values of Interposer 是 stored in the NVM in-built in the CPU 的 IP PWB at shipment. At the 时间 of 安装 or in the circumstances described 以上, it is necessary to 读取 the analog values stored in the IP PWB CPU in the NVM 的 CDM or 装订器 D6. The NVM 用于 adjusting the IP 纸盘 尺寸 传感器 analog 值 和 the 概述 的 调整 是 described 以下.</p><h3>[Reading 和 saving analog 值 当...时 CDM is the 连接 destination]</h3><ul><li><p>适用机型: ApeosPro C810G, Apeos C8180G, Apeos 7580G, RP EC1100, RP SC180G</p><p></p></li>
+</ul>
+<h4>[检查]</h4><ol><li><p>NVM[769-544]: IP 纸盘 尺寸 传感器 Analog 值 读取 (用于 use 安装期间)</p><ul><li><p>默认值 [1] (Setup 范围: 0 to 1)</p><ul><li><p>0: 请勿 执行 analog 值 读取 (请勿 save)</p></li>
+<li><p>1: 执行 analog 值 (factory 默认值) 读取. (请勿 save)</p></li>
+<li><p>2: 执行 analog 值 (调整 值 at 安装 位置) 读取.</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在...之后 the NVM is saved, 此 将 automatically be 设置 to '0'.</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>安装时, 连接 CDM 和 Interposer, 和 the analog 值 从 the NVM in-built in the IP PWB CPU 将 automatically written 到 CDM NVM 以下 当...时 电源 已开启.</p><p>[当...时 the CDM is the 连接 destination]</p><ul><li><p>NVM 769-500: IP 纸盘 尺寸 传感器 侧面 导轨 最小 位置 Analog 值 (默认值: 634)</p></li>
+<li><p>NVM 769-501: IP 纸盘 尺寸 传感器 侧面 导轨 最大 位置 Analog 值 (默认值: 71)</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><p>NVM [769-546]: IP 纸盘 尺寸 传感器 Analog 值 读取 (用于 use 当...时 CDM 已更换)</p><ul><li><p>默认 [0] (Setup 范围: 0 to 2)</p><ul><li><p>0: 请勿 执行 analog 值 读取</p></li>
+<li><p>1: 执行 analog 值 (factory 默认值) 读取. (设置 当...时 the CDM 已更换 在...之后 安装)</p></li>
+<li><p>2: 执行 analog 值 (调整 值 at 安装 位置) 读取.</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在...之后 the NVM is saved, 此 将 automatically be 设置 to '0'.</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>更换后 the CDM, 连接 CDM 和 Interposer, 出纸 Diag 模式 在...之后 设置 上述 NVM, 关机 和 ON, 和 the analog 值 从 the NVM in-built in the IP PWB CPU 将 automatically written 到 CDM NVM 以下.</p><p>[当...时 the CDM is the 连接 destination]</p><ul><li><p>NVM 769-500: IP 纸盘 尺寸 传感器 侧面 导轨 最小 位置 Analog 值 (默认值: 634)</p></li>
+<li><p>NVM 769-501: IP 纸盘 尺寸 传感器 侧面 导轨 最大 位置 Analog 值 (默认值: 71)</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><p>NVM[769-545]: IP 纸盘 尺寸 传感器 Analog 值 Save (用于 use 当...时 Interposer 已更换)</p><ul><li><p>默认 [0] (Setup 范围: 0 to 1)</p><ul><li><p>0: 请勿 执行 analog 值 save</p></li>
+<li><p>1: 执行 analog 值 save. (设置 当...时 Interposer 已更换 在...之后 安装)</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在...之后 the NVM is saved, 此 将 automatically be 设置 to '0'.</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>更换后 the Interposer, 连接 CDM 和 Interposer, 和 在...之后 设置 上述 NVM, 确认 analog 值 (最大 位置/最小 位置) 的 IP 纸盘 尺寸 传感器 侧面 导轨 的 CDM 使用 analog monitor (DC140), 和 输入 the analog 值 (最大 位置/最小 位置) checked in advance 从 the NVM 以下. 出纸 Diag 模式, 和 关闭电源, the entered analog 值 is automatically saved in the NVM in-built in the IP PWB CPU.</p><p>[当...时 the CDM is the 连接 destination]</p><ul><li><p>NVM 769-500: IP 纸盘 尺寸 传感器 侧面 导轨 最小 位置 Analog 值 (默认值: 634)</p></li>
+<li><p>NVM 769-501: IP 纸盘 尺寸 传感器 侧面 导轨 最大 位置 Analog 值 (默认值: 71)</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<h4>调整</h4>
+<p>[调整 当...时 CDM 已更换 在...之后 安装]</p><p>用于 调整, 说明 将 given 仅 用于 [调整 当...时 CDM 已更换 在...之后 安装] 和 [调整 当...时 Interposer 已更换 在...之后 安装].</p><ul><li><p>安装后 the Interposer, if 以下零件 是 replaced 由于 breakdown 等., 执行 以下 procedures 在...之后 parts 更换.</p><ul><li><p>当...时 the CDM 已更换</p></li>
+<li><p>当...时 the CDM PWB (CDM 主电路板) 已更换 (<a href="../contents/m002020090718073600146dbc.html">PL 43.4a</a>, <a href="../contents/m0020200907180736001470ee.html">PL 43.4b</a>)</p></li>
+<li><p>如果 analog 值 无法 be 读取 进入 CDM 从 the Interposer 由于 a 问题</p></li>
+</ul>
+<p></p></li>
+</ul>
+<ol><li><p>连接 CDM 和 the Interposer, 和 打开电源.</p></li>
+<li><p>输入 the Diag 模式 和 选择 [Maintenance/Diagnostics] 和 然后 [NVM 读/写].</p></li>
+<li><p>输入 NVM [769-546] -&gt; [确认 设置] -&gt; "1" 进入 the 新 值 column -&gt; [Save].</p></li>
+<li><p>出纸 Diag 和 转动 关机 然后 ON.</p><ol><li><p>The analog 值 stored in the NVM in-built in the IP PWB CPU is automatically written 到 CDM NVM 769-500 (最小 位置)/769-501 (最大 位置).</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在...之后 writing the analog 值, the 值 of NVM [769-546] is automatically 设置 从 [1] -&gt; [0].</p></div>
+</li>
+</ol>
+<div style="clear:both;"></div>
+</li>
+</ol>
+<p>[调整 当...时 Interposer 已更换 在...之后 安装]</p><ul><li><p>安装后 the Interposer, if 以下零件 是 replaced 由于 breakdown 等., 和 faults occur frequently, 执行 以下 procedures 在...之后 parts 更换.</p><ul><li><p>当...时 the Interposer 已更换 (<a href="../contents/m002020090718075900155892.html">PL 46.1</a>)</p></li>
+<li><p>当...时 the IP 纸盘 组件 已更换 (<a href="../contents/m002020090718080100156f78.html">PL 46.10</a>)</p></li>
+<li><p>当...时 the IP PWB 已更换 (<a href="../contents/m002020090718080000155e45.html">PL 46.3</a>)</p></li>
+<li><p>Interposer 尺寸 mismatch occurs frequently</p></li>
+</ul>
+<p></p></li>
+</ul>
+<ol><li><p>连接 CDM 和 the Interposer, 和 打开电源.</p></li>
+<li><p>输入 the Diag 模式 和 选择 [Maintenance/Diagnostics] 和 然后 [NVM 读/写].</p></li>
+<li><p>输入 NVM [769-545] -&gt; [确认 设置] -&gt; "1" 进入 the 新 值 column -&gt; [Save].</p></li>
+<li><p>关闭 the Interposer 纸盘 侧面 导轨 up 到 最小 位置.</p></li>
+<li><p>用于 the analog 值 (最小 位置) 的 IP 纸盘 尺寸 传感器 侧面 导轨 的 CDM, 检查 horizontal 宽度 的 最小 位置 和/与 DC140 [048-200].</p></li>
+<li><p>打开 the Interposer 纸盘 侧面 导轨 up 到 最大 位置.</p></li>
+<li><p>用于 the analog 值 (最大 位置) 的 IP 纸盘 尺寸 传感器 侧面 导轨 的 CDM, 检查 horizontal 宽度 的 最大 位置 和/与 DC140 [048-200].</p></li>
+<li><p>输入 the analog 值 (最小 位置: B5 SEF 值)/(最大 位置: A4 LEF 值) confirmed beforehand 和/与 NVM 769-500 (最小 位置)/769-501 (最大 位置) 的 CDM.</p></li>
+<li><p>出纸 Diag 和 转动 关机.</p><ol><li><p>The entered analog 值 is automatically saved in the NVM in-built in the IP PWB CPU.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>在...之后 writing the analog 值, the 值 of NVM [769-545] is automatically 设置 从 [1] -&gt; [0].</p></div>
+</li>
+</ol>
+<div style="clear:both;"></div>
+</li>
+</ol>
+
+
+</div>
+</div>
+<!-- / #main -->
+
+</body>
+</html>
+
+
+
+

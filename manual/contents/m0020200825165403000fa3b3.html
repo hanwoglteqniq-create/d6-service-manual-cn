@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ADJ 47.20.1 修边器 偏斜调整</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<!--[if IE]><script type="text/javascript" src="../../../common_e2/script/excanvas.js"></script><![endif]-->
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+
+//		searchMenuId = window.setInterval('searchMenu();', 500);
+//		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		rep_resize();
+	}
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="4 拆解/组装与调整">
+<input type="hidden" name="t2" value="4.3 调整">
+<input type="hidden" name="t3" value="ADJ 47.20.1 修边器 偏斜调整">
+<input type="hidden" name="chap" value="chap4">
+<input type="hidden" name="doc_type" value="REP">
+<input type="hidden" name="prev_html" value="../contents/m0020200825165402000fa28c.html">
+<input type="hidden" name="next_html" value="../contents/m0020200825165409000fa6a5.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+<div id="rep">
+
+<h2>ADJ 47.20.1 裁切器 歪斜 调整&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h3>目的</h3>
+<p>To change the NVM值 or 调整 裁切器 Regi 滑槽 组件 位置 和 正确的 the 供纸.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>As 裁切器 歪斜 调整 is 已经 已执行 at the factory 在...之前 shipment, 执行 此 调整 仅 当...时 it 需要 取决于 the request. </p></div>
+<h3>[检查]</h3><ol><li><p>输出 a 裁切器 Job 和/与 以下 conditions.</p><ul><li><p>纸张尺寸: A3</p></li>
+<li><p>输出 数量 (纸张): 3</p></li>
+</ul>
+</li>
+<li><p>测量 cut 歪斜 数量 的 3 纸张.</p><ol><li><p>测量 Y1 (引线/导向 边缘) 和 Y2 (trail 边缘) 的 3 纸张. (测量 at 裁切 waste 侧面)</p><div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/tc447512.jpg"/>
+<map name="1">
+</map><p align="center">(图 1) tc447512</p></div>
+</li>
+<li><p>Calculate the cut 歪斜 数量 的 3 纸张.</p><p>Cut 歪斜 数量 (mm) = Y1 (引线/导向 边缘) 宽度 (mm) - Y2 (trail 边缘) 宽度 (mm)</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>The 值 可以 positive (+) or negative (-).</p></div>
+</li>
+<li><p>Calculate the 平均值 cut 歪斜 数量 的 3 纸张.</p></li>
+</ol>
+<div style="clear:both;"></div>
+</li>
+<li><p>如果 cut 歪斜 数量 不 meet the request, 执行 调整.</p></li>
+<li><p>To 执行 [机械 调整], proceed to 步骤 5.</p></li>
+<li><p>Calculate the cut 歪斜 数量 (converted 用于 200 mm).</p><ol class="ollevel2"><li><p>测量 Y1 (引线/导向 边缘) 和 Y2 (trail 边缘). (测量 at 裁切 waste 侧面)</p></li>
+<li><p>Calculate the 200mm equivalent 值 S.</p><p>S = 200 / P x (Y1 - Y2)</p><p>P: 420 mm 如果发生 A3</p></li>
+</ol>
+<div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/tc447512.jpg"/>
+<map name="2">
+</map><p align="center">(图 2) tc447512</p></div>
+<div style="clear:both;"></div>
+</li>
+<li><p>如果 cut 歪斜 数量 (converted 用于 200 mm) 不 meet the request, 执行 调整.</p></li>
+</ol>
+<h3>调整</h3>
+<p>[NVM 调整 方法]</p><ol><li><p>Calculate the NVM additional 值 从 the 平均值 cut 歪斜 数量 的 3 纸张 该 已 calculated in 检查 步骤 2.</p><ul><li><p>NVM additional 值 = (平均值 cut 歪斜 数量 的 3 纸张 / 0.0634)</p></li>
+</ul>
+</li>
+<li><p>加上 the NVM additional 值 该 已 calculated in 步骤 1 to 当前值 的 NVM.</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020200825165406000fa4f1" colspan="4"><p>NVM 列表</p></th></tr>
+<tr><th onFocus="trHighright();" id="m0020200825165406000fa502"><p>Weight</p></th><th onFocus="trHighright();" id="m0020200825165406000fa509"><p>非涂布</p></th><th onFocus="trHighright();" id="m0020200825165406000fa510"><p>Gloss</p></th><th onFocus="trHighright();" id="m0020200825165406000fa521"><p>其他</p><p>[再生 (52 to 105 gsm),</p><p>Pre-printed (52 to 350 gsm), 等.]</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165406000fa529"><p>52 ~ 63gsm</p></td><td onFocus="trHighright();" id="m0020200825165406000fa530"><p>506-483</p></td><td onFocus="trHighright();" id="m0020200825165406000fa537"><p>506-487</p></td><td onFocus="trHighright();" id="m0020200825165406000fa53e"><p>506-491</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165406000fa546"><p>64 ~ 105gsm</p></td><td onFocus="trHighright();" id="m0020200825165407000fa54d"><p>506-480</p></td><td onFocus="trHighright();" id="m0020200825165407000fa554"><p>506-484</p></td><td onFocus="trHighright();" id="m0020200825165407000fa55b"><p>506-488</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165407000fa563"><p>106 ~ 220gsm</p></td><td onFocus="trHighright();" id="m0020200825165407000fa56a"><p>506-481</p></td><td onFocus="trHighright();" id="m0020200825165407000fa571"><p>506-485</p></td><td onFocus="trHighright();" id="m0020200825165407000fa578"><p>506-489</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200825165407000fa580"><p>221 ~ 350gsm</p></td><td onFocus="trHighright();" id="m0020200825165407000fa587"><p>506-482</p></td><td onFocus="trHighright();" id="m0020200825165407000fa58e"><p>506-486</p></td><td onFocus="trHighright();" id="m0020200825165407000fa595"><p>506-490</p></td></tr>
+</table></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>The 默认值 of 每个 NVM is 128, 和/与 校正 范围 of +/-30</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>Sample 参考: 如果发生 非涂布 221 gsm 和/与 平均值 cut 歪斜 数量 of 1 mm</p><p>NVM additional 值 - (1 / 0.0634) = -15.772 -&gt; round to nearest whole 号码: -16</p><p>加上 [-16] to 当前值 of NVM 506-482 (128 in 此 case).</p><p>128 - 16 = 112 -&gt; 输入 [112] as the NVM值.</p></div>
+</li>
+<li><p>调整 直到 the requested cut 歪斜 数量 is achieved.</p></li>
+<li><p>如果 requested cut 歪斜 数量 无法 be achieved by [NVM 调整 方法] alone, proceed to [机械 调整 方法].</p><p></p></li>
+</ol>
+<p>[机械 调整 方法]</p><ol><li><p>打开 the 前面 上方 盖板 组件 (<a href="../contents/m002020090718080300157ffc.html">PL 47.1</a>)</p></li>
+<li><p>拆卸 裁切器 Inner 盖板. (<a href="../contents/m002020090718080300157ffc.html">PL 47.1</a>)</p></li>
+<li><p>调整 裁切器 Regi 滑槽 组件 (<a href="../contents/m00202009071808090015bcdc.html">PL 47.20</a>) 位置.</p><ol class="ollevel2"><li><p>松开螺钉 (x2) 该 固定 the 调整 支架 (<a href="../contents/m00202009071808090015bcdc.html">PL 47.20</a>) 和 the 螺钉（x2） 该 固定 裁切器 Regi 滑槽 组件.</p></li>
+<li><p>转动 调整 螺钉 (<a href="../contents/m00202009071808090015bcdc.html">PL 47.20</a>) 和 调整 裁切器 Regi 滑槽 组件 位置.</p><p>Turning the 调整 螺钉 clockwise (CW) 移动 the 调整 支架 (<a href="../contents/m00202009071808090015bcdc.html">PL 47.20</a>) towards the 右侧. (调整 当...时 Y2 is 大)</p><p>Turning the 调整 螺钉 counterclockwise (CCW) 移动 the 调整 支架 towards the 左侧. (调整 当...时 Y1 is 大)</p><p>One scale marking: 1.0mm 歪斜 数量 (200 mm equivalent)</p></li>
+<li><p>在...之后 the 调整, 拧紧螺钉 (x4).</p></li>
+</ol>
+<div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/tcw447502.jpg"/>
+<map name="3">
+</map><p align="center">(图 3) tcw447502</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><div style="clear:both;"></div>
+<p>Scale 位置</p></div>
+<div id="imgArea" class="imageAreaAdj" align="center">
+<img src="../figures/tcw447503.jpg"/>
+<map name="4">
+</map><p align="center">(图 4) tcw447503</p></div>
+</li>
+<li><p>调整 直到 the requested cut 歪斜 数量 is achieved.</p></li>
+</ol>
+
+
+</div>
+</div>
+<!-- / #main -->
+
+</body>
+</html>
+
+
+
+

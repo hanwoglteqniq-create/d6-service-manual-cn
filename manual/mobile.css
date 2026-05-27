@@ -1,0 +1,489 @@
+/* 移动端优化样式 */
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+    background: #f5f5f5;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+/* 顶部导航栏 */
+#app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: #6a1b9a;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#app-header .menu-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#app-header .menu-btn:active {
+    background: rgba(255,255,255,0.2);
+}
+
+#app-header .menu-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+#app-header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+/* 安装提示横幅 */
+#install-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #4a148c;
+    color: white;
+    z-index: 2000;
+    padding: 0;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+}
+
+.install-content {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.install-content p {
+    flex: 1;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.install-content button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.install-content button:first-of-type {
+    background: #ce93d8;
+    color: #4a148c;
+}
+
+.install-content button:last-of-type {
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+}
+
+/* 侧边栏 */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+#sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1999;
+    display: none;
+}
+
+#sidebar-overlay.show {
+    display: block;
+}
+
+#sidebar .sidebar-header {
+    padding: 16px;
+    background: #7b1fa2;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#sidebar .menu-tree {
+    padding: 8px 0;
+}
+
+#sidebar .menu-tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar .menu-tree li {
+    border-bottom: 1px solid #eee;
+}
+
+#sidebar .menu-tree a {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#sidebar .menu-tree a:active {
+    background: #f0e6f6;
+}
+
+#sidebar .menu-tree .chap-link {
+    font-weight: 600;
+    color: #6a1b9a;
+}
+
+#sidebar .menu-tree .sub-link {
+    padding-left: 36px;
+    font-size: 13px;
+}
+
+#sidebar .menu-tree .sub-sub-link {
+    padding-left: 52px;
+    font-size: 12px;
+    color: #666;
+}
+
+#sidebar .menu-tree .folder-toggle {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    font-size: 12px;
+}
+
+#sidebar .menu-tree .folder-toggle.open {
+    transform: rotate(90deg);
+}
+
+#sidebar .menu-tree .doc-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    font-size: 10px;
+}
+
+#sidebar .menu-tree .sub-menu {
+    display: none;
+}
+
+#sidebar .menu-tree .sub-menu.open {
+    display: block;
+}
+
+/* 主内容区域 */
+#app-content {
+    margin-top: 48px;
+    padding: 12px;
+    min-height: calc(100vh - 48px);
+    padding-bottom: 60px;
+}
+
+/* 正文内容样式 */
+#main {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#main h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a148c;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e1bee7;
+}
+
+#main h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6a1b9a;
+    margin: 12px 0 8px;
+}
+
+#main h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0 6px;
+}
+
+#main p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+#main ul, #main ol {
+    padding-left: 20px;
+    margin: 8px 0;
+}
+
+#main li {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+#main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#main table th,
+#main table td {
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#main table th {
+    background: #f3e5f5;
+    font-weight: 600;
+}
+
+/* 图片自适应 */
+#main img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 8px auto;
+}
+
+#main .imageArea {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#main .imageArea img {
+    max-width: none;
+}
+
+#main a img {
+    display: inline;
+    margin: 0;
+}
+
+/* 警告/注意框 */
+#main .caution, #main .warning, #main .danger, #main .note {
+    padding: 10px 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+#main .caution { background: #fff3e0; border-left: 3px solid #ff9800; }
+#main .warning { background: #fce4ec; border-left: 3px solid #e91e63; }
+#main .danger { background: #ffebee; border-left: 3px solid #f44336; }
+#main .note { background: #e8f5e9; border-left: 3px solid #4caf50; }
+
+/* 上/下页导航 */
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+    margin-top: 16px;
+}
+
+.page-nav a {
+    color: #6a1b9a;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.page-nav a:active {
+    background: #f0e6f6;
+}
+
+/* BSD 接线图 */
+#bsd {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#bsd img {
+    max-width: none;
+}
+
+/* 搜索栏 */
+#search-bar {
+    padding: 8px 12px;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+#search-bar input {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 0 16px;
+    font-size: 14px;
+    outline: none;
+    background: #f9f9f9;
+}
+
+#search-bar input:focus {
+    border-color: #9c27b0;
+    background: white;
+}
+
+/* 隐藏原始框架不需要的元素 */
+#header, #footer, #container,
+form[name="data"] { display: none; }
+
+/* 章节概述页样式 */
+.chapter-content {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chapter-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a148c;
+    margin-bottom: 12px;
+}
+
+.chapter-content a {
+    color: #6a1b9a;
+    text-decoration: none;
+}
+
+.chapter-content a:active {
+    text-decoration: underline;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+/* 返回顶部按钮 */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #6a1b9a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#back-to-top.show {
+    opacity: 1;
+}
+
+#back-to-top:active {
+    background: #4a148c;
+}
+
+/* 加载动画 */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #999;
+    font-size: 14px;
+}
+
+/* 安全启动模式兼容 */
+@supports (padding-top: env(safe-area-inset-top)) {
+    #app-header {
+        padding-top: env(safe-area-inset-top);
+        height: calc(48px + env(safe-area-inset-top));
+    }
+    #app-content {
+        margin-top: calc(48px + env(safe-area-inset-top));
+    }
+    #install-banner {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    .page-nav {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+}

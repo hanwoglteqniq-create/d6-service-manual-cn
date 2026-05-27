@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>012-409 堆叠器 Tray Near Full Stack</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="012-409 堆叠器 Tray Near Full Stack">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002020071013145400120922.html">
+<input type="hidden" name="next_html" value="../contents/m002020071013145400120a4c.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>012-409 堆叠器 纸盘 附近 满载/完整 堆叠&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m002020082711490100104be4.html">CH17.38</a>, <a href="../contents/m002020082711490100104c28.html">CH17.40</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>The encoder pulse 计数 of 堆叠器 电机 具有 reached the 阈值 of 附近 满载/完整 堆叠.</p></div>
+<h3>原因/措施</h3><p>拆卸 纸张 从 堆叠器 纸盘.</p><p>如果 错误 persists 甚至 拆卸后 纸张 从 纸盘, 检查以下项目：</p><ul><li><p>值 of NVM [763-477] (堆叠器 Elevator 电机 Encoder Pulse 计数). (默认: 0, Setup 范围: 0 to 200000)</p></li>
+<li><p>以下 encoder thresholds (they 必须 等于 or 少于 堆叠器 Elevator 电机 Encoder Pulse 计数)</p><ul><li><p>值 of NVM [763-495] (Mix 附近 满载/完整 堆叠 Encoder 阈值). (默认: 28994, Setup 范围: 0 to 200000)</p></li>
+<li><p>值 of NVM [763-496] (大 尺寸 附近 满载/完整 堆叠 Encoder 阈值). (默认: 42559, Setup 范围: 0 to 200000)</p></li>
+<li><p>值 of NVM [763-497] (小 尺寸 附近 满载/完整 堆叠 Encoder 阈值 (Base 装订器)). (默认: 84650, Setup 范围: 0 to 200000)</p></li>
+<li><p>值 of NVM [763-498] (小 尺寸 附近 满载/完整 堆叠 Encoder 阈值 (小册子 装订器, Base 装订器 Plus)). (默认: 57576, Setup 范围: 0 to 200000)</p></li>
+</ul>
+</li>
+<li><p>堆叠器 编号 纸张传感器 (DC330 [012-114]) 用于 操作 故障. (<a href="../contents/m002020090718071000133cba.html">PL 27.9</a>)</p></li>
+<li><p>堆叠器 Elevator 电机 (DC330 [012-086/089] (抬起 Up/抬起 下)) 用于 操作 故障. (<a href="../contents/m00202009071807100013351d.html">PL 27.8</a>)</p><p></p></li>
+</ul>
+<p>如果未发现问题，更换装订器 D6主电路板. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p><p></p>
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

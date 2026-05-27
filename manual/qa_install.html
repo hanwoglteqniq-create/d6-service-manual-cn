@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>电气技术文档 安装搜索</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+<SCRIPT>
+<!--
+
+	arrTopic = new Array(
+							"Installation of CDM560 [Apeos C8180G, ApeosPro C810G]",
+							"./contents/m0020210519112043001070b3.html",
+							"Installation of CDM560 [Revoria Press SC180G]",
+							"./contents/m00202303081715300010869e.html",
+							"Installation of CDM770 [Revoria Press E1136G]",
+							"./contents/m002021060216011800108b4a.html",
+							"Installation of CDM770 [Revoria Press PC1120, Revoria Press EC1100]",
+							"./contents/m002021060216011000108564.html",
+							"Installation of Finisher D6/Finisher D6 (Booklet Maker)",
+							"./contents/m00202105191120470010aa29.html",
+							"Installation of Finisher Tray Extension Kit",
+							"./contents/m00202105191120480010ba96.html",
+							"Installation of Folder Unit CD2",
+							"./contents/m00202105191120460010a2a0.html",
+							"Installation of High Capacity Stacker (EDIM) and Bundled Stacker Cart",
+							"./contents/ID7E41995F21937B00106405.html",
+							"Installation of High Capacity Stacker (HCS) and Bundled Stacker Cart",
+							"./contents/m0020210519112045001090f2.html",
+							"Installation of High Capacity Stacker Extension Kit",
+							"./contents/m00202105191120490010c2b6.html",
+							"Installation of Inspection PC",
+							"./contents/m00202302090905450010ce9a.html",
+							"Installation of Interface Module [ApeosPro C810G, Apeos C8180G]",
+							"./contents/m002021051911204500108bdb.html",
+							"Installation of Long Paper Extension Kit ",
+							"./contents/m00202105191120480010b5d3.html",
+							"Installation of Long Paper Extension Kit (Long)",
+							"./contents/m00202105191120480010b7e6.html",
+							"Installation of Output Tray Stacking Guide",
+							"./contents/m00202105191120480010bb6d.html",
+							"Installation of Punch Unit",
+							"./contents/m00202105191120480010b3d3.html",
+							"Installation of SMG",
+							"./contents/m002023020907361500109f3d.html",
+							"Installation of Square Back Fold Trimmer D1 ",
+							"./contents/m00202105191120480010bc38.html",
+							"Installation of Static Eliminator D1 ",
+							"./contents/ID7E41995F21937B0010c17f.html",
+							"Installation of TCBM",
+							"./contents/m002021051911204600109cdd.html",
+							"Interposer D1 Installation",
+							"./contents/m0020210519112044001084c9.html",
+							"Stacker Cart (Additional Option) Installation",
+							"./contents/m002021051911204600109b6d.html");
+
+function selHandler() {
+	var URL = document.site.qacc.options[document.site.qacc.selectedIndex].value;
+	window.location.href = URL;
+}
+
+function getToc() {
+
+	var i;
+	var lngTopicCount;
+	var strHtml;
+	var strSearch;
+	var strString;
+
+	// キーワードを代入する
+	strSearch = document.topic.zip.value;
+	strSearch = strSearch.toLowerCase();
+
+	lngTopicCount = arrTopic.length;
+	strHtml = "<nobr>";
+	
+	// キーワード入力されていない場合
+	if (strSearch.length == 0) {
+		
+		// 配列にある全ての目次をピックアップし、<td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+		}
+		strHtml = strHtml + "</nobr>";
+		document.all.item("sub").innerHTML = strHtml;
+		
+		// キーワードにフォーカスを移す
+		document.topic.zip.focus();
+		
+	// キーワード入力されている場合
+	} else {
+		
+		// キーワードと配列より頭から一致している目次のみをピックアップし、
+		// <td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strString = arrTopic[i].toLowerCase();
+			var n = strString.indexOf(strSearch);
+			if (n >= 0) {
+				strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+			}
+
+		}
+
+	}
+
+	strHtml = strHtml + "</nobr>";
+
+	// 目次をdivタグの中に代入する
+	document.all.item("sub").innerHTML = strHtml;
+}
+-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad=" getToc();">
+<FORM name="site" style="font-size:x-small;">
+<SELECT name="qacc" style="width:170px;margin-left:5px;" onChange="selHandler()">
+<OPTION value="./menu.html"> Contents
+<!--rap--><OPTION value="./qa_rap.html"> FIP / RAP<!--/rap-->
+<!--rep--><OPTION value="./qa_rep.html"> Remove / Replace<!--/rep-->
+<!--adj--><OPTION value="./qa_adj.html"> Adjust<!--/adj-->
+<!--pl--><OPTION value="./qa_pl.html"> Parts List<!--/pl-->
+<!--partslist--><OPTION value="./qa_partslist.html"> Parts No. / Name<!--/partslist-->
+
+<!--wn--><OPTION value="./qa_wn.html"> WireNet<!--/wn-->
+
+<!--install--><OPTION value="./qa_install.html" SELECTED> Set up<!--/install-->
+
+</SELECT>
+</FORM>
+<div style="margin-top:5px;margin-left:5px;">
+<form name="topic">
+Please input keyword.<br><input type="Text" size="20" name="zip" onkeyup=" getToc()" style="width:170px;" >
+</div>
+
+<div id="sub">
+</div>
+
+</FORM>
+
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>064-310 SMG Download Mode 故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="064-310 SMG Download Mode 故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002023030116031800125ec9.html">
+<input type="hidden" name="next_html" value="../contents/m002023030116031800125f7f.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>064-310 SMG Download 模式 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m00202303131320340010ed04.html">CH70.5</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>The download ended abnormally 和 设备 可以 仅 启动 in the Download 模式 at 开机.</p></div>
+<h3>原因/措施</h3><ol><li><p>关闭再打开电源.</p></li>
+<li><p>关闭电源, 和 检查 连接 之间 the CDM <a href="../contents/m0020230207190839000f89ed.html#LinkSetterTool.eps.23030308363755900111">P8335</a> 和 the SMG PWB <a href="../contents/m0020230207190839000f89b5.html#LinkSetterTool.eps.23030308363755900013-J">J8384</a> 用于 打开 电路, 短路 电路, 和 接触不良.</p></li>
+<li><p>输入 Download 模式 to 执行 SMG controlling 子 CPU Download.</p></li>
+<li><p>如果 问题 persists, 更换 以下零件 按顺序. 但是, 每个 时间 a 零件/部分 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>SMG PWB (<a href="../contents/m00202302031631450014854b.html">PL 76.10</a>)</p></li>
+<li><p>CDM 主电路板 (<a href="../contents/m002020090718073500146670.html">PL 43.3a</a>, <a href="../contents/m002020090718073600146a16.html">PL 43.3b</a>)</p></li>
+</ul>
+</li>
+</ol>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

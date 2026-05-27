@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>电气技术文档 WireNet 搜索</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+<SCRIPT>
+<!--
+
+	arrTopic = new Array(
+							"+24VDC/INTLK +24VDC/+16VDC",
+							"./contents/m0020230306153331000fb021.html",
+							"+24VDC/INTLK +24VDC/+3.3VDC",
+							"./contents/m0020230306153242000fa9ad.html",
+							"+5VDC (SMG PWB)",
+							"./contents/m0020230306153427000fb6de.html",
+							"+5VDC/+12VDC/A10V/A1.8V/D3.3V/A3.3V (ILS DC POWER PWB)",
+							"./contents/m0020230306153653000fbd7e.html",
+							"ACH/ACN",
+							"./contents/m0020230306153242000fa86f.html",
+							"CDM 560/770 +24VDC",
+							"./contents/m0020211223145326000f985f.html",
+							"CDM 560/770 +3.3VDC",
+							"./contents/m0020211223145326000f981b.html",
+							"CDM 560/770 +5VDC",
+							"./contents/m0020211223145326000f983d.html",
+							"CDM 560/770 ACH/ACN",
+							"./contents/m0020211223145326000f97f9.html",
+							"CDM 560/770 DC COM-1",
+							"./contents/m0020211223145326000f9881.html",
+							"CDM 560/770 DC COM-2",
+							"./contents/m0020211223145326000f98a3.html",
+							"CDM 560/770 DC COM-3",
+							"./contents/m0020211223145326000f98c5.html",
+							"DC COM (1/2)",
+							"./contents/m0020230306153653000fbded.html",
+							"DC COM (2/2)",
+							"./contents/m0020230306153756000fc4cc.html",
+							"EDIM +24VDC-1",
+							"./contents/m0020211223145326000f9d43.html",
+							"EDIM +24VDC-2",
+							"./contents/m0020211223145326000f9d65.html",
+							"EDIM +5VDC-1",
+							"./contents/m0020211223145326000f9c77.html",
+							"EDIM +5VDC-2",
+							"./contents/m0020211223145326000f9c99.html",
+							"EDIM +5VDC-3",
+							"./contents/m0020211223145326000f9cbb.html",
+							"EDIM AC Power (Hot)",
+							"./contents/m0020211223145326000f9c11.html",
+							"EDIM AC Power (Nut)",
+							"./contents/m0020211223145326000f9c33.html",
+							"EDIM DC COM (24V RTN)",
+							"./contents/m0020211223145326000f9d87.html",
+							"EDIM DC COM (3.3V RTN)",
+							"./contents/m0020211223145326000f9c55.html",
+							"EDIM DC COM (5V RTN)-1",
+							"./contents/m0020211223145326000f9cdd.html",
+							"EDIM DC COM (5V RTN)-2",
+							"./contents/m0020211223145326000f9cff.html",
+							"EDIM DC COM (5V RTN)-3",
+							"./contents/m0020211223145326000f9d21.html",
+							"Finisher D6 +24VDC-1",
+							"./contents/m0020211223145326000f95b9.html",
+							"Finisher D6 +24VDC-2",
+							"./contents/m0020211223145326000f95db.html",
+							"Finisher D6 +5VDC-1",
+							"./contents/m0020211223145326000f94cb.html",
+							"Finisher D6 +5VDC-2",
+							"./contents/m0020211223145326000f94ed.html",
+							"Finisher D6 +5VDC-3",
+							"./contents/m0020211223145326000f950f.html",
+							"Finisher D6 ACH",
+							"./contents/m0020211223145326000f9487.html",
+							"Finisher D6 ACN",
+							"./contents/m0020211223145326000f94a9.html",
+							"Finisher D6 DC COM (24V RTN)-1",
+							"./contents/m0020211223145326000f95fd.html",
+							"Finisher D6 DC COM (24V RTN)-2",
+							"./contents/m0020211223145326000f961f.html",
+							"Finisher D6 DC COM (5V RTN)-1",
+							"./contents/m0020211223145326000f9531.html",
+							"Finisher D6 DC COM (5V RTN)-2",
+							"./contents/m0020211223145326000f9553.html",
+							"Finisher D6 DC COM (5V RTN)-3",
+							"./contents/m0020211223145326000f9575.html",
+							"Finisher D6 DC COM (5V RTN)-4",
+							"./contents/m0020211223145326000f9597.html",
+							"Folder +24VDC",
+							"./contents/m0020211223145326000f9b47.html",
+							"Folder +5VDC",
+							"./contents/m0020211223145326000f9b69.html",
+							"Folder ACH/ACN",
+							"./contents/m0020211223145326000f9b25.html",
+							"Folder DC COM (5V RTN/24V RTN)",
+							"./contents/m0020211223145326000f9b8b.html",
+							"HCS +24VDC-1",
+							"./contents/m0020211223145326000f9783.html",
+							"HCS +24VDC-2",
+							"./contents/m0020211223145326000f97a5.html",
+							"HCS +5VDC-1",
+							"./contents/m0020211223145326000f96b7.html",
+							"HCS +5VDC-2",
+							"./contents/m0020211223145326000f96d9.html",
+							"HCS +5VDC-3",
+							"./contents/m0020211223145326000f96fb.html",
+							"HCS AC POWER (HOT)",
+							"./contents/m0020211223145326000f9651.html",
+							"HCS AC POWER (NUT)",
+							"./contents/m0020211223145326000f9673.html",
+							"HCS DC COM (24V RTN)",
+							"./contents/m0020211223145326000f97c7.html",
+							"HCS DC COM (3.3V RTN)",
+							"./contents/m0020211223145326000f9695.html",
+							"HCS DC COM (5V RTN)-1",
+							"./contents/m0020211223145326000f971d.html",
+							"HCS DC COM (5V RTN)-2",
+							"./contents/m0020211223145326000f973f.html",
+							"HCS DC COM (5V RTN)-3",
+							"./contents/m0020211223145326000f9761.html",
+							"IFM +24VDC/+5VDC",
+							"./contents/m0020211223145326000f9bbd.html",
+							"IFM DC COM",
+							"./contents/m0020211223145326000f9bdf.html",
+							"Interposer +24VDC",
+							"./contents/m0020211223145326000f99d3.html",
+							"Interposer +5VDC",
+							"./contents/m0020211223145326000f99b1.html",
+							"Interposer DC COM",
+							"./contents/m0020211223145326000f99f5.html",
+							"SEM +24VDC/INTLK +24VDC",
+							"./contents/m0020211223145326000f9ddb.html",
+							"SEM +5VDC/SNR +5V",
+							"./contents/m0020211223145326000f9dfd.html",
+							"SEM ACH/ACN",
+							"./contents/m0020211223145326000f9db9.html",
+							"SEM DC COM",
+							"./contents/m0020211223145326000f9e1f.html",
+							"Square Back Fold Trimmer +24VDC",
+							"./contents/m0020211223145326000f995d.html",
+							"Square Back Fold Trimmer +5VDC",
+							"./contents/m0020211223145326000f9919.html",
+							"Square Back Fold Trimmer 24V RTN",
+							"./contents/m0020211223145326000f997f.html",
+							"Square Back Fold Trimmer 5V RTN",
+							"./contents/m0020211223145326000f993b.html",
+							"Square Back Fold Trimmer ACH/ACN",
+							"./contents/m0020211223145326000f98f7.html",
+							"TCBM/TBM +24VDC-1",
+							"./contents/m0020211223145326000f9a49.html",
+							"TCBM/TBM +24VDC-2",
+							"./contents/m0020211223145326000f9a6b.html",
+							"TCBM/TBM +5VDC-1",
+							"./contents/m0020211223145326000f9a8d.html",
+							"TCBM/TBM +5VDC-2",
+							"./contents/m0020211223145326000f9aaf.html",
+							"TCBM/TBM ACH/ACN",
+							"./contents/m0020211223145326000f9a27.html",
+							"TCBM/TBM RETURN-1",
+							"./contents/m0020211223145326000f9ad1.html",
+							"TCBM/TBM RETURN-2",
+							"./contents/m0020211223145326000f9af3.html");
+
+function selHandler() {
+	var URL = document.site.qacc.options[document.site.qacc.selectedIndex].value;
+	window.location.href = URL;
+}
+
+function getToc() {
+
+	var i;
+	var lngTopicCount;
+	var strHtml;
+	var strSearch;
+	var strString;
+
+	// キーワードを代入する
+	strSearch = document.topic.zip.value;
+	strSearch = strSearch.toLowerCase();
+
+	lngTopicCount = arrTopic.length;
+	strHtml = "<nobr>";
+	
+	// キーワード入力されていない場合
+	if (strSearch.length == 0) {
+		
+		// 配列にある全ての目次をピックアップし、<td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+		}
+		strHtml = strHtml + "</nobr>";
+		document.all.item("sub").innerHTML = strHtml;
+		
+		// キーワードにフォーカスを移す
+		document.topic.zip.focus();
+		
+	// キーワード入力されている場合
+	} else {
+		
+		// キーワードと配列より頭から一致している目次のみをピックアップし、
+		// <td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strString = arrTopic[i].toLowerCase();
+			var n = strString.indexOf(strSearch);
+			if (n >= 0) {
+				strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+			}
+
+		}
+
+	}
+
+	strHtml = strHtml + "</nobr>";
+
+	// 目次をdivタグの中に代入する
+	document.all.item("sub").innerHTML = strHtml;
+}
+-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad=" getToc();">
+<FORM name="site" style="font-size:x-small;">
+<SELECT name="qacc" style="width:170px;margin-top:5px;margin-left:5px;" onChange="selHandler()">
+<OPTION value="./menu.html"> Contents
+<!--rap--><OPTION value="./qa_rap.html"> FIP / RAP<!--/rap-->
+<!--rep--><OPTION value="./qa_rep.html"> Remove / Replace<!--/rep-->
+<!--adj--><OPTION value="./qa_adj.html"> Adjust<!--/adj-->
+<!--pl--><OPTION value="./qa_pl.html"> Parts List<!--/pl-->
+<!--partslist--><OPTION value="./qa_partslist.html"> Parts No. / Name<!--/partslist-->
+
+<!--wn--><OPTION value="./qa_wn.html" SELECTED> WireNet<!--/wn-->
+
+<!--install--><OPTION value="./qa_install.html"> Set up<!--/install-->
+
+</SELECT>
+</FORM>
+<div style="margin-top:5px;margin-left:5px;margin-bottom:10px;">
+<form name="topic">
+Please input keyword.<br><input type="Text" size="20" name="zip" onkeyup=" getToc()" style="width:170px;" >
+</div>
+
+<div id="sub">
+</div>
+
+</FORM>
+
+</BODY>
+</HTML>

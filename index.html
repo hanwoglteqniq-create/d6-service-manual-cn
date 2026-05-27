@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="D6维修手册">
+<meta name="theme-color" content="#6a1b9a">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>D6装订器维修手册</title>
+<link rel="stylesheet" href="manual/mobile.css">
+</head>
+<body>
+
+<!-- 顶部导航栏 -->
+<div id="app-header">
+    <div class="menu-btn" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </div>
+    <h1 id="header-title">D6装订器维修手册</h1>
+    <div class="menu-btn" onclick="toggleInstallUI()" title="安装到主屏幕">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+    </div>
+</div>
+
+<!-- 安装提示 -->
+<div id="install-banner" style="display:none;">
+    <div class="install-content">
+        <p>将手册添加到主屏幕，可离线使用</p>
+        <button onclick="installApp()" id="install-btn">安装</button>
+        <button onclick="this.parentElement.parentElement.style.display='none'">关闭</button>
+    </div>
+</div>
+
+<!-- 侧边栏遮罩 -->
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- 侧边栏 -->
+<div id="sidebar">
+    <div class="sidebar-header">D6装订器维修手册</div>
+    <div id="search-bar">
+        <input type="text" placeholder="搜索章节..." id="search-input" oninput="filterMenu(this.value)">
+    </div>
+    <div class="menu-tree" id="menu-tree"></div>
+</div>
+
+<!-- 主内容区域 -->
+<div id="app-content">
+    <div id="content-frame">
+        <div class="loading">正在加载手册内容...</div>
+    </div>
+</div>
+
+<!-- 返回顶部 -->
+<div id="back-to-top" onclick="scrollToTop()">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</div>
+
+<script>
+var menuData = null;
+var currentPath = '';
+var deferredPrompt = null;
+
+// ========== PWA 安装逻辑 ==========
+window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    // 首次访问显示安装提示
+    if (!localStorage.getItem('installDismissed')) {
+        document.getElementById('install-banner').style.display = 'block';
+    }
+});
+
+window.addEventListener('appinstalled', function() {
+    deferredPrompt = null;
+    document.getElementById('install-banner').style.display = 'none';
+});
+
+function installApp() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(result) {
+            if (result.outcome === 'accepted') {
+                localStorage.setItem('installDismissed', '1');
+            }
+            deferredPrompt = null;
+        });
+    } else {
+        // iOS不支持beforeinstallprompt，显示手动安装提示
+        showIOSInstallHint();
+    }
+}
+
+function toggleInstallUI() {
+    installApp();
+}
+
+function showIOSInstallHint() {
+    var banner = document.getElementById('install-banner');
+    banner.style.display = 'block';
+    banner.querySelector('p').textContent = '请点击浏览器底部的"分享"按钮，然后选择"添加到主屏幕"';
+    var btn = document.getElementById('install-btn');
+    btn.style.display = 'none';
+}
+
+// ========== Service Worker 注册 ==========
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js').then(function(reg) {
+            console.log('Service Worker 已注册，作用域:', reg.scope);
+        }).catch(function(err) {
+            console.log('Service Worker 注册失败:', err);
+        });
+    });
+}
+
+// ========== 初始化 ==========
+document.addEventListener('DOMContentLoaded', function() {
+    loadMenu();
+    loadContent('manual/welcome.html');
+
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('back-to-top');
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+});
+
+// ========== 菜单加载与渲染 ==========
+function loadMenu() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'manual/menu_data.json', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            menuData = JSON.parse(xhr.responseText);
+            renderMenu(menuData);
+        }
+    };
+    xhr.send();
+}
+
+function renderMenu(items, container, level) {
+    level = level || 0;
+    container = container || document.getElementById('menu-tree');
+    var ul = document.createElement('ul');
+    if (level > 0) ul.className = 'sub-menu';
+
+    items.forEach(function(item) {
+        var li = document.createElement('li');
+
+        if (item.type === 'folder' && item.children && item.children.length > 0) {
+            var link = document.createElement('a');
+            link.className = level === 0 ? 'chap-link' : '';
+            link.setAttribute('data-search', ((item.title || '') + ' ' + (item.title_en || '')).toLowerCase());
+
+            var toggle = document.createElement('span');
+            toggle.className = 'folder-toggle';
+            toggle.innerHTML = '&#9654;';
+            toggle.onclick = function(e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+                var sub = this.parentNode.querySelector('.sub-menu');
+                if (sub) sub.classList.toggle('open');
+            };
+            link.appendChild(toggle);
+            link.appendChild(document.createTextNode(item.title || ''));
+
+            if (item.href) {
+                link.onclick = function(e) {
+                    if (e.target.classList.contains('folder-toggle')) return;
+                    loadContent('manual/' + item.href);
+                    closeSidebar();
+                };
+            } else {
+                link.onclick = function(e) {
+                    if (e.target.classList.contains('folder-toggle')) return;
+                    var sub = li.querySelector('.sub-menu');
+                    var tog = li.querySelector('.folder-toggle');
+                    if (sub) sub.classList.toggle('open');
+                    if (tog) tog.classList.toggle('open');
+                };
+            }
+            li.appendChild(link);
+            if (item.children) renderMenu(item.children, li, level + 1);
+        } else if (item.href) {
+            var link = document.createElement('a');
+            link.className = level === 1 ? 'sub-link' : level > 1 ? 'sub-sub-link' : '';
+            link.setAttribute('data-search', ((item.title || '') + ' ' + (item.title_en || '')).toLowerCase());
+            var icon = document.createElement('span');
+            icon.className = 'doc-icon';
+            icon.innerHTML = '&#9679;';
+            link.appendChild(icon);
+            link.appendChild(document.createTextNode(item.title || ''));
+            link.onclick = function() {
+                loadContent('manual/' + item.href);
+                closeSidebar();
+            };
+            li.appendChild(link);
+        } else if (item.title) {
+            var link = document.createElement('a');
+            link.style.color = '#999';
+            link.style.fontStyle = 'italic';
+            link.setAttribute('data-search', (item.title || '').toLowerCase());
+            link.appendChild(document.createTextNode(item.title));
+            li.appendChild(link);
+        }
+        ul.appendChild(li);
+    });
+    container.appendChild(ul);
+}
+
+function filterMenu(query) {
+    var q = query.toLowerCase().trim();
+    var tree = document.getElementById('menu-tree');
+    var allLinks = tree.querySelectorAll('a[data-search]');
+    if (!q) {
+        allLinks.forEach(function(a) { a.parentNode.style.display = ''; });
+        tree.querySelectorAll('.sub-menu').forEach(function(ul) { ul.classList.remove('open'); });
+        return;
+    }
+    allLinks.forEach(function(a) {
+        var text = a.getAttribute('data-search') || '';
+        if (text.indexOf(q) >= 0) {
+            a.parentNode.style.display = '';
+            var parent = a.parentNode.parentNode;
+            while (parent) {
+                if (parent.classList && parent.classList.contains('sub-menu')) parent.classList.add('open');
+                parent = parent.parentNode;
+            }
+        } else {
+            a.parentNode.style.display = 'none';
+        }
+    });
+}
+
+// ========== 内容加载与渲染 ==========
+function loadContent(url) {
+    currentPath = url;
+    var container = document.getElementById('content-frame');
+    container.innerHTML = '<div class="loading">加载中...</div>';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            renderContent(xhr.responseText, url);
+        } else {
+            container.innerHTML = '<div class="loading">页面加载失败: ' + xhr.status + '</div>';
+        }
+    };
+    xhr.onerror = function() {
+        container.innerHTML = '<div class="loading">网络错误，请检查连接后重试</div>';
+    };
+    xhr.send();
+}
+
+function renderContent(html, url) {
+    var container = document.getElementById('content-frame');
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(html, 'text/html');
+
+    var title = doc.querySelector('title');
+    if (title) document.getElementById('header-title').textContent = title.textContent;
+
+    var main = doc.querySelector('#main');
+    var body = doc.querySelector('body');
+    var prevHtml = doc.querySelector('input[name="prev_html"]');
+    var nextHtml = doc.querySelector('input[name="next_html"]');
+    var prevUrl = prevHtml ? prevHtml.value : '';
+    var nextUrl = nextHtml ? nextHtml.value : '';
+
+    var contentHTML = main ? main.innerHTML : (body ? body.innerHTML : '');
+    container.innerHTML = contentHTML;
+
+    // 上/下页导航
+    if (prevUrl || nextUrl) {
+        var nav = document.createElement('div');
+        nav.className = 'page-nav';
+        if (prevUrl) {
+            var a = document.createElement('a');
+            a.href = '#';
+            a.textContent = '\u2190 上一页';
+            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, prevUrl)); };
+            nav.appendChild(a);
+        } else {
+            nav.appendChild(document.createElement('span'));
+        }
+        if (nextUrl) {
+            var a = document.createElement('a');
+            a.href = '#';
+            a.textContent = '下一页 \u2192';
+            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, nextUrl)); };
+            nav.appendChild(a);
+        }
+        container.appendChild(nav);
+    }
+
+    // 处理内部链接
+    container.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('javascript') && !href.startsWith('#')) {
+            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, href)); };
+        }
+    });
+
+    // 处理图片和area链接
+    function fixSrc(el, attr) {
+        var val = el.getAttribute(attr);
+        if (val && !val.startsWith('http') && !val.startsWith('data:')) {
+            el.setAttribute(attr, getRelativeUrl(url, val));
+        }
+    }
+    container.querySelectorAll('img[src]').forEach(function(img) { fixSrc(img, 'src'); });
+    container.querySelectorAll('area[href]').forEach(function(area) {
+        var href = area.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('javascript')) {
+            area.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, href)); };
+        }
+    });
+
+    window.scrollTo(0, 0);
+}
+
+function getRelativeUrl(fromUrl, relativePath) {
+    if (relativePath.startsWith('./')) relativePath = relativePath.substring(2);
+    var parts = fromUrl.substring(0, fromUrl.lastIndexOf('/') + 1).split('/').filter(function(p) { return p; });
+    relativePath.split('/').forEach(function(seg) {
+        if (seg === '..') parts.pop();
+        else if (seg !== '.' && seg !== '') parts.push(seg);
+    });
+    return parts.join('/');
+}
+
+// ========== UI 控制 ==========
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('show');
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('show');
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+</script>
+</body>
+</html>

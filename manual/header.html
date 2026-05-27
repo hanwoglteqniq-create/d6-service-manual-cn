@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>电气技术文档 导航栏</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<!-- css include start -->
+
+<style type="text/css">
+
+<!--
+div#inf_class {
+	text-align:left;
+}
+
+*.right {
+	margin-left : auto ;
+	margin-right : 0px ;
+}
+
+table.info_class {
+	width:176px;
+	table-layout: fixed;
+	border: 0px;
+	padding: 0px;
+}
+
+table.info_class_l; {
+	width:200px;
+	table-layout: fixed;
+	border: 0px #000000 solid ;
+	padding: 0px;
+}
+
+tr.cellheader_l {
+	width: 200px;
+	margin: 0px ;
+	padding: 0px ;
+}
+
+tr.cellbody_l {
+	width: 200px;
+        text-align: left;
+	margin:0px;
+	padding:0px;
+	font-size:7.5pt;
+}
+
+th.cellheader_l {
+	width: 200px;
+        font-family: Xerox Sans, Meiryo, MS Gothic, MotoyaLCedar, Verdana, sans-serif;
+	text-align: left;
+	margin:0px;
+	padding:0px;
+	border: 0px;
+}
+
+td.cb1 {
+	width: 93px;
+        font-family:  HiraKakuProN-W3, "MS PGothic", MotoyaLCedar, Verdana, sans-serif;
+        text-align: left;
+	margin:1px;
+	border: 0px #ff0000 solid;
+}
+
+td.cb2 {
+	font-family:  HiraKakuProN-W3, "MS PGothic", MotoyaLCedar, Verdana, sans-serif;
+	width: 140px;
+        text-align: left;
+	margin:1px;
+	padding:0px;
+	border: 0px;
+	}
+
+//-->
+</style>
+
+<!-- css include end -->
+
+
+
+
+<object id="login" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="Javascript" src="../../common_e2/script/cookie.js"></script>
+<script language="javascript">
+<!--
+
+	window.onload = function() {
+
+		var strUrl = top.location.href;
+		if (strUrl.indexOf("?") > 0) {
+			var strStr = strUrl.substring(strUrl.lastIndexOf("?")+1);
+			var strArray = strStr.split("&");
+			if (strArray.length >= 0) {
+				var seloption = document.getElementById("default");
+				seloption.parentNode.removeChild(seloption);
+				
+				for (var i = manual.product.length-1; i >= 0; i--) {
+					if (strArray[0] != manual.product[i].value) {
+						seloption = document.getElementById(manual.product[i].value);
+						if (seloption != null) {
+							seloption.parentNode.removeChild(seloption);
+						}
+					}
+				}
+			}
+		}
+	}
+
+function jumpLink() {
+	var URL;
+	if (document.manual.product.options[document.manual.product.selectedIndex].value != "") {
+		if (document.manual.chap.options[document.manual.chap.selectedIndex].value != "") {
+			URL = "../../" + document.manual.product.options[document.manual.product.selectedIndex].value + "/manual/" + document.manual.product.options[document.manual.product.selectedIndex].value + ".htm" + "?d6finifb&" + document.manual.chap.options[document.manual.chap.selectedIndex].value;
+		} else {
+			if (top.doc.main.data != undefined) {
+				if (top.doc.main.data.t1.value != "") {
+					URL = "../../" + document.manual.product.options[document.manual.product.selectedIndex].value + "/manual/" + document.manual.product.options[document.manual.product.selectedIndex].value + ".htm" + "?d6finifb&" + top.doc.main.data.chap.value;
+				} else {
+					URL = "../../" + document.manual.product.options[document.manual.product.selectedIndex].value + "/manual/" + document.manual.product.options[document.manual.product.selectedIndex].value + ".htm";
+				}
+			} else {
+				URL = "../../" + document.manual.product.options[document.manual.product.selectedIndex].value + "/manual/" + document.manual.product.options[document.manual.product.selectedIndex].value + ".htm";
+			}
+			
+		}
+		window.top.location.href = URL;
+	}
+}
+
+function runzenbun(){
+    top.doc.main.document.location = "zenbunresult.html";
+    return false;
+}
+
+
+
+-->
+</script>
+</head>
+<body>
+
+
+
+<div id="header" style="background-color:#ffcc66;">
+
+<table width="100%">
+	<tr>
+		<td nowrap>
+			<h1>D6 系列装订器 [FB]</h1>
+			<!--p id="siteDescription">Finisher D6 Group [FB] オンラインマニュアル</p-->
+			
+		</td>
+		<td nowrap align="right">
+			<FORM name="manual" style="font-size:x-small;">
+			<a id="opfx" onMouseOver="window.status='Login';document.all.opfx.style.cursor='hand';" onMouseOut="window.status='';" onClick ="javascipt:var fxlogin = document.login;fxlogin.runFxLock();"><button style="margin-right:5px;" onMouseOver="style.cursor='hand';" onMouseOut="style.cursor='default';">登录</button></a>
+			<!--refmanual-->
+			<SELECT name="product" style="margin-left:5px;">
+			<OPTION id="default" value="" SELECTED> 手册
+			<option id="apeosc8180fb" value="apeosc8180fb">ApeosC8180FB
+<option id="apeosproc810fb" value="apeosproc810fb">ApeosProC810FB
+<option id="revprspc1120fb" value="revprspc1120fb">RevPrsPC1120FB
+<option id="revprse1136gfb" value="revprse1136gfb">RevPrsE1136GFB
+<option id="apeos7580fb" value="apeos7580fb">Apeos7580FB
+<option id="revprsec1100fb" value="revprsec1100fb">RevPrsEC1100FB
+<option id="revprssc180fb" value="revprssc180fb">RevPrsSC180FB
+
+			</SELECT>
+			<SELECT name="chap" style="margin-left:5px;">
+			<OPTION value="" SELECTED>
+			<OPTION value="chap0">0 简介
+			<OPTION value="chap1">1 维修服务流程
+			<OPTION value="chap2">2 故障排除
+			<OPTION value="chap3">3 图像质量故障排除
+			<OPTION value="chap4">4 拆卸/组装与调整
+			<OPTION value="chap5">5 零件清单
+			<OPTION value="chap6">6 概述
+			<OPTION value="chap7">7 接线数据
+			<OPTION value="chap8">8 附件
+			<OPTION value="chap9">9 安装
+			<OPTION value="chap10">10 其他章节
+			</SELECT>&nbsp;<input onMouseOver="style.cursor='hand';" type="button" value="跳转" onClick="jumpLink();" style="margin-right:5px;"><!--/refmanual-->
+			</FORM>
+		</td>
+		
+	<!-- infomation classification label -->
+		<!-- "$infolabel;" -->
+		<td rowspan=2 style="width:190px;">
+			<div id="inf_class" class="right">
+				<table class="info_class_l right" cellspacing="0">
+					<TR class="cellheader_l" style="font-size:7.5pt;"><TH class="cellheader_l" colspan=2>仅限富士胶片内部使用</TH></TR>
+					<TR class="cellbody_l" style="font-size:7.5pt;"><TD class="cb1">披露至：</TD><TD class="cb2"><!-- "$dlevel;" --></TD></TR>
+					<!-- TR class="cellbody_l" style="font-size:7.5pt;"><TD class="cb1">Protected Unit:</TD><TD class="cb2">10 years<!-- "$protectperiodJA;" --></TD></TR -->
+					<TR class="cellbody_l" style="font-size:7.5pt;"><TD class="cb1">作者：</TD><TD class="cb2">售后服务管理部<!-- "$authorJA;" --></TD></TR>
+					<TR class="cellbody_l" style="font-size:7.5pt;"><TD class="cb1">编制日期：</TD><TD class="cb2">Aug. 31 2023<!-- "$issuedateJA;" --></TD></TR>
+				</table>
+			</div>
+		</td>
+	<!-- /infomation classification label -->
+
+	</tr>
+	<tr>
+		<td nowrap>
+			<ul>
+			<li class="utilityHome"><a href="../../../edoc/home/edoc.htm" target="_top">文档首页</a></li>
+			<li><a href="./d6finifb.htm" target="_top">首页</a></li>
+			
+			
+			
+			
+			
+			</ul>
+		</td>
+		
+        <td nowrap align="right"><input type="text" id="txtzenbun" name="txtzenbun" style="width:200px;ime-mode:active" value=""/><button id="btnzenbun" name="btnzenbun" onclick="runzenbun();">全文搜索</button></td>
+	</tr>
+</table>
+
+<!-- / #header --></div>
+</body>
+</html>

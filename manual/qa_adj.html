@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>电气技术文档 调整搜索</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+<SCRIPT>
+<!--
+
+	arrTopic = new Array(
+							"Alignment Adjustment When Replacing SMG Feed Roll",
+							"./contents/m0020221116113107000f794e.html",
+							"Booklet Fold Position/Staple Position Adjustment (DC128)",
+							"./contents/m0020200825092857000f7161.html",
+							"C Fold Position Adjustment (DC128)",
+							"./contents/m0020200825170123000f7626.html",
+							"Center Staple Needle Position Adjustment",
+							"./contents/m0020200825092853000f6e0e.html",
+							"Crease (4-Fold Accordion Fold) Position Adjustment (DC128)",
+							"./contents/m0020200825165306000f8c4a.html",
+							"Crease (5-Fold Accordion Fold) Position Adjustment (DC128)",
+							"./contents/m0020200825165321000f922f.html",
+							"Crease (Common) Position Adjustment (DC128)",
+							"./contents/m0020200825165353000f9e3c.html",
+							"Crease (Custom) Position Adjustment (DC128)",
+							"./contents/m0020200825165339000f994d.html",
+							"Crease (Gate Fold/3-Fold Accordion Fold/Double Parallel) Position Adjustment (DC128)",
+							"./contents/m0020200825165239000f819d.html",
+							"Crease (Single Fold) Position Adjustment (DC128)",
+							"./contents/m0020200825165209000f75b9.html",
+							"Crease (Z Fold/C Fold/Z Fold Half Sheet) Position Adjustment (DC128)",
+							"./contents/m0020200825165217000f7933.html",
+							"Crease Skew Adjustment",
+							"./contents/m0020200825165400000fa172.html",
+							"Dual Staple Needle Skew/Lead Position Adjustment",
+							"./contents/m0020200825092843000f666a.html",
+							"Interposer Paper Width Adjustment/Read Analog Value",
+							"./contents/m0020200825164435000f7479.html",
+							"Left/Right Tray Arm Installation Position",
+							"./contents/m0020200825163705000f7355.html",
+							"Punch hole position change procedure (12mm to 10mm)",
+							"./contents/m0020200825092949000f95f5.html",
+							"Punch Side Reg. Adjustment",
+							"./contents/m0020200825092945000f924e.html",
+							"Rewriting NVM Value When Replacing 1ST Lamp Assembly",
+							"./contents/m0020221108093446000f708a000f757f.html",
+							"Rewriting NVM Value When Replacing 2ND Lamp Assembly",
+							"./contents/m0020221109095121000f6f71.html",
+							"Rewriting NVM Value When Replacing WR1 Assembly",
+							"./contents/m0020221109103200000f72fa.html",
+							"Rewriting NVM Value When Replacing WR2 Assembly",
+							"./contents/m0020221109151133000f7c02.html",
+							"Single Rear Staple Needle Position Adjustment",
+							"./contents/m0020200825092848000f6ace.html",
+							"Square Back Fold Trimmer paper feeding check",
+							"./contents/m0020200825164031000f73ba.html",
+							"Stopper Plate Position Adjustment (Parallel Adjustment)",
+							"./contents/m0020200825164034000f75a4.html",
+							"TCBM CIS Black Paper Handling Light Intensity Adjustment (Crease/Two-sided Trimmer D2 Only)",
+							"./contents/m0020200825165402000fa28c.html",
+							"Trimmer Assembly Trim Position Adjustment",
+							"./contents/m0020200825165409000fa6a5.html",
+							"Trimmer Skew Adjustment",
+							"./contents/m0020200825165403000fa3b3.html",
+							"Trimmer Skew Adjustment Procedure",
+							"./contents/m0020200825164037000f7773.html",
+							"Vertical Slant Adjustment of the Booklet Stapler Unit",
+							"./contents/m0020200825092856000f708a.html",
+							"Z Fold Half Sheet, Z Fold Position Adjustment (DC128)",
+							"./contents/m0020200825170132000f7aee.html");
+
+function selHandler() {
+	var URL = document.site.qacc.options[document.site.qacc.selectedIndex].value;
+	window.location.href = URL;
+}
+
+function getToc() {
+
+	var i;
+	var lngTopicCount;
+	var strHtml;
+	var strSearch;
+	var strString;
+
+	// キーワードを代入する
+	strSearch = document.topic.zip.value;
+	strSearch = strSearch.toLowerCase();
+
+	lngTopicCount = arrTopic.length;
+	strHtml = "<nobr>";
+	
+	// キーワード入力されていない場合
+	if (strSearch.length == 0) {
+		
+		// 配列にある全ての目次をピックアップし、<td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+		}
+		strHtml = strHtml + "</nobr>";
+		document.all.item("sub").innerHTML = strHtml;
+		
+		// キーワードにフォーカスを移す
+		document.topic.zip.focus();
+		
+	// キーワード入力されている場合
+	} else {
+		
+		// キーワードと配列より頭から一致している目次のみをピックアップし、
+		// <td id="toc" valign="top">の中に書き出す
+		for (i = 0; i < lngTopicCount; i=i+2) {
+			strString = arrTopic[i].toLowerCase();
+			var n = strString.indexOf(strSearch);
+			if (n >= 0) {
+				strHtml = strHtml + '<div><a class="menu" target="main" href="' + arrTopic[i+1] + '" title="' + arrTopic[i] + '">' + arrTopic[i] + '</a></div>';
+			}
+
+		}
+
+	}
+
+	strHtml = strHtml + "</nobr>";
+
+	// 目次をdivタグの中に代入する
+	document.all.item("sub").innerHTML = strHtml;
+}
+-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad=" getToc();">
+<FORM name="site" style="font-size:x-small;">
+<SELECT name="qacc" style="width:170px;margin-top:5px;margin-left:5px;" onChange="selHandler()">
+<OPTION value="./menu.html"> Contents
+<!--rap--><OPTION value="./qa_rap.html"> FIP / RAP<!--/rap-->
+<!--rep--><OPTION value="./qa_rep.html"> Remove / Replace<!--/rep-->
+<!--adj--><OPTION value="./qa_adj.html" SELECTED> Adjust<!--/adj-->
+<!--pl--><OPTION value="./qa_pl.html"> Parts List<!--/pl-->
+<!--partslist--><OPTION value="./qa_partslist.html"> Parts No. / Name<!--/partslist-->
+
+<!--wn--><OPTION value="./qa_wn.html"> WireNet<!--/wn-->
+
+<!--install--><OPTION value="./qa_install.html"> Set up<!--/install-->
+
+</SELECT>
+</FORM>
+<div style="margin-top:5px;margin-left:5px;">
+<form name="topic">
+Please input keyword.<br><input type="Text" size="20" name="zip" onkeyup=" getToc()" style="width:170px;" >
+</div>
+
+<div id="sub">
+</div>
+
+</FORM>
+
+</BODY>
+</HTML>

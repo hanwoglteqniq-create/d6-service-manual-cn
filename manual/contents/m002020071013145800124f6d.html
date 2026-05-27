@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>024-917 堆叠器 Tray Set Over Full</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="024-917 堆叠器 Tray Set Over Full">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002020071013145800124ece.html">
+<input type="hidden" name="next_html" value="../contents/m002020071013145900125022.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>024-917 堆叠器 纸盘 设置 超过 满载/完整&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m002020082711490200104c8e.html">CH17.43</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>装订针 设置 计数 exceeded the 最大 号码 纸张的 on 堆叠器 纸盘 在...期间 装订针 设置 排出 操作.</p></div>
+<h3>原因/措施</h3><p>拆卸 纸张 从 堆叠器 纸盘.</p><p>如果 错误 persists 甚至 拆卸后 纸张 从 纸盘, 检查以下项目：</p><ul><li><p>值 of NVM [763-451] (号码 of Stapled 设置 on 堆叠器 纸盘). (默认: 0, Setup 范围: 0 to 255)</p></li>
+<li><p>以下 阈值 of 堆叠 设置 限制 (it 必须 等于 or 少于 the 号码 of Stapled 设置 on 堆叠器 纸盘)</p><ul><li><p>值 of NVM [763-452] (小 尺寸 堆叠 设置 限制). (默认: 200, Setup 范围: 1 to 255)</p></li>
+<li><p>值 of NVM [763-453] (小 尺寸 堆叠 设置 限制 (at Dual/4P 装订针)). (默认: 200, Setup 范围: 1 to 255)</p></li>
+<li><p>值 of NVM [763-454] (大 尺寸 堆叠 设置 限制). (默认: 100, Setup 范围: 1 to 255)</p></li>
+<li><p>值 of NVM [763-455] (大 尺寸 堆叠 设置 限制 (at Dual/4P 装订针)). (默认: 100, Setup 范围: 1 to 255)</p></li>
+<li><p>值 of NVM [763-464] (挡板 Up 位置 堆叠 设置 限制). (默认: 100, Setup 范围: 1 to 255)</p></li>
+<li><p>值 of NVM [763-465] (挡板 Up 位置 和 Dual/4P 装订针 堆叠 设置 限制). (默认: 100, Setup 范围: 1 to 255)</p></li>
+</ul>
+</li>
+<li><p>堆叠器 编号 纸张传感器 (DC330 [012-114]) 用于 操作 故障. (<a href="../contents/m002020090718071000133cba.html">PL 27.9</a>)</p><p></p></li>
+</ul>
+<p>如果未发现问题，更换装订器 D6主电路板. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p><p></p>
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

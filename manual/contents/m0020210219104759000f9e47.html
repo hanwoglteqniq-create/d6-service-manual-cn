@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>6.2.1.13 CDM 与 IFM 卷曲校正功能</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="6 通用信息">
+<input type="hidden" name="t2" value="6.2 规格">
+<input type="hidden" name="t3" value="6.2.1.13 CDM 与 IFM 卷曲校正功能">
+<input type="hidden" name="chap" value="chap6">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m0020210219104759000f9e14.html">
+<input type="hidden" name="next_html" value="../contents/m0020210219104759000f9f58.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>6.2.1.13 CDM 和 IFM 卷曲 校正 特性&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<p>The CDM 和 IFM 具有 a 消卷器, 哪个 corrects 纸张 curls, by 标准.</p><ol><li><p>卷曲 校正 特性</p><ul><li><p>The 卷曲 校正 特性 is 适用的 to curls 该 curve in the 送纸 方向 on 纸张 输出 从 IOT.</p></li>
+<li><p>The performance 可能 不 be satisfactory 和/与 一些 curls, 这样的 as curls 该 curve in IN/出 方向, curls 该 curve in diagonal 方向, curls 该 curve partially, or curls 该 curve in 不同 directions on 一块 纸张.</p></li>
+</ul>
+</li>
+<li><p>卷曲 校正 容量</p><ul><li><p>消卷器 具有 以下 校正 容量. (适用的 to 标准 纸张 除了 Transparency)</p><div align="center" class="table-scrolling-div"><table>
+<tr><th onFocus="trHighright();" id="m0020210219104759000f9e9d"><p>纸张 卷曲 数量 在...之前 校正</p></th><th onFocus="trHighright();" id="m0020210219104759000f9ea4"><p>纸张 卷曲 数量 在...之后 校正</p></th></tr>
+<tr><td onFocus="trHighright();" id="m0020210219104759000f9eac"><p>&lt; = 12.7mm</p></td><td onFocus="trHighright();" id="m0020210219104759000f9eb3"><p>&lt; = 5 mm (不适用 to IP, IFM) </p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020210219104759000f9ebb"><p>&gt; 12.7 mm, &lt; = 15 mm</p></td><td onFocus="trHighright();" id="m0020210219104759000f9ec2"><p>&lt; = 8 mm (不适用 to IP, IFM)</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020210219104759000f9eca"><p>&gt; 15 mm, &lt; = 20 mm</p></td><td onFocus="trHighright();" id="m0020210219104759000f9ed1"><p>&lt; = 12.7mm</p></td></tr>
+</table></div>
+<p>测量 方法: 测量 最大 高度 当...时 纸张 该 已 只是 输出 从 the CDM 和 IFM is placed on a horizontal 和 flat 表.</p><p>但是, 校正 可能 不 be 可用的 用于 curls 该 curve in FS 方向 (方向 垂直于 the 送纸 方向) 和 curls 该 curve diagonally.</p></li>
+<li><p>用于 Transparency, Labels, 转印 纸张, Adhesive, Cast, Film, Embossed, 光面 卡纸 (Gloss Fine), 卡纸 (257 gsm或 heavier), 卷曲 校正 将不会 be 已执行 自...以来 they 可能 原因 损坏, peel-关闭/脱离 of adhesive tapes, 和 so on. (卷曲 校正 将 become 可用的 by using the NVM 设置. 也, 卷曲 校正 已执行 当...时 an instruction to 执行 it is issued 从 the Post-Processing 设备 at 输出 destination) </p></li>
+</ul>
+<p></p></li>
+<li><p>卷曲 校正 控制</p><ul><li><p>那里 是 two types of 卷曲 校正 控制: [Auto] 和 [手册 Decurl], 哪个 可以 switched in 消卷器 操作 Panel 在前面 顶部 的 CDM 和 IFM. [手册 Decurl] 具有 总计 seven stages of 卷曲 校正 amounts (three stages 用于 每个 of Up 卷曲 校正 和 下 卷曲 校正, plus 编号 卷曲 校正). [Auto] 也 具有 seven stages of 卷曲 校正 amounts.</p><p>如果 卷曲 校正 容量 defined in 2. "卷曲 校正 容量" 无法 be achieved 和/与 [Auto], 执行 [手册 Decurl].</p></li>
+</ul>
+<ol><li><p>Auto</p><ul><li><p>控制 方法 用于 Transparency, Labels, 转印 纸张, Adhesive, Cast, Film, Embossed, 光面 卡纸 (Gloss Fine), 卡纸 (257 gsm或 heavier) is 不同 从 该 用于 the 其他.</p></li>
+<li><p>当...时 纸张 is passing 通过 消卷器, the LED on 消卷器 操作 Panel 已开启, 哪个 notifies the operator of 当前的 卷曲 校正 数量.</p></li>
+</ul>
+</li>
+<li><p>手册 Decurl</p><ul><li><p>控制 方法 用于 Transparency, Labels, 转印 纸张, Adhesive, Cast, Film, Embossed, 光面 卡纸 (Gloss Fine), 卡纸 (260 gsm或 heavier) is 不同 从 该 用于 the 其他.</p></li>
+<li><p>Change the 卷曲 校正 数量 by using the 手册 Decurl switching button on 消卷器 操作 Panel. 当前的 卷曲 校正 数量 is 已指示 by turning 在...上 LED. </p></li>
+</ul>
+</li>
+</ol>
+<p></p></li>
+</ol>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

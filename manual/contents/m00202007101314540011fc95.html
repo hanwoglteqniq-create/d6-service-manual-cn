@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>012-290 互锁 24V Disconnect 故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="012-290 互锁 24V Disconnect 故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m00202007101314540011fc4f.html">
+<input type="hidden" name="next_html" value="../contents/m00202007101314540012003b.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>012-290 互锁 24V 断开 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m00202008271148520010471c.html">CH17.7</a>, <a href="../contents/m00202008271148500010462e.html">CH17.1</a>, <a href="../contents/m002020082711485100104650.html">CH17.2</a>, <a href="../contents/m002020082711485100104672.html">CH17.3</a>, <a href="../contents/m0020200827114851001046b6.html">CH17.5</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>The Intlk_24V 不是 conducting 虽然 the Relay 已开启 在...期间 开机 or 当...时 a 装订器-相关 失败 occurs.</p></div>
+<h3>步骤</h3>
+<p>确认 the covers of 所有 units 是 closed, 和 然后 转动 关机 然后 ON.</p><div class="decl">Is an 错误 已显示?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00001')" href="#fip.00001">是</a>&nbsp;  <a id="fip.00002no" CLASS="yn-no" href="javascript:yesClicked('fip.00002')">编号</a></p><div class="no-branch-line"><div id="fip.00002" CLASS="no-branch"><p>端部</p></div></div>
+<div id="fip.00001"><div class="decl">Is the 电压 之间 装订器 PWB J8213-3 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00003')" href="#fip.00003">是</a>&nbsp;  <a id="fip.00004no" CLASS="yn-no" href="javascript:yesClicked('fip.00004')">编号</a></p><div class="no-branch-line"><div id="fip.00004" CLASS="no-branch"><div class="decl">Is the 电压 之间 装订器 Relay PWB J8213-1/2 (+) 和 the GND (-) +24VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00005')" href="#fip.00005">是</a>&nbsp;  <a id="fip.00006no" CLASS="yn-no" href="javascript:yesClicked('fip.00006')">编号</a></p><div class="no-branch-line"><div id="fip.00006" CLASS="no-branch"><p></p><div class="decl">Is the 电压 之间 装订器 D6主电路板 J8060-2 (+) 和 the GND (-) +3.3VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00007')" href="#fip.00007">是</a>&nbsp;  <a id="fip.00008no" CLASS="yn-no" href="javascript:yesClicked('fip.00008')">编号</a></p><div class="no-branch-line"><div id="fip.00008" CLASS="no-branch"><p>请参阅 BSD <a href="../contents/m0020200827114851001046b6.html">CH17.5</a>, 和 检查 控制 电路 (Enable: 3.3V) 最大到 装订器 D6主电路板 J8050-7.</p></div></div>
+<div id="fip.00007"><p>检查以下项目：</p><ul><li><p>检查 连接 之间 装订器 D6 LVPS <a href="../contents/m0020200901162437000f924c.html#LinkSetterTool.eps.20091714572736200210-J">J504</a> 和 装订器 Relay PWB J8213 用于 打开 电路, 接触不良.</p></li>
+<li><p>The 导线 之间 装订器 D6主电路板 J8060 和 装订器 D6-LVPS <a href="../contents/m0020200901162437000f924c.html#LinkSetterTool.eps.20091714572736200207-J">J506</a> 用于 打开 电路, 短路 电路, 和 接触不良.</p></li>
+</ul>
+<p>If 编号 问题 发现, 更换 装订器 D6 LVPS. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p></div></div></div>
+<div id="fip.00005"><p>更换 装订器 Relay PWB. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p></div></div></div>
+<div id="fip.00003"><div class="decl">Is the 电压 之间 折叠器 单元 J8208-1 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00009')" href="#fip.00009">是</a>&nbsp;  <a id="fip.00010no" CLASS="yn-no" href="javascript:yesClicked('fip.00010')">编号</a></p><div class="no-branch-line"><div id="fip.00010" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 装订器 Relay PWB J8213-3 和 装订器 单元 P8208-1 用于 打开 电路, 和 接触不良.</p><p>If 编号 问题 发现 在...之后 checking, 更换 装订器 前面 门 互锁 开关. (<a href="../contents/m0020200907180712001350b8.html">PL 27.13</a>)</p></div></div>
+<div id="fip.00009"><div class="decl">Is the 电压 之间 折叠器 单元 <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600001">J937</a>-1 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00011')" href="#fip.00011">是</a>&nbsp;  <a id="fip.00012no" CLASS="yn-no" href="javascript:yesClicked('fip.00012')">编号</a></p><div class="no-branch-line"><div id="fip.00012" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 折叠器 单元 J8208-1 和 折叠器 单元 P8825-1 用于 打开 电路, 和 接触不良. </p><p>If 编号 问题 发现 在...之后 checking, 更换 折叠器 前面 门 互锁 开关. (<a href="../contents/m002020090718081600160bd9.html">PL 50.9</a>)</p></div></div>
+<div id="fip.00011"><div class="decl">Is the 电压 之间 the TCBM <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600005">P/J902</a>-1 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00013')" href="#fip.00013">是</a>&nbsp;  <a id="fip.00014no" CLASS="yn-no" href="javascript:yesClicked('fip.00014')">编号</a></p><div class="no-branch-line"><div id="fip.00014" CLASS="no-branch"><p>关闭电源. 请参阅 BSD <a href="../contents/m002020082711485100104650.html">CH17.2</a> 和 检查 连接 之间 折叠器 单元 <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600001">J937</a>-1 和 the TCBM <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600005-P">P902</a>-1 用于 打开 电路, 和 接触不良.</p><p>If 编号 问题 发现 在...之后 checking, 更换 TCBM 上方 互锁 开关. (<a href="../contents/m002020090718080400158e4c.html">PL 47.5</a>)</p></div></div>
+<div id="fip.00013"><div class="decl">Is the 电压 之间 折叠器 单元 <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600001">J937</a>-2 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00015')" href="#fip.00015">是</a>&nbsp;  <a id="fip.00016no" CLASS="yn-no" href="javascript:yesClicked('fip.00016')">编号</a></p><div class="no-branch-line"><div id="fip.00016" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 the TCBM <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600005-P">P902</a>-2 和 折叠器 单元 <a href="../contents/m0020200901165053000f7e48.html#LinkSetterTool.eps.20091710373358600001">J937</a>-2 用于 打开 电路, 和 接触不良. </p></div></div>
+<div id="fip.00015"><div class="decl">Is the 电压 之间 折叠器 单元 J8208-2 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00017')" href="#fip.00017">是</a>&nbsp;  <a id="fip.00018no" CLASS="yn-no" href="javascript:yesClicked('fip.00018')">编号</a></p><div class="no-branch-line"><div id="fip.00018" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 折叠器 单元 P8825-2 和 折叠器 单元 J8208-2 用于 打开 电路, 和 接触不良.</p></div></div>
+<div id="fip.00017"><div class="decl">Is the 电压 之间 装订器 PWB J8213-8 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00019')" href="#fip.00019">是</a>&nbsp;  <a id="fip.00020no" CLASS="yn-no" href="javascript:yesClicked('fip.00020')">编号</a></p><div class="no-branch-line"><div id="fip.00020" CLASS="no-branch"><p>关闭电源 和 检查以下项目：</p><ul><li><p>The 连接 之间 装订器 单元 P8208-2 和 装订器 Relay PWB J8213-5 用于 打开 电路, 和 接触不良.</p></li>
+<li><p>装订器 Relay PWB 用于 melted F1 保险丝.</p></li>
+</ul>
+<p>If 编号 问题 发现, 更换 装订器 Relay PWB. (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p></div></div>
+<div id="fip.00019"><div class="decl">是 the voltages 之间 the CDM 主电路板 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200037-J">J101</a>-1/2 (+) 和 GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00021')" href="#fip.00021">是</a>&nbsp;  <a id="fip.00022no" CLASS="yn-no" href="javascript:yesClicked('fip.00022')">编号</a></p><div class="no-branch-line"><div id="fip.00022" CLASS="no-branch"><div class="decl">是 the voltages 之间 the CDM LVPS 1 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200033-J">J505</a>-1/2 (+) 和 GND (-) +24VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00023')" href="#fip.00023">是</a>&nbsp;  <a id="fip.00024no" CLASS="yn-no" href="javascript:yesClicked('fip.00024')">编号</a></p><div class="no-branch-line"><div id="fip.00024" CLASS="no-branch"><div class="decl">Is the 电压 之间 the CDM LVPS 1 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200031-J">J506</a>-1 (+) 和 GND (-) +3.3VDC?</div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00025')" href="#fip.00025">是</a>&nbsp;  <a id="fip.00026no" CLASS="yn-no" href="javascript:yesClicked('fip.00026')">编号</a></p><div class="no-branch-line"><div id="fip.00026" CLASS="no-branch"><p>请参阅 BSD <a href="../contents/m002020082711490400104d8c.html">CH27.1</a>, 检查 控制 电路 (Enable: 3.3V) 到 CDM LVPS 1 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200031-J">J506</a>-1.</p></div></div>
+<div id="fip.00025"><p>更换 CDM LVPS 1. (<a href="../contents/m002020090718073500146670.html">PL 43.3a</a>, <a href="../contents/m002020090718073600146a16.html">PL 43.3b</a>)</p></div></div></div>
+<div id="fip.00023"><p>关闭电源, 和 检查 连接 之间 the CDM LVPS 1 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200033-J">J505</a> 和 the CDM 主电路板 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200037-J">J101</a> 用于 打开 电路 和 接触不良.</p></div></div></div>
+<div id="fip.00021"><div class="decl">Is the 电压 之间 the CDM 单元 P8067-1 (+) 和 GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00027')" href="#fip.00027">是</a>&nbsp;  <a id="fip.00028no" CLASS="yn-no" href="javascript:yesClicked('fip.00028')">编号</a></p><div class="no-branch-line"><div id="fip.00028" CLASS="no-branch"><p>关闭电源. 请参阅 BSD <a href="../contents/m002020082711485100104672.html">CH17.3</a>, 和 检查 连接 之间 the CDM 主电路板 <a href="../contents/m0020200901163757000f71d4.html#m0020200924160516000f9185">J120</a>-1 和 the CDM 单元 <a href="../contents/m0020200901163757000f73e5.html#LinkSetterTool.eps.20091708432543200055-J">J8067</a>-1 用于 打开 电路 和 接触不良.</p><p>If 编号 问题 发现 在...之后 checking, 更换 CDM 互锁 开关. (<a href="../contents/m00202009071807390014942c.html">PL 43.11a</a>, <a href="../contents/m0020200907180739001496f7.html">PL 43.11b</a>)</p></div></div>
+<div id="fip.00027"><div class="decl">Is the 电压 之间 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97f1">J8168</a>-1 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00029')" href="#fip.00029">是</a>&nbsp;  <a id="fip.00030no" CLASS="yn-no" href="javascript:yesClicked('fip.00030')">编号</a></p><div class="no-branch-line"><div id="fip.00030" CLASS="no-branch"><p>关闭电源, 和 检查 连接 之间 the CDM 单元 <a href="../contents/m0020200901163757000f73e5.html#LinkSetterTool.eps.20091708432543200055-P">J8067</a>-1 和 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97f1">J8168</a>-1 用于 打开 电路 和 接触不良.</p><p>If 编号 问题 发现 在...之后 checking, 更换 Interposer Trans 互锁 开关. (<a href="../contents/m002020090718075900155a38.html">PL 46.2</a>)</p></div></div>
+<div id="fip.00029"><div class="decl">Is the 电压 之间 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97f1">J8168</a>-3 (+) 和 the GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00031')" href="#fip.00031">是</a>&nbsp;  <a id="fip.00032no" CLASS="yn-no" href="javascript:yesClicked('fip.00032')">编号</a></p><div class="no-branch-line"><div id="fip.00032" CLASS="no-branch"><p>关闭电源 和 检查 连接 之间 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97d3">J8169</a>-5 和 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97d3">J8169</a>-3 用于 打开 电路, 和 接触不良.</p><p>If 编号 问题 发现 在...之后 checking, 更换 Interposer 盖板 互锁 开关. (<a href="../contents/m002020090718080200157252.html">PL 46.11</a>)</p></div></div>
+<div id="fip.00031"><div class="decl">Is the 电压 之间 the CDM 主电路板 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200041-J">J109</a>-4 (+) 和 GND (-) +24VDC?</div></div>
+<p class="yn"><a class="yn-yes" onClick="yesClicked('fip.00033')" href="#fip.00033">是</a>&nbsp;  <a id="fip.00034no" CLASS="yn-no" href="javascript:yesClicked('fip.00034')">编号</a></p><div class="no-branch-line"><div id="fip.00034" CLASS="no-branch"><p>关闭电源, 和 检查 连接 之间 the Interposer PWB <a href="../contents/m0020200901164939000f6e11.html#m0020201002163943000f97f1">J8168</a>-3 和 the CDM PWB <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200041-J">J109</a>-4 用于 打开 电路 和 接触不良.</p></div></div>
+<div id="fip.00033"><p>关闭电源, 和 检查 连接 之间 IOT 和 the CDM 主 <a href="../contents/m0020200901163757000f71d4.html#LinkSetterTool.eps.20091708432543200015-J">J105</a> 用于 打开 电路 和 接触不良. </p><p></p></div>
+
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>013-250 打孔 副 CPU 通信 故障 /堆叠器 Tamper 副 CPU 通信 故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="013-250 打孔 副 CPU 通信 故障 /堆叠器 Tamper 副 CPU 通信 故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m0020200710131457001233b8.html">
+<input type="hidden" name="next_html" value="../contents/m002020071013145700123498.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>013-250 打孔 子 CPU 通信 失败 /堆叠器 防篡改 子 CPU 通信 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m0020200827114853001047c6.html">CH17.12</a>, <a href="../contents/m002020082711490200104cb0.html">CH17.44</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<ul><li><p>通信 错误 之间 the 主 CPU 和 打孔 子 CPU 具有 occurred.</p></li>
+</ul>
+<ul><li><p>通信 错误 之间 the 主 CPU 和 堆叠器 防篡改 子 CPU 具有 occurred.</p></li>
+</ul>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>If 堆叠器 防篡改 不是 installed, follow [步骤 a].</p></div>
+<div class="note"><img src="../../../common_e2/images/note.jpg"/><p>If 堆叠器 防篡改 已安装, 检查 值 of NVM [516-590] (检查 内容 of 堆叠器 防篡改 Fault). 如果 值 的 最后一个 7th 数字 is 0, follow [步骤 a]; 如果 is 1, proceed 按照 [步骤 b].</p></div>
+</div>
+<h3>原因/措施</h3><p>[步骤 a]</p><p><a href="../contents/m0020200710131454001204e9.html">012-333</a> 请参阅 FIP (打孔 子 CPU Download 模式 失败).</p><p></p><h3>步骤</h3>
+<p>[步骤 b]</p><ol><li><p>关闭再打开电源.</p></li>
+<li><p>检查 连接 之间 装订器 D6主电路板 <a href="../contents/m0020200901162438000f98ce.html#m00202009282035260010a072">J8088</a> 和 堆叠器 防篡改 PWB J8267 用于 打开 电路, 短路 电路, 和 接触不良.</p></li>
+<li><p>如果未发现问题，按顺序更换以下零件. 但是, 每个 时间 零件 已更换, 检查 是否 失败 is 仍然 发生 和 恢复 零件/部分 如果 具有 编号 问题.</p><ul><li><p>堆叠器 防篡改 单元 (<a href="../contents/m00202009071807190013a433.html">PL 27.34</a>)</p></li>
+<li><p>装订器 D6主电路板 (<a href="../contents/m002020090718071700139141.html">PL 27.29</a>)</p></li>
+</ul>
+</li>
+</ol>
+<p></p>
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>

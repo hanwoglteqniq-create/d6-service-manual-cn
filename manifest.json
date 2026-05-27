@@ -1,0 +1,29 @@
+{
+  "name": "D6装订器维修手册",
+  "short_name": "D6维修手册",
+  "description": "富士施乐D6装订器维修手册（中文版）- 支持离线使用",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f5f5",
+  "theme_color": "#6a1b9a",
+  "lang": "zh-CN",
+  "categories": ["utilities", "business"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>013-246 Tirmmer 副 CPU 通信 故障</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../../common_e2/css/manual.css" rel="stylesheet" type="text/css" />
+
+<object id="fxedoc" classid="clsid:8BE2908D-C1B9-11D6-B856-00A0C9C8E0B2"></object>
+<script language="JavaScript" src="../../../common_e2/script/script.js"></script>
+<script language="JavaScript" src="../../../common_e2/script/keyscript.js"></script>
+<script language="JavaScript">
+<!--
+	window.onload = function() {
+		initialize();
+
+		searchMenuId = window.setInterval('searchMenu();', 500);
+		window.setInterval('trHighright();', 1000);
+	}
+	
+	window.onresize = function() {
+		resize();
+	}
+
+	
+-->
+</script>
+</head>
+<body>
+
+<form name="data">
+<input type="hidden" name="t1" value="2 故障排除">
+<input type="hidden" name="t2" value="2.2 产品故障信息面板">
+<input type="hidden" name="t3" value="013-246 Tirmmer 副 CPU 通信 故障">
+<input type="hidden" name="chap" value="chap2">
+<input type="hidden" name="doc_type" value="">
+<input type="hidden" name="prev_html" value="../contents/m002020072118045300120bc1.html">
+<input type="hidden" name="next_html" value="../contents/m00202007101314570012331e.html">
+</form>
+
+<!-- #main -->
+﻿<div id="main">
+
+<h2>013-246 Tirmmer 子 CPU 通信 失败&nbsp;<a href="javascript:fullTopic();"><img src="../../../common_e2/images/full_a.gif"/></a></h2>
+
+<h4>参考BSD:<a href="../contents/m002020082711493100105cbc.html">CH37.4</a></h4>
+<div style="color:blue;margin-top:10px;margin-bottom:10px;"><img src="../../../common_e2/images/description.jpg"/>
+<p>通信 错误 之间 裁切器 子 CPU 和 the 主 CPU 具有 occurred.</p></div>
+<h3>步骤</h3>
+<p>请参阅 以下.</p><div class="note"><img src="../../../common_e2/images/note.jpg"/><p>当...时 装订器 D6主电路板 检测 013-246, it sends a 重置 信号 到 裁切器电路板 和 然后 cuts 关闭/脱离 LVPS of 裁切器 (Enable 信号 关闭/脱离). 因此, 在...之后 此 故障 occurred, it is impossible to judge 是否 故障 具有 occurred in the 通信 line or the 裁切器电路板 基于 the statuses of LED CR1/CR2/CR3 在...上 裁切器电路板.</p><p>但是, 以下 estimation is possible 基于 the 状态 at the 时序 当...时 013-246 occurred. (表1)</p></div>
+<div align="center" class="table-scrolling-div"><table>
+<tr><td onFocus="trHighright();" id="m002020072118111700121282"><p></p></td><td onFocus="trHighright();" id="m002020072118111700121289"><p>CR1(GRN) *4</p></td><td onFocus="trHighright();" id="m002020072118111700121290"><p>CR2(GRN) *4</p></td><td onFocus="trHighright();" id="m002020072118111700121297"><p>CR3(RED) *3</p></td><td onFocus="trHighright();" id="m00202007211811170012129e"><p>CR7(GRN)</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200721181117001212a6"><p>在...期间 正常 操作</p></td><td onFocus="trHighright();" id="m0020200721181117001212ad"><p>Flashing</p></td><td onFocus="trHighright();" id="m0020200721181117001212b4"><p>Flashing</p></td><td onFocus="trHighright();" id="m0020200721181117001212bb"><p>关闭/脱离 *2</p></td><td onFocus="trHighright();" id="m0020200721181117001212c2"><p>On</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200721181117001212ca"><p>裁切器电路板 故障</p></td><td onFocus="trHighright();" id="m0020200721181117001212d1"><p>关闭/脱离</p></td><td onFocus="trHighright();" id="m0020200721181117001212d8"><p>关闭/脱离</p></td><td onFocus="trHighright();" id="m0020200721181117001212df"><p>ON *1</p></td><td onFocus="trHighright();" id="m0020200721181117001212e6"><p>-</p></td></tr>
+<tr><td onFocus="trHighright();" id="m0020200721181117001212ee"><p>通信 line 故障</p></td><td onFocus="trHighright();" id="m0020200721181117001212f5"><p>Flashing</p></td><td onFocus="trHighright();" id="m0020200721181117001212fc"><p>关闭/脱离</p></td><td onFocus="trHighright();" id="m002020072118111700121303"><p>关闭/脱离 *2</p></td><td onFocus="trHighright();" id="m00202007211811180012130a"><p>On</p></td></tr>
+</table></div>
+<p>*1: 当...时 装订器 D6主电路板 检测 013-246 在...之后 开机, it sends a 重置 信号 到 裁切器电路板 和 然后 cuts 关闭/脱离 LVPS of 裁切器 (Enable 信号 关闭/脱离). 因此, CR3 已关闭.</p><p>*2: 当...时 电源 已开启, the LED 已开启 temporarily 和 然后 关闭/脱离.</p><p>*3: The CR3 (重置 LED) ON conditions 是 如下所示.</p><ul><li><p>A 故障 具有 occurred in 电源 用于 控制 (+5V) in the 裁切器电路板. (当...时 装订器 D6主电路板 检测 013-246, it sends a 重置 信号 到 裁切器电路板 和 然后 cuts 关闭/脱离 LVPS of 裁切器, 因此, the 灯/光线 将不会 become 始终 On.)</p></li>
+<li><p>A 重置 信号 已 received 从 the D6 装订器. (但是, 此 重置 信号 is 也 used as the LVPS Enable 信号.)</p></li>
+</ul>
+<p>*4: 以下 Diag 可以 used to 检查 信号 transmission/reception. 当...时 they 是 正常, the CR1/CR2 blink at a certain intervals:</p><ul><li><p>DC330 [013-001] (皮带 传输 电机), [013-006] (皮带 Tra 离合器 下方 1/2), 和 so on.</p></li>
+<li><p>The sensors 除了 the ones in the hot-line 连接 之间 the 裁切器电路板 和 装订器 PWB 可以 也 be used to 检查 信号 transmission/reception.</p></li>
+</ul>
+<p></p><p>当...时 a 故障 具有 occurred in the 裁切器电路板, 更换 裁切器电路板 (<a href="../contents/m002020090718075800154d1d.html">PL 45.35</a>).</p><p>当...时 a 故障 具有 occurred in the 通信 Line, 检查 线束 (<a href="../contents/m002020090718075800154d1d.html">PL 45.35</a>) 之间 装订器 D6主电路板 <a href="../contents/m0020200901162438000f98ce.html#LinkSetterTool.eps.20091714572736200397-J">J8062</a> 和 the 裁切器电路板 J8500 用于 打开 电路, 短路 电路, 和 接触不良. </p><p></p>
+
+</div>
+<!-- / #main -->
+
+</body>
+</html>
