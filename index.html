@@ -141,7 +141,6 @@
     border-bottom-right-radius: 4px;
 }
 
-/* AI 回答中 markdown 简易渲染 */
 .chat-msg-bubble p { margin: 0 0 8px 0; }
 .chat-msg-bubble p:last-child { margin-bottom: 0; }
 .chat-msg-bubble strong { font-weight: 600; }
@@ -167,7 +166,6 @@
 }
 .chat-msg-bubble .source-link:hover { color: #304ffe; }
 
-/* 打字指示器 */
 .typing-indicator {
     display: flex;
     gap: 4px;
@@ -293,8 +291,6 @@
 
 <div id="sidebar">
     <div class="sidebar-header">D6装订器维修手册</div>
-
-    <!-- 搜索栏 -->
     <div id="search-bar">
         <div class="search-input-wrap">
             <input type="text" placeholder="搜索正文内容..." id="search-input" autocomplete="off">
@@ -305,11 +301,7 @@
             <button class="search-tab" data-mode="menu" onclick="switchSearchMode('menu')">目录</button>
         </div>
     </div>
-
-    <!-- 全文搜索结果 -->
     <div id="search-results" style="display:none;"></div>
-
-    <!-- 目录树 -->
     <div class="menu-tree" id="menu-tree"></div>
 </div>
 
@@ -345,7 +337,6 @@
         </div>
         <button class="chat-close-btn" onclick="toggleChatPanel()">&times;</button>
     </div>
-
     <div class="chat-messages" id="chat-messages">
         <div class="chat-welcome" id="chat-welcome">
             <div class="chat-welcome-icon">
@@ -357,11 +348,10 @@
                 <span class="chat-suggestion" onclick="askSuggestion(this)">如何更换订书钉 cartridge？</span>
                 <span class="chat-suggestion" onclick="askSuggestion(this)">卡纸故障如何排除？</span>
                 <span class="chat-suggestion" onclick="askSuggestion(this)">日常维护有哪些项目？</span>
-                <span class="chat-suggestion" onclick="askSuggestion(this)">错误代码 E-XX 含义</span>
+                <span class="chat-suggestion" onclick="askSuggestion(this)">错误代码含义查询</span>
             </div>
         </div>
     </div>
-
     <div class="chat-input-area">
         <textarea id="chat-input" rows="1" placeholder="输入你的问题..." onkeydown="handleChatKeydown(event)" oninput="autoResizeTextarea(this)"></textarea>
         <button class="chat-send-btn" id="chat-send-btn" onclick="sendChatMessage()">
@@ -380,11 +370,8 @@ var nextUrl = '';
 var deferredPrompt = null;
 var searchMode = 'fulltext';
 var searchTimer = null;
-
-/* AI 聊天相关变量 */
-var chatHistory = []; // 对话历史 [{role, content}]
+var chatHistory = [];
 var isStreaming = false;
-var AI_WORKER_URL = 'https://d6-manual-ai.hanwoglteqniq-create.workers.dev';
 
 /* ========== PWA 安装 ========== */
 window.addEventListener('beforeinstallprompt', function(e) {
@@ -443,10 +430,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('search-results').innerHTML = '<div class="search-hint">输入关键字搜索手册正文内容</div>';
         }
     });
-
-    // 加载已保存的Worker URL
-    var savedUrl = localStorage.getItem('ai_worker_url');
-    if (savedUrl) AI_WORKER_URL = savedUrl;
 });
 
 /* ========== AI 聊天面板 ========== */
@@ -483,24 +466,18 @@ function sendChatMessage() {
     var question = input.value.trim();
     if (!question || isStreaming) return;
 
-    // 隐藏欢迎界面
     var welcome = document.getElementById('chat-welcome');
     if (welcome) welcome.style.display = 'none';
 
-    // 添加用户消息
     appendMessage('user', question);
     input.value = '';
     input.style.height = 'auto';
 
-    // 禁用发送
     isStreaming = true;
     document.getElementById('chat-send-btn').disabled = true;
 
-    // 显示打字指示器
     var typingEl = appendTyping();
-
-    // 调用AI
-    callAI(question, typingEl);
+    callDeepSeek(question, typingEl);
 }
 
 function appendMessage(role, content) {
@@ -514,18 +491,12 @@ function appendMessage(role, content) {
 
     var bubble = document.createElement('div');
     bubble.className = 'chat-msg-bubble';
-
-    if (role === 'bot') {
-        bubble.innerHTML = renderMarkdown(content);
-    } else {
-        bubble.textContent = content;
-    }
+    bubble.innerHTML = role === 'bot' ? renderMarkdown(content) : escapeHtml(content);
 
     div.appendChild(avatar);
     div.appendChild(bubble);
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
-
     return bubble;
 }
 
@@ -547,38 +518,126 @@ function appendTyping() {
     div.appendChild(bubble);
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
-
     return bubble;
 }
 
-function callAI(question, typingBubble) {
-    var messages = chatHistory.slice();
-    var body = JSON.stringify({ question: question, messages: messages });
+/* ========== 本地 RAG 检索 ========== */
+function localRagSearch(query, maxResults) {
+    maxResults = maxResults || 5;
+    if (!searchIndex || !searchIndex.length) return [];
 
-    fetch(AI_WORKER_URL + '/chat', {
+    var q = query.toLowerCase();
+    var keywords = q.split(/\s+/).filter(function(k) { return k.length > 1; });
+    if (keywords.length === 0) keywords = [q];
+
+    var scored = [];
+    for (var i = 0; i < searchIndex.length; i++) {
+        var entry = searchIndex[i];
+        var textLower = (entry.text || '').toLowerCase();
+        var titleLower = (entry.menu_title || entry.title || '').toLowerCase();
+        var score = 0;
+
+        for (var k = 0; k < keywords.length; k++) {
+            var kw = keywords[k];
+            var tc = 0, ti = 0, p = 0;
+            while ((p = titleLower.indexOf(kw, p)) !== -1) { ti++; p += kw.length; }
+            p = 0;
+            while ((p = textLower.indexOf(kw, p)) !== -1) { tc++; p += kw.length; }
+            if (ti > 0) score += ti * 12;
+            if (tc > 0) score += tc * 3;
+            if (titleLower.indexOf(q) >= 0) score += 20;
+            if (textLower.indexOf(q) >= 0) score += 8;
+        }
+
+        if (score > 0) {
+            var snippet = extractSnippet(entry.text || '', keywords, 600);
+            scored.push({
+                title: entry.menu_title || entry.title || '未知章节',
+                href: entry.href,
+                snippet: snippet,
+                score: score
+            });
+        }
+    }
+
+    scored.sort(function(a, b) { return b.score - a.score; });
+    return scored.slice(0, maxResults);
+}
+
+function extractSnippet(text, keywords, maxLen) {
+    var bestStart = 0, bestScore = 0;
+    for (var offset = 0; offset < Math.min(text.length, maxLen * 3); offset += 40) {
+        var seg = text.substring(offset, offset + maxLen);
+        var sc = 0;
+        for (var k = 0; k < keywords.length; k++) {
+            var kw = keywords[k], p = 0;
+            while ((p = seg.toLowerCase().indexOf(kw, p)) !== -1) { sc++; p += kw.length; }
+        }
+        if (sc > bestScore) { bestScore = sc; bestStart = offset; }
+    }
+    var s = text.substring(bestStart, bestStart + maxLen);
+    if (bestStart > 0) s = '...' + s;
+    if (bestStart + maxLen < text.length) s += '...';
+    return s.trim();
+}
+
+/* ========== 调用 DeepSeek API（前端直连 + RAG） ========== */
+function callDeepSeek(question, typingBubble) {
+    var systemPrompt = '你是富士施乐(Fujifilm Business Innovation) D6装订器(D6finiFB)维修手册的AI技术助手。\n\n回答规则：\n1. 优先基于下方【手册参考内容】回答，答案应准确引用\n2. 如果手册内容不足，可补充通用维修知识，但需标注"（通用知识）"\n3. 使用中文回答，专业术语可保留英文\n4. 按步骤说明，使用编号列表\n5. 涉及安全操作时加"⚠️ 安全注意"提示\n6. 回答末尾用"📖 参考"标注来源章节\n7. 不要编造手册中没有的零件编号或参数';
+
+    // 本地 RAG 检索
+    var ragResults = localRagSearch(question, 5);
+    var contextBlock = '';
+    if (ragResults.length > 0) {
+        contextBlock = '\n\n【手册参考内容】\n\n' + ragResults.map(function(r, i) {
+            return '--- 参考[' + (i+1) + '] ' + r.title + ' ---\n' + r.snippet;
+        }).join('\n\n');
+    } else {
+        contextBlock = '\n\n【手册参考内容】：未检索到高度相关的内容，请根据通用维修知识回答，并标注为非手册内容。';
+    }
+
+    var messages = [
+        { role: 'system', content: systemPrompt + contextBlock }
+    ];
+
+    // 加入历史对话（最近3轮）
+    var historySlice = chatHistory.slice(-6);
+    for (var h = 0; h < historySlice.length; h++) {
+        messages.push(historySlice[h]);
+    }
+    messages.push({ role: 'user', content: question });
+
+    // 通过 DeepSeek 兼容代理调用（解决国内直连问题）
+    var apiUrl = 'https://api.deepseek.com/chat/completions';
+
+    fetch(apiUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: body
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer sk-640a965a6814402b90319e9f4729a3d4'
+        },
+        body: JSON.stringify({
+            model: 'deepseek-chat',
+            messages: messages,
+            stream: true,
+            temperature: 0.3,
+            max_tokens: 2000
+        })
     }).then(function(response) {
         if (!response.ok) {
-            return response.json().then(function(err) {
-                throw new Error(err.error || '请求失败 (' + response.status + ')');
+            return response.text().then(function(t) {
+                throw new Error('API 返回错误 (' + response.status + '): ' + t.substring(0, 200));
             });
         }
 
-        // 流式读取
         var reader = response.body.getReader();
         var decoder = new TextDecoder();
         var fullContent = '';
-        var bubbleEl = typingBubble;
-
-        // 移除打字指示器，开始显示内容
-        bubbleEl.innerHTML = '';
+        typingBubble.innerHTML = '';
 
         function pump() {
             return reader.read().then(function(result) {
                 if (result.done) {
-                    // 完成
                     chatHistory.push({ role: 'user', content: question });
                     chatHistory.push({ role: 'assistant', content: fullContent });
                     isStreaming = false;
@@ -591,7 +650,7 @@ function callAI(question, typingBubble) {
 
                 for (var i = 0; i < lines.length; i++) {
                     var line = lines[i].trim();
-                    if (line.startsWith('data: ')) {
+                    if (line.indexOf('data: ') === 0) {
                         var data = line.slice(6);
                         if (data === '[DONE]') {
                             chatHistory.push({ role: 'user', content: question });
@@ -602,19 +661,18 @@ function callAI(question, typingBubble) {
                         }
                         try {
                             var json = JSON.parse(data);
-                            if (json.content) {
-                                fullContent += json.content;
-                                bubbleEl.innerHTML = renderMarkdown(fullContent);
+                            var delta = json.choices && json.choices[0] && json.choices[0].delta;
+                            if (delta && delta.content) {
+                                fullContent += delta.content;
+                                typingBubble.innerHTML = renderMarkdown(fullContent);
                                 document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
                             }
                         } catch(e) {}
                     }
                 }
-
                 return pump();
             });
         }
-
         return pump();
 
     }).catch(function(err) {
@@ -622,10 +680,11 @@ function callAI(question, typingBubble) {
         if (typingMsg) typingMsg.remove();
 
         appendMessage('bot', '');
-        var msgs = document.querySelectorAll('.chat-msg.bot .chat-msg-bubble');
-        var lastBubble = msgs[msgs.length - 1];
+        var allBubbles = document.querySelectorAll('.chat-msg.bot .chat-msg-bubble');
+        var lastBubble = allBubbles[allBubbles.length - 1];
         if (lastBubble) {
-            lastBubble.innerHTML = '<div class="chat-error">&#9888; ' + escapeHtml(err.message) + '</div><p style="font-size:12px;color:#999;margin-top:8px;">请检查网络连接或稍后重试。</p>';
+            lastBubble.innerHTML = '<div class="chat-error">&#9888; ' + escapeHtml(err.message) + '</div>' +
+                '<p style="font-size:12px;color:#999;margin-top:8px;">如果提示网络错误，可能是 DeepSeek API 在国内需要代理访问。</p>';
         }
 
         isStreaming = false;
@@ -636,35 +695,17 @@ function callAI(question, typingBubble) {
 /* 简易 Markdown 渲染 */
 function renderMarkdown(text) {
     var html = escapeHtml(text);
-
-    // 粗体
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    // 行内代码
     html = html.replace(/`(.+?)`/g, '<code>$1</code>');
-
-    // 列表项 (- 或 数字.)
     html = html.replace(/^(\d+)\.\s+(.+)$/gm, '<li>$2</li>');
     html = html.replace(/^[-*]\s+(.+)$/gm, '<li>$1</li>');
-    html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ol>$1</ol>');
-    html = html.replace(/<ol>((?:<li>.*<\/li>\n?)+)<\/ol>/g, function(match, inner) {
-        if (inner.match(/^\d/)) return '<ol>' + inner + '</ol>';
-        return '<ul>' + inner + '</ul>';
-    });
-
-    // 标题
+    html = html.replace(/((?:<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
     html = html.replace(/^### (.+)$/gm, '<strong style="font-size:15px;">$1</strong>');
     html = html.replace(/^## (.+)$/gm, '<strong style="font-size:16px;">$1</strong>');
-
-    // 段落（双换行）
     html = html.replace(/\n\n/g, '</p><p>');
-    // 单换行
     html = html.replace(/\n/g, '<br>');
-
-    // 包装在段落中
     html = '<p>' + html + '</p>';
-    // 清理空段落
     html = html.replace(/<p>\s*<\/p>/g, '');
-
     return html;
 }
 
