@@ -342,6 +342,11 @@ function injectAndRender(html, url) {
     ].join('\n');
     doc.head.appendChild(script);
 
+    // 注入 <base> 标签让 iframe 中的相对路径正确解析
+    var baseTag = document.createElement('base');
+    baseTag.href = base;
+    doc.head.insertBefore(baseTag, doc.head.firstChild);
+    
     // 写入iframe
     var contentHTML = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
     iframe.srcdoc = contentHTML;
