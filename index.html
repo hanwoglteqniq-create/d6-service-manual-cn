@@ -11,7 +11,10 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>D6装订器维修手册</title>
+<!-- PWA 框架样式 -->
 <link rel="stylesheet" href="manual/mobile.css">
+<!-- 手册原始样式 -->
+<link rel="stylesheet" href="manual/common_e2/css/manual.css">
 </head>
 <body>
 
@@ -47,73 +50,61 @@
     <div class="menu-tree" id="menu-tree"></div>
 </div>
 
-<!-- 主内容区域 -->
+<!-- 主内容区域（使用 iframe 确保手册样式完全隔离） -->
 <div id="app-content">
-    <div id="content-frame">
-        <div class="loading">正在加载手册内容...</div>
-    </div>
+    <iframe id="content-frame" frameborder="0" style="width:100%;border:none;min-height:calc(100vh - 56px);"></iframe>
+</div>
+
+<!-- 上/下页导航 -->
+<div id="page-nav-bar" style="display:none;">
+    <button id="nav-prev" onclick="goPrev()">&#8592; 上一页</button>
+    <button id="nav-next" onclick="goNext()">下一页 &#8594;</button>
 </div>
 
 <!-- 返回顶部 -->
-<div id="back-to-top" onclick="scrollToTop()">
+<div id="back-to-top" onclick="document.getElementById('content-frame').contentWindow.scrollTo({top:0,behavior:'smooth'})">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
 </div>
 
 <script>
 var menuData = null;
-var currentPath = '';
+var currentUrl = '';
+var prevUrl = '';
+var nextUrl = '';
 var deferredPrompt = null;
 
 // ========== PWA 安装逻辑 ==========
 window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferredPrompt = e;
-    // 首次访问显示安装提示
     if (!localStorage.getItem('installDismissed')) {
         document.getElementById('install-banner').style.display = 'block';
     }
 });
-
 window.addEventListener('appinstalled', function() {
     deferredPrompt = null;
     document.getElementById('install-banner').style.display = 'none';
 });
-
 function installApp() {
     if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(function(result) {
-            if (result.outcome === 'accepted') {
-                localStorage.setItem('installDismissed', '1');
-            }
+            if (result.outcome === 'accepted') localStorage.setItem('installDismissed', '1');
             deferredPrompt = null;
         });
     } else {
-        // iOS不支持beforeinstallprompt，显示手动安装提示
-        showIOSInstallHint();
+        var banner = document.getElementById('install-banner');
+        banner.style.display = 'block';
+        banner.querySelector('p').textContent = '请点击浏览器底部的"分享"按钮，然后选择"添加到主屏幕"';
+        document.getElementById('install-btn').style.display = 'none';
     }
 }
+function toggleInstallUI() { installApp(); }
 
-function toggleInstallUI() {
-    installApp();
-}
-
-function showIOSInstallHint() {
-    var banner = document.getElementById('install-banner');
-    banner.style.display = 'block';
-    banner.querySelector('p').textContent = '请点击浏览器底部的"分享"按钮，然后选择"添加到主屏幕"';
-    var btn = document.getElementById('install-btn');
-    btn.style.display = 'none';
-}
-
-// ========== Service Worker 注册 ==========
+// ========== Service Worker ==========
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-        navigator.serviceWorker.register('./sw.js').then(function(reg) {
-            console.log('Service Worker 已注册，作用域:', reg.scope);
-        }).catch(function(err) {
-            console.log('Service Worker 注册失败:', err);
-        });
+        navigator.serviceWorker.register('./sw.js').catch(function(){});
     });
 }
 
@@ -121,18 +112,9 @@ if ('serviceWorker' in navigator) {
 document.addEventListener('DOMContentLoaded', function() {
     loadMenu();
     loadContent('manual/welcome.html');
-
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('back-to-top');
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    });
 });
 
-// ========== 菜单加载与渲染 ==========
+// ========== 菜单 ==========
 function loadMenu() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'manual/menu_data.json', true);
@@ -150,15 +132,12 @@ function renderMenu(items, container, level) {
     container = container || document.getElementById('menu-tree');
     var ul = document.createElement('ul');
     if (level > 0) ul.className = 'sub-menu';
-
     items.forEach(function(item) {
         var li = document.createElement('li');
-
         if (item.type === 'folder' && item.children && item.children.length > 0) {
             var link = document.createElement('a');
             link.className = level === 0 ? 'chap-link' : '';
             link.setAttribute('data-search', ((item.title || '') + ' ' + (item.title_en || '')).toLowerCase());
-
             var toggle = document.createElement('span');
             toggle.className = 'folder-toggle';
             toggle.innerHTML = '&#9654;';
@@ -170,7 +149,6 @@ function renderMenu(items, container, level) {
             };
             link.appendChild(toggle);
             link.appendChild(document.createTextNode(item.title || ''));
-
             if (item.href) {
                 link.onclick = function(e) {
                     if (e.target.classList.contains('folder-toggle')) return;
@@ -239,98 +217,173 @@ function filterMenu(query) {
     });
 }
 
-// ========== 内容加载与渲染 ==========
+// ========== iframe 内容加载 ==========
 function loadContent(url) {
-    currentPath = url;
-    var container = document.getElementById('content-frame');
-    container.innerHTML = '<div class="loading">加载中...</div>';
+    currentUrl = url;
+    var iframe = document.getElementById('content-frame');
+    var navBar = document.getElementById('page-nav-bar');
+    navBar.style.display = 'none';
 
+    // 读取HTML，注入导航脚本后写入iframe
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            renderContent(xhr.responseText, url);
+            injectAndRender(xhr.responseText, url);
         } else {
-            container.innerHTML = '<div class="loading">页面加载失败: ' + xhr.status + '</div>';
+            iframe.srcdoc = '<div style="padding:20px;color:red;">页面加载失败: ' + xhr.status + '</div>';
         }
     };
     xhr.onerror = function() {
-        container.innerHTML = '<div class="loading">网络错误，请检查连接后重试</div>';
+        iframe.srcdoc = '<div style="padding:20px;color:red;">网络错误</div>';
     };
     xhr.send();
 }
 
-function renderContent(html, url) {
-    var container = document.getElementById('content-frame');
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(html, 'text/html');
+function injectAndRender(html, url) {
+    var iframe = document.getElementById('content-frame');
+    var doc = new DOMParser().parseFromString(html, 'text/html');
 
+    // 提取标题
     var title = doc.querySelector('title');
     if (title) document.getElementById('header-title').textContent = title.textContent;
 
-    var main = doc.querySelector('#main');
-    var body = doc.querySelector('body');
-    var prevHtml = doc.querySelector('input[name="prev_html"]');
-    var nextHtml = doc.querySelector('input[name="next_html"]');
-    var prevUrl = prevHtml ? prevHtml.value : '';
-    var nextUrl = nextHtml ? nextHtml.value : '';
+    // 提取上/下页
+    var prevInput = doc.querySelector('input[name="prev_html"]');
+    var nextInput = doc.querySelector('input[name="next_html"]');
+    prevUrl = prevInput ? prevInput.value : '';
+    nextUrl = nextInput ? nextInput.value : '';
 
-    var contentHTML = main ? main.innerHTML : (body ? body.innerHTML : '');
-    container.innerHTML = contentHTML;
-
-    // 上/下页导航
-    if (prevUrl || nextUrl) {
-        var nav = document.createElement('div');
-        nav.className = 'page-nav';
-        if (prevUrl) {
-            var a = document.createElement('a');
-            a.href = '#';
-            a.textContent = '\u2190 上一页';
-            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, prevUrl)); };
-            nav.appendChild(a);
-        } else {
-            nav.appendChild(document.createElement('span'));
-        }
-        if (nextUrl) {
-            var a = document.createElement('a');
-            a.href = '#';
-            a.textContent = '下一页 \u2192';
-            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, nextUrl)); };
-            nav.appendChild(a);
-        }
-        container.appendChild(nav);
-    }
-
-    // 处理内部链接
-    container.querySelectorAll('a[href]').forEach(function(a) {
-        var href = a.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('javascript') && !href.startsWith('#')) {
-            a.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, href)); };
+    // 修复 CSS 路径
+    var base = url.substring(0, url.lastIndexOf('/') + 1);
+    var links = doc.querySelectorAll('link[href]');
+    links.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('data:')) {
+            link.setAttribute('href', resolveUrl(base, href));
         }
     });
 
-    // 处理图片和area链接
-    function fixSrc(el, attr) {
-        var val = el.getAttribute(attr);
-        if (val && !val.startsWith('http') && !val.startsWith('data:')) {
-            el.setAttribute(attr, getRelativeUrl(url, val));
+    // 修复图片路径
+    var imgs = doc.querySelectorAll('img[src]');
+    imgs.forEach(function(img) {
+        var src = img.getAttribute('src');
+        if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+            img.setAttribute('src', resolveUrl(base, src));
         }
-    }
-    container.querySelectorAll('img[src]').forEach(function(img) { fixSrc(img, 'src'); });
-    container.querySelectorAll('area[href]').forEach(function(area) {
+    });
+
+    // 修复 area 链接
+    var areas = doc.querySelectorAll('area[href]');
+    areas.forEach(function(area) {
         var href = area.getAttribute('href');
         if (href && !href.startsWith('http') && !href.startsWith('javascript')) {
-            area.onclick = function(e) { e.preventDefault(); loadContent(getRelativeUrl(url, href)); };
+            area.setAttribute('href', 'javascript:void(0)');
+            area.setAttribute('data-target', resolveUrl(base, href));
         }
     });
 
-    window.scrollTo(0, 0);
+    // 修复内部链接 — 使用 postMessage 通知父页面
+    var allLinks = doc.querySelectorAll('a[href]');
+    allLinks.forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('javascript') && !href.startsWith('#')) {
+            var resolved = resolveUrl(base, href);
+            a.setAttribute('href', 'javascript:void(0)');
+            a.setAttribute('data-target', resolved);
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.parent.postMessage({type: 'navigate', url: this.getAttribute('data-target')}, '*');
+            });
+        }
+    });
+
+    // 移除 form/data 隐藏字段
+    var form = doc.querySelector('form[name="data"]');
+    if (form) form.remove();
+
+    // 注入移动端适配样式
+    var style = doc.createElement('style');
+    style.textContent = [
+        'body { margin: 8px !important; padding: 0 !important; font-size: 14px !important; overflow-x: hidden !important; }',
+        '#main { padding: 0 !important; margin: 0 !important; }',
+        'h2, h3 { font-size: 1.2em !important; }',
+        'table { max-width: 100% !important; overflow-x: auto !important; display: block !important; font-size: 12px !important; }',
+        'img { max-width: 100% !important; height: auto !important; }',
+        'td, th { padding: 4px 6px !important; word-break: break-word !important; }',
+        '.trHighlight td { background: #e3f2fd !important; }',
+        '@media (max-width: 600px) {',
+        '  body { font-size: 13px !important; margin: 4px !important; }',
+        '  table { font-size: 11px !important; }',
+        '  td, th { padding: 2px 3px !important; }',
+        '}'
+    ].join('\n');
+    doc.head.appendChild(style);
+
+    // 注入导航脚本（用于 area 点击）
+    var script = doc.createElement('script');
+    script.textContent = [
+        'document.querySelectorAll("area[data-target]").forEach(function(area){',
+        '  area.addEventListener("click", function(){',
+        '    var url = this.getAttribute("data-target");',
+        '    window.parent.postMessage({type:"navigate", url:url}, "*");',
+        '  });',
+        '});',
+        // 通知父页面加载完成和iframe高度
+        'window.addEventListener("load", function(){',
+        '  var h = document.documentElement.scrollHeight;',
+        '  window.parent.postMessage({type:"resize", height: h}, "*");',
+        '});',
+        'var observer = new MutationObserver(function(){',
+        '  var h = document.documentElement.scrollHeight;',
+        '  window.parent.postMessage({type:"resize", height: h}, "*");',
+        '});',
+        'observer.observe(document.body, {childList:true, subtree:true});'
+    ].join('\n');
+    doc.head.appendChild(script);
+
+    // 写入iframe
+    var contentHTML = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+    iframe.srcdoc = contentHTML;
+
+    // 更新导航栏
+    updateNavBar();
 }
 
-function getRelativeUrl(fromUrl, relativePath) {
-    if (relativePath.startsWith('./')) relativePath = relativePath.substring(2);
-    var parts = fromUrl.substring(0, fromUrl.lastIndexOf('/') + 1).split('/').filter(function(p) { return p; });
-    relativePath.split('/').forEach(function(seg) {
+function updateNavBar() {
+    var navBar = document.getElementById('page-nav-bar');
+    var prevBtn = document.getElementById('nav-prev');
+    var nextBtn = document.getElementById('nav-next');
+    if (prevUrl || nextUrl) {
+        navBar.style.display = 'flex';
+        prevBtn.style.visibility = prevUrl ? 'visible' : 'hidden';
+        nextBtn.style.visibility = nextUrl ? 'visible' : 'hidden';
+    } else {
+        navBar.style.display = 'none';
+    }
+}
+
+function goPrev() { if (prevUrl) loadContent(resolveUrl(currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1), prevUrl)); }
+function goNext() { if (nextUrl) loadContent(resolveUrl(currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1), nextUrl)); }
+
+// 监听 iframe 消息
+window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'navigate') {
+        loadContent(e.data.url);
+        closeSidebar();
+    }
+    if (e.data && e.data.type === 'resize') {
+        var iframe = document.getElementById('content-frame');
+        var h = Math.max(e.data.height, 400);
+        iframe.style.height = h + 'px';
+    }
+});
+
+function resolveUrl(base, relative) {
+    if (relative.startsWith('./')) relative = relative.substring(2);
+    if (relative.startsWith('/')) return relative;
+    var parts = base.split('/').filter(function(p) { return p; });
+    relative.split('/').forEach(function(seg) {
         if (seg === '..') parts.pop();
         else if (seg !== '.' && seg !== '') parts.push(seg);
     });
@@ -346,7 +399,6 @@ function closeSidebar() {
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sidebar-overlay').classList.remove('show');
 }
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 </script>
 </body>
 </html>
